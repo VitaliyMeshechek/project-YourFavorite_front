@@ -2,15 +2,13 @@ import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 
 const MainPage = () => {
-    return (
+  return (
     <>
-    <div>main page</div>
-    <Suspense fallback={null}>
+      <Suspense fallback={null}>
         <Outlet />
       </Suspense>
     </>
-    )
-    
-}
+  );
+};
 
-export default MainPage
+export default MainPage;
