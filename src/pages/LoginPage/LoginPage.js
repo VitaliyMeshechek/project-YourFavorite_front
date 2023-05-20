@@ -1,16 +1,11 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { LoginForm } from '../../components/Autorization/LoginForm/LoginForm';
 
 const LoginPage = () => {
-    return (
+  return (
     <>
-    <div>login page</div>
-    <Suspense fallback={null}>
-        <Outlet />
-      </Suspense>
+      <LoginForm />
     </>
-    )
-    
-}
+  );
+};
 
-export default LoginPage
+export default LoginPage;
