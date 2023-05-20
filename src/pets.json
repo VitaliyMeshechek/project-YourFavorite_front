@@ -1,0 +1,23 @@
+[
+  {
+    "img": "./images/searchPets/pet_1.jpg",
+    "title": "Сute dog looking for a home",
+    "location": "Lviv",
+    "old": "1 year",
+    "sex": "female"
+  },
+  {
+    "img": "./images/searchPets/pet_2",
+    "title": "Сute dog looking for a home",
+    "location": "Lviv",
+    "old": "1 year",
+    "sex": "female"
+  },
+  {
+    "img": "./images/searchPets/pet_3",
+    "title": "Сute dog looking for a home",
+    "location": "Lviv",
+    "old": "1 year",
+    "sex": "female"
+  }
+]
