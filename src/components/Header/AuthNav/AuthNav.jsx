@@ -1,21 +1,18 @@
 import { NavLink } from 'react-router-dom';
 
 const links = [
-  { href: '/news', text: 'News' },
-  { href: '/notices', text: 'Find pet' },
-  { href: '/friends', text: 'Our friends' },
+  { href: '/register', text: 'Registration' },
+  { href: '/login', text: 'Log IN' },
 ];
 
-export const Nav = () => {
+export const AuthNav = () => {
   return (
-    <header>
-      <nav>
+      <>
         {links.map(({ href, text }) => (
           <NavLink to={href} key={href}>
             {text}
           </NavLink>
         ))}
-      </nav>
-    </header>
+      </>
   );
 };
