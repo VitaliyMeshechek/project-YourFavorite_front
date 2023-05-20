@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
 
 export const FormTitle = styled.h2`

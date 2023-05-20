@@ -42,7 +42,6 @@ export const App = () => {
         <Route path="user" element={<UserPage/>}/>
         <Route path="add-pet" element={<AddPetPage/>}/>
         <Route path="*" element={<PageNotFound/>} />
-
     </Routes>
 </PageColor>
   )
