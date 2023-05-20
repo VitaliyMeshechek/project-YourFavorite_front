@@ -1,23 +1,34 @@
 [
   {
-    "img": "./images/searchPets/pet_1.jpg",
+    "img": "./image/searchPets/pet_1.jpg",
     "title": "Сute dog looking for a home",
     "location": "Lviv",
     "old": "1 year",
-    "sex": "female"
+    "sex": "female",
+    "price": "in good hands"
   },
   {
-    "img": "./images/searchPets/pet_2",
+    "img": "./image/searchPets/pet_2.jpg",
     "title": "Сute dog looking for a home",
     "location": "Lviv",
     "old": "1 year",
-    "sex": "female"
+    "sex": "female",
+    "price": "in good hands"
   },
   {
-    "img": "./images/searchPets/pet_3",
+    "img": "./image/searchPets/pet_3.jpg",
     "title": "Сute dog looking for a home",
     "location": "Lviv",
     "old": "1 year",
-    "sex": "female"
+    "sex": "female",
+    "price": "in good hands"
+  },
+  {
+    "img": "./image/searchPets/pet_4.jpg",
+    "title": "Сute dog looking for a home",
+    "location": "Lviv",
+    "old": "1 year",
+    "sex": "female",
+    "price": "in good hands"
   }
 ]

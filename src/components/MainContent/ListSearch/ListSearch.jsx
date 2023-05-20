@@ -7,6 +7,7 @@ export const LisSearch = ({ pets }) => {
       {pets.map(pet => (
         <ItemSearch
           img={pet.img}
+          price={pet.price}
           title={pet.title}
           location={pet.location}
           old={pet.old}
