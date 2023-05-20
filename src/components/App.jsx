@@ -1,22 +1,17 @@
 import { Route, Routes } from 'react-router-dom';
-import { SharedLayout } from './SharedLayout/SharedLayout';
 
 import { PageColor } from './App.styled';
-// import { PageNotFound } from 'pages/PageNotFound/PageNotFound';
 
+const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
 const MainPage = lazy(() => import('pages/MainPage/MainPage'));
 const NewsPage = lazy(() => import('pages/NewsPage/NewsPage'));
 const NoticesPage = lazy(() => import('pages/NoticesPage/NoticesPage'));
 const OurFriendsPage = lazy(() =>import('pages/OurFriendsPage/OurFriendsPage'));
-// import MainPage from 'pages/MainPage/MainPage';
-// import NewsPage from 'pages/NewsPage/NewsPage';
-// import NoticesPage from 'pages/NoticesPage/NoticesPage';
-// import OurFriendsPage from 'pages/OurFriendsPage/OurFriendsPage';
-import RegisterPage from 'pages/RegisterPage/RegisterPage';
-import LoginPage from 'pages/LoginPage/LoginPage';
-import UserPage from 'pages/UserPage/UserPage';
-import AddPetPage from 'pages/AddPetPage/AddPetPage';
-import { PageNotFound } from 'pages/PageNotFound/PageNotFound';
+const RegisterPage = lazy(() =>import('pages/RegisterPage/RegisterPage'));
+const LoginPage = lazy(() =>import('pages/LoginPage/LoginPage'));
+const UserPage = lazy(() =>import('pages/UserPage/UserPage'));
+const AddPetPage = lazy(() =>import('pages/AddPetPage/AddPetPage'));
+const PageNotFound = lazy(() =>import('pages/PageNotFound/Page'));
 
 
 

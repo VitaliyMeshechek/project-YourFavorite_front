@@ -3,7 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { Container } from 'components/ReusableComponents/MainContainer/MainContainer.styled';
 import { AppBar } from 'components/Header/AppBar/AppBar';
 
-export const SharedLayout = () => {
+const SharedLayout = () => {
   return (
     <>
       <AppBar/>
@@ -15,3 +15,5 @@ export const SharedLayout = () => {
     </>
   );
 };
+
+export default SharedLayout;

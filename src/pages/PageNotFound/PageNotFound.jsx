@@ -1,6 +1,6 @@
 
 
-export const PageNotFound = () => {
+const PageNotFound = () => {
     return (
         <div>
             Page not found 404
