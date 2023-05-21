@@ -104,7 +104,7 @@ export const ListAboutPets = styled.li`
   color: #111111;
 `;
 
-export const Img = styled.img`
+export const ImgPet = styled.img`
   width: 288px;
   height: auto;
   position: relative;
