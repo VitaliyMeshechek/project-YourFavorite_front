@@ -9,6 +9,7 @@ import {
   Img,
   Item,
   ListAboutPets,
+  PavsSvg,
   PriceTitle,
   TitleCard,
 } from './ItemSearch.styled';
@@ -35,7 +36,9 @@ export const ItemSearch = ({ img, title, location, old, sex, price }) => {
         </ListAboutPets>
       </FlexContainer>
       <TitleCard>{title}</TitleCard>
-      <ButtonMore type="button">Learn more</ButtonMore>
+      <ButtonMore type="button">
+        Learn more <PavsSvg />
+      </ButtonMore>
     </Item>
   );
 };
