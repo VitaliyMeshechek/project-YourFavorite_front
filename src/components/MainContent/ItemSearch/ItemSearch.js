@@ -6,21 +6,21 @@ import {
   IconHeart,
   IconLocation,
   IconSex,
-  ImgP,
+  Img,
   Item,
   ListAboutPets,
   PriceTitle,
   TitleCard,
 } from './ItemSearch.styled';
 
-export const ItemSearch = ({ imgp, title, location, old, sex, price }) => {
+export const ItemSearch = ({ img, title, location, old, sex, price }) => {
   return (
     <Item>
       <PriceTitle>{price}</PriceTitle>
       <HeartButton>
         <IconHeart />
       </HeartButton>
-      <ImgP src={imgp} />
+      <Img src={img} />
       <FlexContainer>
         <ListAboutPets>
           <IconLocation />
