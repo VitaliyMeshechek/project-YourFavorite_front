@@ -76,7 +76,7 @@ const initialValues = {
 
 
 const UserData =()=>{ 
-    const [isPhotoEdit, setisPhotoEdit] =useState(false);
+const [isPhotoEdit, setisPhotoEdit] =useState(false);
 const [isNameEdit, setisNameEdit] =useState(false);
 const [isEmailEdit, setisEmailEdit] =useState(false);
 const [isBirthEdit, setisBirthEdit] =useState(false);
@@ -159,24 +159,24 @@ const [isAllowed, setisAllowed ] = useState(true);
       console.log(isAllowed)
       return error;
     }
-
     function validateName(value) {
       let error;
       if (!value) {
         error = 'Required';
-      } else if ( !/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
+      } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
         error = 'You can use only letters, min 2 symbols';
       }
-     
-      setisAllowed(false)
+      
       if (error){setisAllowed(false)}
       
+      console.log(isAllowed)
       return error;
     }
+   
 
 return(
    <div>
-<Formik initialValues= {initialValues}   >
+<Formik initialValues= {initialValues} validateOnChange  >
             
            <Form >
            <PhotoContainer><UserImg src=" https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="" />
