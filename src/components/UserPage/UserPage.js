@@ -3,8 +3,9 @@ import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContai
 import {FiCamera,FiLogOut, FiTrash2} from 'react-icons/fi';
 import{AiOutlineCheck}from 'react-icons/ai';
 import{TbPencilMinus} from 'react-icons/tb';
-
+// import * as Yup from 'yup';
 import { useState } from "react";
+
 
 
 export const UserPageInfo =()=> {
@@ -32,13 +33,6 @@ export const UserPageInfo =()=> {
 }
 
 
-const UserData =()=>{
-    return(<>
-    <UserDataItem/>
-    
-    </>)
-
-}
 const Logout =()=>{
     return(<ButtonLogout><FiLogOut style={{rotate:"180deg", color:'#54adff', width: '22px', height: '21px', marginRight:'16px', }}/>Log Out</ButtonLogout>)
 }
@@ -81,15 +75,14 @@ const initialValues = {
 };
 
 
-const UserDataItem =({children})=>{ 
+const UserData =()=>{ 
     const [isPhotoEdit, setisPhotoEdit] =useState(false);
 const [isNameEdit, setisNameEdit] =useState(false);
 const [isEmailEdit, setisEmailEdit] =useState(false);
 const [isBirthEdit, setisBirthEdit] =useState(false);
 const [isPhoneEdit, setisPhoneEdit] =useState(false);
 const [isCityEdit, setisCityEdit] =useState(false);
-
-
+const [isAllowed, setisAllowed ] = useState(true);
 
 
 
@@ -104,20 +97,86 @@ const [isCityEdit, setisCityEdit] =useState(false);
     }
     // const dispatch = useDispatch();
 
-    const handleSubmit = (values) => {
-      console.log(values)
-    //   dispatch(
-    //     console.log(
-    //       values
-    //     )
-    //   );
-    };
+    // const handleSubmit = (values) => {
+    //   console.log(values)
+    // //   dispatch(
+    // //     console.log(
+    // //       values
+    // //     )
+    // //   );
+    // };
 
 
+    function validateEmail(value) {
+      let error;
+      if (!value) {
+        error = 'Required';
+      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+        error = 'Invalid email address';
+      }
+      setisAllowed(true)
+      if (error){setisAllowed(false)}
+      
+      return error;
+    }
+
+    function validateBirth(value) {
+      let error;
+      if (!value) {
+        error = 'Required';
+      } else if (!/^[0-9]{2}?[.]?[0-9]{2}?[.]?[0-9]{4}$/.test(value)) {
+        error = 'Should be in format 00.00.0000';
+      }
+      setisAllowed(true)
+      if (error){setisAllowed(false)}
+      
+      return error;
+    }
+    function validatePhone(value) {
+      let error;
+      if (!value) {
+        error = 'Required';
+      }
+
+      else if (!/^[+]?[(]?[380]{3}[)]?[0-9]{3}?[0-9]{6}$/.test(value)) {
+        error = 'phone should start with +380 and <br> have 12 symbols';
+      }
+      setisAllowed(true)
+      if (error){setisAllowed(false)}
+      
+      return error;
+    }
+    
+    function validateCity(value) {
+      let error;
+      if (!value) {
+        error = 'Required';
+      } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
+        error = 'You can use only letters, min 2 symbols';
+      }
+      setisAllowed(true)
+      if (error){setisAllowed(false)}
+      console.log(isAllowed)
+      return error;
+    }
+
+    function validateName(value) {
+      let error;
+      if (!value) {
+        error = 'Required';
+      } else if ( !/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
+        error = 'You can use only letters, min 2 symbols';
+      }
+     
+      setisAllowed(false)
+      if (error){setisAllowed(false)}
+      
+      return error;
+    }
 
 return(
    <div>
-<Formik initialValues= {initialValues} onSubmit={handleSubmit }  >
+<Formik initialValues= {initialValues}   >
             
            <Form >
            <PhotoContainer><UserImg src=" https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="" />
@@ -134,64 +193,69 @@ return(
                    <InputContainer>  
     <Input
   type="text"
-  name="name" readOnly={!isNameEdit}   />
+  name="name" readOnly={!isNameEdit} validate={validateName} autoComplete='off'/>
 
 {!isNameEdit &&  <ButtonEdit type="button" onClick={()=> {editing(); setisNameEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit> }
 
-{isNameEdit &&<ButtonEdit type="button" onClick={()=> {editing(); setisNameEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
-                    <Error name="name" component="div" />
+{isNameEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisNameEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+                    
                     </InputContainer>
+                    
                </DataItemContainer>
-
+               <Error name="name" component="div" />
                
                <DataItemContainer>
                    <Label>Email:</Label>
                    <InputContainer>  
     <Input
   type="email"
-  name="email" readOnly={!isEmailEdit}/>
+  name="email" readOnly={!isEmailEdit} validate={validateEmail}autoComplete='off'/>
 
 
   { !isEmailEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', hoverColor:'#00C3AD', width: '18px', height: '18px'}}/> </ButtonEdit>}
- { isEmailEdit &&<ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
-                    <Error name="email" component="div" />
+ { isEmailEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+                   
                     </InputContainer>
                </DataItemContainer>
+               <Error name="email" component="div" />
                <DataItemContainer>
                    <Label>Birthday:</Label>
                    <InputContainer> 
     <Input
   type="text"
-  name="birthday" readOnly={!isBirthEdit}/>
+  name="birthday" readOnly={!isBirthEdit} autoComplete='off' validate={validateBirth}/>
  {!isBirthEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isBirthEdit &&<ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
-                    <Error name="birthday" component="div" />
+ {isBirthEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+                   
                
                     </InputContainer>
                     </DataItemContainer>
+                    <Error name="birthday" component="div" />
                
                <DataItemContainer>
                <Label>Phone:</Label>
                <InputContainer> 
     <Input
   type="text"
-  name="phone" readOnly={!isPhoneEdit}/>
+  name="phone" readOnly={!isPhoneEdit} validate={validatePhone} />
   {!isPhoneEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isPhoneEdit &&<ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
-                    <Error name="phone" component="div" />
+ {isPhoneEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+                  
                     </InputContainer>
                </DataItemContainer>
+               <Error name="phone" component="div" />
                <DataItemContainer>
                <Label>City:</Label>
                <InputContainer> 
     <Input
   type="text"
-  name="city" readOnly={!isCityEdit}/>
+  name="city" readOnly={!isCityEdit} autoComplete='off' validate={validateCity}/>
   {!isCityEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isCityEdit &&<ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
-                    <Error name="city" component="div" />
+ {isCityEdit && isAllowed&&<ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+                    
                     </InputContainer>
-               </DataItemContainer></DataContainer>
+               </DataItemContainer>
+               <Error name="city" component="div" /></DataContainer>
 
 
 

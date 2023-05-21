@@ -141,6 +141,7 @@ export const DataItemContainer = styled.div`
     justify-content: space-between;
     align-items: center;
   margin-bottom: 12px;
+  /* position: relative; */
   :last-child{
     margin-bottom: 20px;
   }
@@ -178,14 +179,22 @@ export const InputContainer = styled.div`
 `
 
  export const Error= styled(ErrorMessage)`
-     background-color: #ffa500;
+     background-color: #54ADFF;
+     color: #fff;
      border-radius: 4px;
-     font-size: 12px;
+     font-size: 10px;
      width: fit-content;
-     padding: 2px;
-     margin-top: 2px;
+     padding: 1px;
+     margin:-12px 0 0 auto;
+     @media screen and (min-width: 768px){
+        margin:-12px 555px 0 0;
+}
+
+     /* margin-top: 2px;
      margin-left: auto;
-     margin-right: auto;
+     margin-right: auto; */
+     /* position: absolute; */
+    
  `
  export const  ButtonEdit= styled.button`
   cursor: pointer;
