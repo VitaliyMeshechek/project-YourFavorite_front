@@ -38,7 +38,7 @@ export const HeartButton = styled.button`
   position: absolute;
   right: 12px;
   top: 12px;
-  z-index: 21;
+  z-index: 20;
 `;
 
 export const PriceTitle = styled.div`

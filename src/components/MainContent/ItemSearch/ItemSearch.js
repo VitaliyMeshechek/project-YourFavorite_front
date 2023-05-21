@@ -13,14 +13,14 @@ import {
   TitleCard,
 } from './ItemSearch.styled';
 
-export const ItemSearch = ({ img, title, location, old, sex, price }) => {
+export const ItemSearch = ({ pict, title, location, old, sex, price }) => {
   return (
     <Item>
       <PriceTitle>{price}</PriceTitle>
       <HeartButton>
         <IconHeart />
       </HeartButton>
-      <Img src={img} alt="name_1" />
+      <Img src={pict} alt="name_1" />
       <FlexContainer>
         <ListAboutPets>
           <IconLocation />
