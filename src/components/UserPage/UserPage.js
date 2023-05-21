@@ -69,7 +69,7 @@ const initialValues = {
     name: "Anna",
     email: "Anna.@djl.com",
     birthday:"00.00.0000",
-    phone:"+3800000000000",
+    phone:"+380000000000",
     city:"Kyiv"
 
 };
@@ -82,9 +82,11 @@ const [isEmailEdit, setisEmailEdit] =useState(false);
 const [isBirthEdit, setisBirthEdit] =useState(false);
 const [isPhoneEdit, setisPhoneEdit] =useState(false);
 const [isCityEdit, setisCityEdit] =useState(false);
-const [isAllowed, setisAllowed ] = useState(true);
-
-
+const [isAllowedName, setisAllowedName ] = useState(true);
+const [isAllowedEmail, setisAllowedEmail ] = useState(true);
+const [isAllowedBIrth, setisAllowedBirth ] = useState(true);
+const [isAllowedPhone, setisAllowedPhone ] = useState(true);
+const [isAllowedCity, setisAllowedCity ] = useState(true);
 
 
     const editing =()=>{
@@ -106,7 +108,20 @@ const [isAllowed, setisAllowed ] = useState(true);
     // //   );
     // };
 
-
+    function validateName(value) {
+      let error;
+      if (!value) {
+        error = 'Required';
+      } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
+        error = 'You can use only letters, min 2 symbols';
+      }
+      setisAllowedName(true)
+      if (error){setisAllowedName(false)}
+      
+    
+      return error;
+    }
+   
     function validateEmail(value) {
       let error;
       if (!value) {
@@ -114,8 +129,8 @@ const [isAllowed, setisAllowed ] = useState(true);
       } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
         error = 'Invalid email address';
       }
-      setisAllowed(true)
-      if (error){setisAllowed(false)}
+      setisAllowedEmail(true)
+      if (error){setisAllowedEmail(false)}
       
       return error;
     }
@@ -127,8 +142,8 @@ const [isAllowed, setisAllowed ] = useState(true);
       } else if (!/^[0-9]{2}?[.]?[0-9]{2}?[.]?[0-9]{4}$/.test(value)) {
         error = 'Should be in format 00.00.0000';
       }
-      setisAllowed(true)
-      if (error){setisAllowed(false)}
+      setisAllowedBirth(true)
+      if (error){setisAllowedBirth(false)}
       
       return error;
     }
@@ -141,8 +156,8 @@ const [isAllowed, setisAllowed ] = useState(true);
       else if (!/^[+]?[(]?[380]{3}[)]?[0-9]{3}?[0-9]{6}$/.test(value)) {
         error = 'phone should start with +380 and <br> have 12 symbols';
       }
-      setisAllowed(true)
-      if (error){setisAllowed(false)}
+      setisAllowedPhone(true)
+      if (error){setisAllowedPhone(false)}
       
       return error;
     }
@@ -154,25 +169,12 @@ const [isAllowed, setisAllowed ] = useState(true);
       } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
         error = 'You can use only letters, min 2 symbols';
       }
-      setisAllowed(true)
-      if (error){setisAllowed(false)}
-      console.log(isAllowed)
+      setisAllowedCity(true)
+      if (error){setisAllowedCity(false)}
+     
       return error;
     }
-    function validateName(value) {
-      let error;
-      if (!value) {
-        error = 'Required';
-      } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
-        error = 'You can use only letters, min 2 symbols';
-      }
-      
-      if (error){setisAllowed(false)}
-      
-      console.log(isAllowed)
-      return error;
-    }
-   
+ 
 
 return(
    <div>
@@ -197,7 +199,7 @@ return(
 
 {!isNameEdit &&  <ButtonEdit type="button" onClick={()=> {editing(); setisNameEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit> }
 
-{isNameEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisNameEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+{isNameEdit && isAllowedName &&<ButtonEdit type="button" onClick={()=> {editing(); setisNameEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                     
                     </InputContainer>
                     
@@ -213,7 +215,7 @@ return(
 
 
   { !isEmailEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', hoverColor:'#00C3AD', width: '18px', height: '18px'}}/> </ButtonEdit>}
- { isEmailEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ { isEmailEdit && isAllowedEmail &&<ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                    
                     </InputContainer>
                </DataItemContainer>
@@ -225,7 +227,7 @@ return(
   type="text"
   name="birthday" readOnly={!isBirthEdit} autoComplete='off' validate={validateBirth}/>
  {!isBirthEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isBirthEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ {isBirthEdit && isAllowedBIrth &&<ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                    
                
                     </InputContainer>
@@ -239,7 +241,7 @@ return(
   type="text"
   name="phone" readOnly={!isPhoneEdit} validate={validatePhone} />
   {!isPhoneEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isPhoneEdit && isAllowed &&<ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ {isPhoneEdit && isAllowedPhone &&<ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                   
                     </InputContainer>
                </DataItemContainer>
@@ -251,7 +253,7 @@ return(
   type="text"
   name="city" readOnly={!isCityEdit} autoComplete='off' validate={validateCity}/>
   {!isCityEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(true)}} ><TbPencilMinus style={{ color: '#54adff', width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isCityEdit && isAllowed&&<ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ {isCityEdit && isAllowedCity&&<ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(false)}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                     
                     </InputContainer>
                </DataItemContainer>
