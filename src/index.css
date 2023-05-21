@@ -1,4 +1,13 @@
-@import-normalize; /* bring in normalize.css styles */
+/* @import-normalize;  */  /* bring in normalize.css styles */
+html {
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
 
 body {
   margin: 0;
