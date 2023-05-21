@@ -6,7 +6,7 @@ import {
   IconHeart,
   IconLocation,
   IconSex,
-  Img,
+  // Img,
   Item,
   ListAboutPets,
   PriceTitle,
@@ -20,7 +20,7 @@ export const ItemSearch = ({ img, title, location, old, sex, price }) => {
       <HeartButton>
         <IconHeart />
       </HeartButton>
-      <Img src={img} />
+      {/* <Img src={img} /> */}
       <FlexContainer>
         <ListAboutPets>
           <IconLocation />

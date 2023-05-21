@@ -104,11 +104,11 @@ export const ListAboutPets = styled.li`
   color: #111111;
 `;
 
-export const Img = styled.img`
-  width: 288px;
-  height: auto;
-  position: relative;
-`;
+// export const Img = styled.img`
+//   width: 288px;
+//   height: auto;
+//   position: relative;
+// `;
 
 export const TitleCard = styled.p`
   font-family: 'Manrope';
