@@ -20,7 +20,7 @@ export const NoticesSearch = () => {
   
     return (
       <Wrapper>
-        <SearchForm>
+        <SearchForm onChange={handleFilterChange}>
         <SearchInput
         label="Find contacts by name"
         type="search"
@@ -30,7 +30,7 @@ export const NoticesSearch = () => {
           autoFocus
           placeholder="Search"
         value={filter}
-        onChange={handleFilterChange}
+        
       />
       <SearchBtn>
           <FiSearch />
