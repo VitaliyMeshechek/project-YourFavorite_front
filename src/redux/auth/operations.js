@@ -63,3 +63,14 @@ export const refreshUser = createAsyncThunk(
     }
   }
 );
+
+export const addMyPet = createAsyncThunk(
+  'users/addMyPet',
+  async (credentials, thunkAPI) => {
+    try {
+      await axios.post('/pets', credentials);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.message);
+    }
+  }
+);
