@@ -22,7 +22,11 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import UserPage from 'pages/UserPage/UserPage';
 import AddPetPage from 'pages/AddPetPage/AddPetPage';
 import PageNotFound from 'pages/PageNotFound/PageNotFound';
-import FindPeds from 'pages/FindePets/FindPeds';
+import NoticesPage from 'pages/NoticesPage/NoticesPage';
+import NoticesCategoriesList from './Notices/CategoriesList/NoticesCategoriesList';
+// import FindPeds from 'pages/FindePets/FindPeds';
+
+
 
 export const App = () => {
   return (
@@ -32,7 +36,10 @@ export const App = () => {
         {/* <Route index element={<div></div>} /> */}
         <Route path="main" element={<MainPage />} />
         <Route path="news" element={<NewsPage />} />
-        <Route path="FindPets" element={<FindPeds />} />
+        {/* <Route path="FindPets" element={<FindPeds />} /> */}
+        <Route path="notices" element={<NoticesPage />}>
+          <Route path=":categoryName" element={<NoticesCategoriesList />}/>
+        </Route>
         <Route path="friends" element={<OurFriendsPage />} />
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />

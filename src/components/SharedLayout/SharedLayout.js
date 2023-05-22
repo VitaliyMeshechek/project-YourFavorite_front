@@ -8,12 +8,10 @@ const SharedLayout = () => {
   return (
     <>
       <AppBar />
-      <Container>
-        <FirstMainPage />
+
         <Suspense fallback={null}>
           <Outlet />
         </Suspense>
-      </Container>
     </>
   );
 };
