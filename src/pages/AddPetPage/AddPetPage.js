@@ -1,10 +1,13 @@
 import { Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
+import { AddFormWrapper } from './AddPetPage.styled';
+import AddPetPageForm from '../../components/AddPetCard/PetPageForm/PetPageForm';
 const AddPetPage = () => {
     return (
     <>
-    <div>add pet page</div>
+    <AddFormWrapper>
+      <AddPetPageForm />
+    </AddFormWrapper>
     <Suspense fallback={null}>
         <Outlet />
       </Suspense>

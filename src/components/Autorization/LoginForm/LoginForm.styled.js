@@ -59,8 +59,8 @@ export const Label = styled.label`
 export const IconButton = styled.button`
   position: absolute;
   border: none;
-  top: 10px;
-  right: 16px;
+  top: 22px;
+  right: 10px;
   width: 30px;
   height: 30px;
   background: transparent;

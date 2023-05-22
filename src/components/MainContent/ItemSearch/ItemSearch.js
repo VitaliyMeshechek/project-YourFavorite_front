@@ -6,7 +6,7 @@ import {
   IconHeart,
   IconLocation,
   IconSex,
-  Img,
+  // Img,
   Item,
   ListAboutPets,
   PavsSvg,
@@ -21,7 +21,7 @@ export const ItemSearch = ({ img, title, location, old, sex, price }) => {
       <HeartButton>
         <IconHeart />
       </HeartButton>
-      <Img src={img} alt="name_1" />
+      {/* <Img src={img} /> */}
       <FlexContainer>
         <ListAboutPets>
           <IconLocation />
