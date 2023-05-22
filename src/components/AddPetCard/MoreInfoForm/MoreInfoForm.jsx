@@ -13,7 +13,7 @@ import {
   MaleIcon,
   FemaleIcon,
   PawPrintIcon,
-} from '/utils/icons';
+} from '../../../utils/icons';
 
 import {
   AddFormInput,

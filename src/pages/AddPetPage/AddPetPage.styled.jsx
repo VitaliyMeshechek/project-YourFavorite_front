@@ -9,5 +9,4 @@ export const AddFormWrapper = styled.div`
   background: #FDF7F2;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 40px;
-  }
 `;

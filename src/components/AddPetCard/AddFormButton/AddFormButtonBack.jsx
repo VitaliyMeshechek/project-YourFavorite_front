@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { BackButton, BackLink } from './AddFormButton.styled';
-import { ArrowLeftIcon } from '/utils/icons';
+import { ArrowLeftIcon } from '../../../utils/icons';
 
 const AddFormButtonBack = ({ text, clickHandler, type, isLink, path }) => {
   if (isLink) {

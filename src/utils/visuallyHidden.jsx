@@ -1,4 +1,4 @@
-import { css } from '@emotion/styled';
+import css  from '@emotion/styled';
 
 export const visuallyHidden = css`
   position: absolute;

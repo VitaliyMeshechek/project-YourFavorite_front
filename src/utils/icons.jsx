@@ -1,4 +1,4 @@
-import { ReactComponent as ArrowLeftIcon } from '../../images/icons/arrow-left.svg';
+import { ReactComponent as ArrowLeftIcon } from 'images/icons/arrow-left.svg';
 import { ReactComponent as CameraIcon } from 'images/icons/camera.svg';
 import { ReactComponent as CheckRoundIcon } from 'images/icons/check-round.svg';
 import { ReactComponent as CheckIcon } from 'images/icons/check.svg';

@@ -5,7 +5,7 @@ import {
   AddFormLabel,
 } from '../PersonalForm/PersonalForm.styled';
 import { AddFormRadioButton } from '../ChooseForm/ChooseForm.styled';
-import { visuallyHidden } from 'utils/visuallyHidden';
+import { visuallyHidden } from '../../../utils/visuallyHidden';
 
 export const MoreInfoFormWrapper = styled.div`
   display: flex;

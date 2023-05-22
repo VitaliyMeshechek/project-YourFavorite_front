@@ -1,4 +1,6 @@
-import styled, { keyframes, css } from '@emotion/styled';
+import styled from '@emotion/styled';
+import keyframes from '@emotion/styled';
+import css from '@emotion/styled';
 import { Link } from 'react-router-dom';
 
 const moveArrow = keyframes`

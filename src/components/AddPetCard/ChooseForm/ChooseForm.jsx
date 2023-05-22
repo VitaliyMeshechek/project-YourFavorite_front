@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { AddFormButtonWrapper } from '../PetPageForm/PetPageForm.styled';
 import AddFormButtonBack from '../AddFormButton/AddFormButtonBack';
 import AddFormButtonNext from '../AddFormButton/AddFormButtonNext';
-import { PawPrintIcon } from '/utils/icons';
+import { PawPrintIcon } from '../../../utils/icons';
 
 import {
   AddFormRadioButton,

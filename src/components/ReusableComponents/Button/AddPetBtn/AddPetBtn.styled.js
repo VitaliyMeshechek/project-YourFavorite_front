@@ -17,13 +17,13 @@ export const Btn = styled(Link)`
   padding-top: 5px;
   padding-bottom: 2px;
 
-  font-family: ;
-  font-size: ;
+  /* font-family: ;
+  font-size: ; */
   color: #fff;
 
-  background-color: #54ADFF;
+  background-color: #54adff;
   border-radius: 50%;
- 
+
   z-index: 1;
 
   transition: background-color 300ms cubic-bezier(0.4, 0, 0.2, 1);
@@ -42,7 +42,7 @@ export const Btn = styled(Link)`
     width: 100%;
     height: 100%;
 
-    background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
+    background: linear-gradient(290.46deg, #419ef1 0%, #9bd0ff 107.89%);
     border-radius: 40px;
     opacity: 0;
 
@@ -78,4 +78,3 @@ export const Btn = styled(Link)`
     border-radius: 40px;
   }
 `;
-

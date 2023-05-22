@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-import { visuallyHidden } from 'utils/visuallyHidden';
+import { visuallyHidden } from '../../../utils/visuallyHidden';
 
 export const CategoryWrapper = styled.div`
   display: flex;
