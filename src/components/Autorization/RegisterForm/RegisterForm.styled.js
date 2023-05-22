@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 
 import { ErrorMessage, Field } from 'formik';
 
-
 export const RegisterInput = styled(Field)`
   width: 100%;
   height: 48px;
@@ -18,8 +17,6 @@ export const RegisterInput = styled(Field)`
 `;
 
 export const Error = styled(ErrorMessage)`
-  font-size: 24px;
-  width: fit-content;
+  font-size: 14px;
   color: red;
 `;
-

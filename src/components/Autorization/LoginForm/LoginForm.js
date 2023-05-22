@@ -13,11 +13,15 @@ import {
   Button,
   Subtitle,
 } from './LoginForm.styled';
-import { BsEyeSlash } from 'react-icons/bs';
+import { BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const [type, setType] = useState('password');
+  const [toggleIconPass, setToggleIconPass] = useState(
+    <BsEyeSlash style={{ fill: '#54adff', width: '24px', height: '24px' }} />
+  );
+
   const initialValues = {
     email: '',
     password: '',
@@ -25,7 +29,15 @@ export const LoginForm = () => {
 
   const validationSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email').required('Email is required'),
-    password: Yup.string().required('Password is required'),
+    password: Yup.string()
+      .nullable()
+      .required('Password is required')
+      .min(6, 'Password must be at least 6 characters')
+      .max(16, 'Password must be at least 16 characters')
+      .matches(
+        /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
+        'Must be at least one lowercase and uppercase letter, one number'
+      ),
   });
 
   const handleSubmit = (values, { resetForm }) => {
@@ -33,6 +45,21 @@ export const LoginForm = () => {
     resetForm();
   };
 
+  const togglePassInput = e => {
+    if (type === 'password') {
+      setType('text');
+      setToggleIconPass(
+        <BsEye style={{ fill: '#54adff', width: '24px', height: '24px' }} />
+      );
+    } else {
+      setType('password');
+      setToggleIconPass(
+        <BsEyeSlash
+          style={{ fill: '#54adff', width: '24px', height: '24px' }}
+        />
+      );
+    }
+  };
   return (
     <Formik
       initialValues={initialValues}
@@ -43,7 +70,12 @@ export const LoginForm = () => {
         <FormTitle>Login</FormTitle>
         <Label>
           <Input type="email" name="email" placeholder="Email" as={Input} />
-          <ErrorMessage name="email" component="div" className="error" />
+          <ErrorMessage
+            name="email"
+            component="div"
+            className="error"
+            style={{ color: 'red' }}
+          />
         </Label>
 
         <Label>
@@ -53,12 +85,15 @@ export const LoginForm = () => {
             placeholder="Password"
             as={Input}
           />
-          <IconButton type="button" onClick={() => setType('text')}>
-            <BsEyeSlash
-              style={{ fill: '#54adff', width: '24px', height: '24px' }}
-            />
+          <IconButton type="button" onClick={togglePassInput}>
+            {toggleIconPass}
           </IconButton>
-          <ErrorMessage name="password" component="div" className="error" />
+          <ErrorMessage
+            name="password"
+            component="div"
+            className="error"
+            style={{ color: 'red' }}
+          />
         </Label>
 
         <Button type="submit">Login</Button>
