@@ -1,10 +1,12 @@
 import styled from '@emotion/styled';
+import { CiSearch } from 'react-icons/ci';
 
 export const Container = styled.div`
   padding-left: 20px;
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
+  position: relative;
 
   @media screen and (min-width: 320px) {
     width: 320px;
@@ -37,9 +39,20 @@ export const Title = styled.h1`
   margin-top: 80px;
   margin-bottom: 40px;
 `;
+
 export const SearchForm = styled.form`
   position: relative;
 `;
+
+export const SvgSearch = styled(CiSearch)`
+  width: 24px;
+  height: 24px;
+  position: absolute;
+  right: 12px;
+  top: 16px;
+  color: #54adff;
+`;
+
 export const Input = styled.input`
   width: 608px;
   height: 44px;
@@ -60,10 +73,14 @@ export const Input = styled.input`
   padding: 10px 20px;
   border: none;
   outline: none;
+  cursor: pointer;
   &:hover {
     outline: 2px solid #ffc107;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
+
   &:focus {
     outline: 2px solid #ffc107;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
   }
 `;

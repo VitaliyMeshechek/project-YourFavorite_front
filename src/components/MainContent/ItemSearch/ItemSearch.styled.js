@@ -2,6 +2,8 @@ import styled from '@emotion/styled';
 import { CiLocationOn } from 'react-icons/ci';
 import { AiOutlineClockCircle, AiOutlineHeart } from 'react-icons/ai';
 import { BiFemaleSign } from 'react-icons/bi';
+import { TbPaw } from 'react-icons/tb';
+
 
 export const Item = styled.li`
   padding-bottom: 24px;
@@ -120,6 +122,13 @@ export const TitleCard = styled.p`
   padding-left: 20px;
 `;
 
+export const PavsSvg = styled(TbPaw)`
+  width: 24px;
+  height: 24px;
+  margin-left: 12px;
+  display: none;
+`;
+
 export const ButtonMore = styled.button`
   font-family: 'Manrope';
   font-style: normal;
@@ -143,13 +152,24 @@ export const ButtonMore = styled.button`
   margin-left: 22px;
 
   &:hover {
-    outline: 2px solid #ffc107;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: 2px solid #54adff;
     border: none;
-    color: #ffc107;
+    color: #fff;
+    background-color: #54adff;
+    svg {
+      display: initial;
+    }
   }
+
   &:focus {
-    outline: 2px solid #ffc107;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    outline: 2px solid #54adff;
     border: none;
-    color: #ffc107;
+    color: #fff;
+    background-color: #54adff;
+    svg {
+      display: initial;
+    }
   }
 `;

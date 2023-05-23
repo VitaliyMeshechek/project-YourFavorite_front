@@ -1,11 +1,12 @@
 import { RegisterForm } from 'components/Autorization/RegisterForm/RegisterForm';
+import { Container } from 'components/ReusableComponents/MainContainer/MainContainer.styled';
 
 export const RegisterPage = () => {
-    return (
-        <div>
-            <RegisterForm/>
-        </div>
-    )
+  return (
+    <Container>
+      <RegisterForm />
+    </Container>
+  );
 };
 
 export default RegisterPage;

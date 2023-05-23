@@ -7,6 +7,8 @@ export const FormTitle = styled.h2`
   line-height: 1.37;
   color: #111111;
   text-align: center;
+  margin: 0;
+  margin-bottom: 40px;
 
   @media screen and (min-width: 768px) {
     font-size: 36px;
@@ -24,7 +26,6 @@ export const Forms = styled(Form)`
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 20px;
   padding: 40px 12px;
-  margin-top: 44px;
 
   @media screen and (min-width: 768px) {
     padding: 60px 75px;
@@ -42,8 +43,12 @@ export const Input = styled(Field)`
   border: 1px solid #54adff;
   border-radius: 40px;
   outline: none;
-  :hover {
-    fill: #54adff;
+
+  :hover svg {
+    fill: #ffc107;
+  }
+  :invalid {
+    border: 1px solid red;
   }
 `;
 
@@ -59,8 +64,8 @@ export const Label = styled.label`
 export const IconButton = styled.button`
   position: absolute;
   border: none;
-  top: 22px;
-  right: 10px;
+  top: 12px;
+  right: 12px;
   width: 30px;
   height: 30px;
   background: transparent;
