@@ -1,8 +1,8 @@
 import PropTypes from 'prop-types';
-import { PlusIcon, PlusSmallIcon } from '/utils/icons';
 import { useWindowSize } from 'hooks/useResize';
 import { Btn } from './AddPetBtn.styled';
 import { useLocation } from 'react-router-dom';
+import { BsPlus } from 'react-icons/bs';
 
 const AddPetBtn = ({ text, path }) => {
   const location = useLocation();
@@ -10,9 +10,13 @@ const AddPetBtn = ({ text, path }) => {
 
   return (
     <Btn to={path} state={{ from: location }}>
-      {screenWidth < 768 && <PlusIcon />}
+      {screenWidth < 768 && (
+        <BsPlus style={{ fill: '#FEF9F9', width: '16px', height: '16px' }} />
+      )}
       {text}
-      {screenWidth >= 768 && <PlusSmallIcon />}
+      {screenWidth >= 768 && (
+        <BsPlus style={{ fill: '#FEF9F9', width: '10px', height: '10px' }} />
+      )}
     </Btn>
   );
 };
