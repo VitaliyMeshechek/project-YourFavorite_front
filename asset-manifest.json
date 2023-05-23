@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/project-YourFavorite_front/static/css/main.a7b87f4d.css",
-    "main.js": "/project-YourFavorite_front/static/js/main.8e5ec10a.js",
+    "main.js": "/project-YourFavorite_front/static/js/main.af5ac581.js",
     "static/media/404page_desktop@2x.png": "/project-YourFavorite_front/static/media/404page_desktop@2x.38ae66cb0f5932e66c67.png",
     "static/media/404page_tablet@2x.png": "/project-YourFavorite_front/static/media/404page_tablet@2x.202092adc98c614453dc.png",
     "static/media/2.png": "/project-YourFavorite_front/static/media/2.185088c37eab67f9954d.png",
@@ -42,10 +42,10 @@
     "static/media/chevron-down.svg": "/project-YourFavorite_front/static/media/chevron-down.1a212c1c13748ebea659b0fd342f0062.svg",
     "static/media/plus.svg": "/project-YourFavorite_front/static/media/plus.82f4622ce65fb42acb45c3cd956c8148.svg",
     "main.a7b87f4d.css.map": "/project-YourFavorite_front/static/css/main.a7b87f4d.css.map",
-    "main.8e5ec10a.js.map": "/project-YourFavorite_front/static/js/main.8e5ec10a.js.map"
+    "main.af5ac581.js.map": "/project-YourFavorite_front/static/js/main.af5ac581.js.map"
   },
   "entrypoints": [
     "static/css/main.a7b87f4d.css",
-    "static/js/main.8e5ec10a.js"
+    "static/js/main.af5ac581.js"
   ]
 }
