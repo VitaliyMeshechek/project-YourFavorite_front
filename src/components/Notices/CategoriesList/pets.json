@@ -1,0 +1,43 @@
+[
+  {
+    "id": "gdzsncmmghcmkhcgkk",
+    "img": "https://images.unsplash.com/photo-1517849845537-4d257902454a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1335&q=80",
+    "title": "Сute dog looking for a home",
+    "location": "Lviv",
+    "old": "1 year",
+    "sex": "female",
+    "favorite": "true",
+    "category": "for-free"
+  },
+  {
+    "id": "szxcdfcgvhbjnhbjnkm",
+    "img": "https://images.unsplash.com/photo-1543466835-00a7907e9de1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80",
+    "title": "Сute dog looking for a home",
+    "location": "Lviv",
+    "old": "1 year",
+    "sex": "male",
+    "favorite": "true",
+    "category": "sell"
+  },
+  {
+    "id": "asxdcfgvhbjnkml",
+    "img": "https://images.unsplash.com/photo-1586671267731-da2cf3ceeb80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=989&q=80",
+    "title": "Сute dog looking for a home",
+    "location": "Ivano-Frankivsk",
+    "old": "1 year",
+    "sex": "female",
+    "favorite": "false",
+    "category": "lost/found"
+  },
+  {
+    "id": "szdxfcgvhbjnkmlyghjkl",
+    "img": "https://images.unsplash.com/photo-1596492784531-6e6eb5ea9993?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=987&q=80",
+    "title": "Сute dog looking for a home",
+    "location": "Simferopol",
+    "old": "1 year",
+    "sex": "male",
+    "favorite": "false",
+    "category": "for-free"
+  }
+
+]

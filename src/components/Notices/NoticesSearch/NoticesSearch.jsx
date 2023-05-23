@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { FiSearch } from 'react-icons/fi';
+import { IoClose } from 'react-icons/io5'
 import { selectFilter } from 'redux/notices/selectors';
 import { setFilter } from 'redux/notices/slice';
 import {
@@ -20,23 +21,27 @@ export const NoticesSearch = () => {
   
     return (
       <Wrapper>
-        <SearchForm onChange={handleFilterChange}>
+        <SearchForm  >
         <SearchInput
-        label="Find contacts by name"
-        type="search"
-        name="search"
-          
+          label="search"
+          type="search"
+          name="search"
+          onChange={handleFilterChange}
           autocomplete="off"
           autoFocus
           placeholder="Search"
-        value={filter}
+          value={filter}
         
       />
-      <SearchBtn>
-          <FiSearch />
-        </SearchBtn>
+      <SearchBtn type="submit">
+        <FiSearch />
+      </SearchBtn>
 
-        </SearchForm>
+      <SearchBtn type="reset">
+        <IoClose />
+      </SearchBtn>
+
+</SearchForm>
 
       </Wrapper>
     );
