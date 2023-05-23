@@ -1,9 +1,9 @@
 import ModalApproveAction from '../ModalApproveAction/ModalApproveAction';
 import { Title, Description, DescriptionAccent } from './RemoveModal.styled';
 
-const RemoveModal = () => {
+const RemoveModal = ({ approveHandle, handleOpenModal }) => {
   return (
-    <ModalApproveAction icon="TrashIcon">
+    <ModalApproveAction icon="TrashIcon" approveHandle handleOpenModal>
       <Title>Delete adverstiment?</Title>
       <Description>
         Are you sure you want to delete
