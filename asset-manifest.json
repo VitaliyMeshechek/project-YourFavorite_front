@@ -1,14 +1,13 @@
 {
   "files": {
     "main.css": "/project-YourFavorite_front/static/css/main.ab3bffc4.css",
-    "main.js": "/project-YourFavorite_front/static/js/main.af5ac581.js",
+    "main.js": "/project-YourFavorite_front/static/js/main.ab105bd6.js",
+    "static/media/mainPage_bg_desktop@2x.png": "/project-YourFavorite_front/static/media/mainPage_bg_desktop@2x.c18827bca01f348c1b29.png",
+    "static/media/mainPage_bg_desktop@1x.png": "/project-YourFavorite_front/static/media/mainPage_bg_desktop@1x.7a6b21aff2e6b67644a5.png",
     "static/media/404page_desktop@2x.png": "/project-YourFavorite_front/static/media/404page_desktop@2x.38ae66cb0f5932e66c67.png",
     "static/media/404page_tablet@2x.png": "/project-YourFavorite_front/static/media/404page_tablet@2x.202092adc98c614453dc.png",
-    "static/media/2.png": "/project-YourFavorite_front/static/media/2.185088c37eab67f9954d.png",
     "static/media/404page_desktop@1x.png": "/project-YourFavorite_front/static/media/404page_desktop@1x.d54f5d9f35263478e915.png",
-    "static/media/1.png": "/project-YourFavorite_front/static/media/1.128345eb72dec5fc5833.png",
     "static/media/404page_tablet@1x.png": "/project-YourFavorite_front/static/media/404page_tablet@1x.cc10a2c50963a37d7050.png",
-    "static/media/3.png": "/project-YourFavorite_front/static/media/3.9f6211a1aadab7800eac.png",
     "static/media/404page_mobile@2x.png": "/project-YourFavorite_front/static/media/404page_mobile@2x.ef7956839a8fec652b97.png",
     "static/media/404page_mobile@1x.png": "/project-YourFavorite_front/static/media/404page_mobile@1x.e789b9ae802b47679086.png",
     "static/media/logo.svg": "/project-YourFavorite_front/static/media/logo.67df985f2a92100dfe3756e777ff40e8.svg",
@@ -42,10 +41,10 @@
     "static/media/chevron-down.svg": "/project-YourFavorite_front/static/media/chevron-down.1a212c1c13748ebea659b0fd342f0062.svg",
     "static/media/plus.svg": "/project-YourFavorite_front/static/media/plus.82f4622ce65fb42acb45c3cd956c8148.svg",
     "main.ab3bffc4.css.map": "/project-YourFavorite_front/static/css/main.ab3bffc4.css.map",
-    "main.af5ac581.js.map": "/project-YourFavorite_front/static/js/main.af5ac581.js.map"
+    "main.ab105bd6.js.map": "/project-YourFavorite_front/static/js/main.ab105bd6.js.map"
   },
   "entrypoints": [
     "static/css/main.ab3bffc4.css",
-    "static/js/main.af5ac581.js"
+    "static/js/main.ab105bd6.js"
   ]
 }
