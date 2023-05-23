@@ -1,8 +1,9 @@
 import {HiOutlineLocationMarker, HiOutlineClock} from 'react-icons/hi'
+import {FiHeart} from 'react-icons/fi'
 import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
-import { Category, Location, Photo, TabsWrapper, Thumb } from "./CategoriesItems.styled"
+import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title } from "./CategoriesItems.styled"
 
-export const CategoriesItems = ({pet: {img, title, location, old, sex, category}}) => {
+export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, category}}) => {
 
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
 
@@ -12,20 +13,27 @@ export const CategoriesItems = ({pet: {img, title, location, old, sex, category}
         <Thumb>
             <Photo src={img}/>
             <Category>{category}</Category>
+
+            <FavoriteBtn type='button'>
+                <FiHeart/>
+            </FavoriteBtn>
+
             <TabsWrapper>
-            <Location>
+            <Info>
                 <HiOutlineLocationMarker/>
                 {newLocation}
-            </Location>
-            <Location>
+            </Info>
+            <Info>
                 <HiOutlineClock/>
                 {old}
-            </Location>
-            <Location>
+            </Info>
+            <Info>
                 {sex === 'female'? <TbGenderFemale/> : <TbGenderMale/>}
                 {sex}
-            </Location>
+            </Info>
             </TabsWrapper>
+            <Title>{title}</Title>
+            <LoadMoreBtn>Learn more</LoadMoreBtn>
         </Thumb>
         </>
     )

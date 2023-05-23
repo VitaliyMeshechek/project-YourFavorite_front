@@ -1,21 +1,25 @@
 import { useParams } from "react-router-dom"
-import pets from './pets.json'
-import { CategoriesItems } from "../CategoriesItems/CategoriesItems";
+import { NoticesCategoriesItems } from "../CategoriesItems/CategoriesItems";
+
 import { CategoriesList } from "./NoticesCategoriesList.styled";
+import pets from './pets.json'
+
+
 
 
 const NoticesCategoriesList = () => {
 const {categoryName} = useParams();
-console.log(pets);
 
 
 return (
+<>
+    CategoriesList {categoryName}
     <CategoriesList>
-        {/* CategoriesList {categoryName} */}
         {pets.map(pet => (
-            <CategoriesItems pet={pet} key={pet.id}/>
+            <NoticesCategoriesItems pet={pet} key={pet.id}/>
         ))}
     </CategoriesList>
+    </>
 )
 
 }

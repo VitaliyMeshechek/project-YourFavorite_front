@@ -1,7 +1,7 @@
 import styled from '@emotion/styled'
 import { NavLink } from 'react-router-dom';
 
-export const Title = styled.h2`
+export const Title = styled.h1`
     margin-top: 40px;
     font-weight: 700;
   font-size: 24px;
@@ -17,7 +17,7 @@ export const Title = styled.h2`
 export const TabletWrapper = styled.div`
     display: flex;
     justify-content: space-between;
-    align-items: baseline;
+    align-items: center;
 `
 
 export const Wrapper = styled.div`
@@ -120,7 +120,7 @@ transition: all 300ms ease;
     flex-direction: row;
     min-width: 129px;
     height: 40px;
-    padding: 9px 16px;
+    padding: 8px 16px;
     border-radius: 40px;
     font-weight: 700;
     font-size: 16px;

@@ -12,7 +12,7 @@ const userLinks = [
   { href: 'own', text: 'my ads' },
 ]
 
-export const CategoriesNav = () => {
+export const NoticesCategoriesNav = () => {
   return (
       <Nav>
         {links.map(({ href, text }) => (
