@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { register } from 'redux/auth/operations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { RegisterInput, Error } from './RegisterForm.styled';
+import { Error, PasswordMessage } from './RegisterForm.styled';
 import {
   FormTitle,
   Forms,
@@ -72,7 +72,7 @@ export const RegisterForm = () => {
       .nullable()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters')
-      .max(16, 'Password must be at least 16 characters')
+      .max(16, 'Password must be no more than 16 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
         'Must be at least one lowercase and uppercase letter, one number'
@@ -105,45 +105,58 @@ export const RegisterForm = () => {
       initialValues={initialValues}
       validationSchema={registrationValidationSchema}
     >
-      <Forms autoComplete="on">
-        <FormTitle>Registration </FormTitle>
-        <Label>
-          <Input type="email" name="email" placeholder="Email" />
-          <Error name="email" component="div" />
-        </Label>
-        <Label>
-          <Input
-            type={type}
-            name="password"
-            placeholder="Password"
-            as={Input}
-          />
+      {({  errors, touched }) => (
+        <Forms autoComplete="off">
+          <FormTitle>Registration </FormTitle>
+          <Label>
+            <Input type="email" name="email" placeholder="Email" />
+            <Error name="email" component="div" />
+          </Label>
+          <Label>
+            <Input
+              type={type}
+              name="password"
+              placeholder="Password"
+              as={Input}
+            />
 
-          <IconButton type="button" onClick={togglePassInput}>
-            {toggleIconPass}
-          </IconButton>
-          <Error name="password" component="div" />
-        </Label>
-        <Label>
-          <RegisterInput
-            type={typeConfirm}
-            name="confirmPassword"
-            placeholder="ConfirmPassword"
-          />
-          <IconButton type="button" onClick={toggleConfirmPassInput}>
-            {toggleIconConfirmPass}
-          </IconButton>
-          <Error name="confirmPassword" component="div" />
-        </Label>
+            <IconButton type="button" onClick={togglePassInput}>
+              {toggleIconPass}
+            </IconButton>
+            {touched.password && !errors.password ? (
+              <PasswordMessage>Password is secure</PasswordMessage>
+            ) : (
+              <Error name="password" component="div" />
+            )}
+          </Label>
+          <Label>
+            <Input
+              type={typeConfirm}
+              name="confirmPassword"
+              placeholder="ConfirmPassword"
+              as={Input}
+            />
+            <IconButton type="button" onClick={toggleConfirmPassInput}>
+              {toggleIconConfirmPass}
+            </IconButton>
+            <Error name="confirmPassword" component="div" />
+          </Label>
 
-        <Button type="submit">Registration</Button>
-        <Subtitle>
-          Already have an account?
-          <NavLink to="/login" style={{ color: '#54ADFF', marginLeft: '4px' }}>
-            Login
-          </NavLink>
-        </Subtitle>
-      </Forms>
+          <Button type="submit" >
+            Registration
+          </Button>
+          <Subtitle>
+            Already have an account?
+            <NavLink
+              to="/login"
+              style={{ color: '#54ADFF', marginLeft: '4px' }}
+            >
+              Login
+            </NavLink>
+          </Subtitle>
+        </Forms>
+      )}
     </Formik>
   );
 };
+

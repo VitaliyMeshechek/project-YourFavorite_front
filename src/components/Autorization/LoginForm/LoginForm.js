@@ -33,7 +33,7 @@ export const LoginForm = () => {
       .nullable()
       .required('Password is required')
       .min(6, 'Password must be at least 6 characters')
-      .max(16, 'Password must be at least 16 characters')
+      .max(16, 'Password must be no more than 16 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
         'Must be at least one lowercase and uppercase letter, one number'
