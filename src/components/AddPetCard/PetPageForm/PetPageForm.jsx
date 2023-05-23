@@ -12,7 +12,8 @@ import {
     AddFormStepName,
   } from './PetPageForm.styled';
 
-import { addNotice } from 'redux/notices/operations';
+// import { addPet } from 'redux/user/operations';
+// import { addNotice } from 'redux/notice/operations';
 import { addMyPet } from 'redux/auth/operations';
 import { validatePetSchema } from '../validatePet';
 
@@ -96,24 +97,24 @@ const AddPetPageForm = () => {
       newFormData.append('sex', formData.sex);
       newFormData.append('location', formData.location);
   
-      if (formData.category === 'lost-found') {
-        dispatch(addNotice({ category: 'lost-found', newFormData }));
-        navigate(backLink);
-        return;
-      }
+      // if (formData.category === 'lost-found') {
+      //   dispatch(addNotice({ category: 'lost-found', newFormData }));
+      //   navigate(backLink);
+      //   return;
+      // }
   
-      if (formData.category === 'for-free') {
-        dispatch(addNotice({ category: 'in-good-hands', newFormData }));
-        navigate(backLink);
-        return;
-      }
+      // if (formData.category === 'for-free') {
+      //   dispatch(addNotice({ category: 'in-good-hands', newFormData }));
+      //   navigate(backLink);
+      //   return;
+      // }
   
       newFormData.append('price', formData.price);
   
-      if (formData.category === 'sell') {
-        dispatch(addNotice({ category: formData.category, newFormData }));
-        navigate(backLink);
-      }
+      // if (formData.category === 'sell') {
+      //   dispatch(addNotice({ category: formData.category, newFormData }));
+      //   navigate(backLink);
+      // }
     };
   
     return (

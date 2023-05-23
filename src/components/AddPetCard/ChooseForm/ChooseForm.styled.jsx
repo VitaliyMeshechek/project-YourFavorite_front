@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-import { visuallyHidden } from '../../../utils/visuallyHidden';
+// import { visuallyHidden } from '../../../utils/visuallyHidden';
 
 export const CategoryWrapper = styled.div`
   display: flex;
@@ -10,8 +10,20 @@ export const CategoryWrapper = styled.div`
   row-gap: 12px;
 `;
 
+// export const AddFormRadioButton = styled(Field)`
+//   ${visuallyHidden}
+// `;
 export const AddFormRadioButton = styled(Field)`
-  ${visuallyHidden}
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
 `;
 
 export const RadioCategoryLabel = styled.label`
@@ -32,10 +44,11 @@ export const RadioCategoryLabel = styled.label`
   transition: color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19),
     background-color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
 
-  &:hover,
-  &:focus,
-  ${AddFormRadioButton}:checked + & {
-    background-color: #54ADFF;
-    color: #FDF7F2;
-  }
+
 `;
+  // &:hover,
+  // &:focus,
+  // ${AddFormRadioButton}:checked + & {
+  //   background-color: #54ADFF;
+  //   color: #FDF7F2;
+  // }

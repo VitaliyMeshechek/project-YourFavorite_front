@@ -1,7 +1,61 @@
 import styled from '@emotion/styled'
-
+import { NavLink } from 'react-router-dom';
  import { Field ,ErrorMessage} from 'formik'
 
+export const NavLinkStyled = styled(NavLink)`
+display: flex;
+flex-direction: column-reverse;
+align-items: center;
+justify-content: center;
+width: 80px;
+height: 80px;
+border-radius: 50px;
+border: none;
+background: #54ADFF;
+box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
+font-family: inherit;
+text-decoration: none;
+font-weight: 600;
+font-size: 12px;
+line-height: 1.33;
+letter-spacing: 0.04em;
+color: #FFFFFF;
+transition: all 300ms ease;
+
+  &.active, :hover:not(.active) {
+    background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
+  }
+
+  @media screen and (max-width: 767px) {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 5;
+  }
+
+  @media screen and (min-width: 768px) {
+    margin-left: 12px;
+    flex-direction: row;
+    min-width: 129px;
+    height: 40px;
+    padding: 8px 16px;
+    border-radius: 40px;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 1.38;
+
+span {
+    margin-right: 8px;
+}
+  }
+
+  svg {
+    width: 24px;
+    height: 24px;
+    color: inherit;
+  }
+
+`;
 
  export const Header = styled.h2`
 
@@ -23,7 +77,7 @@ margin: 0;
     margin: auto;
     width: 280px;
 border: 1px solid green;
-padding-bottom:137px;
+padding: 50px 0 137px;
 @media screen and (min-width: 768px){
     width: 704px;
     padding-bottom: 121px;
@@ -101,7 +155,12 @@ align-items: center;
 cursor: pointer;
 /* display: block; */
     margin: 15px auto 0;
-
+    svg{
+    color: #54ADFF;
+    :hover{
+        color: orange;
+    }
+}
 `
 export const Label = styled.div`
 
@@ -160,7 +219,8 @@ export const DataItemContainer = styled.div`
 `
 
 export const InputContainer = styled.div`
-    
+   
+
     height: 20px;
  width: 190px;
  height: 28px;
@@ -174,6 +234,12 @@ export const InputContainer = styled.div`
     width: 255px;
     height: 32px;
 }
+svg{
+    color: #54ADFF;
+    :hover{
+        color: orange;
+    }
+}
 
 `
 
@@ -184,15 +250,13 @@ export const InputContainer = styled.div`
      font-size: 10px;
      width: fit-content;
      padding: 1px;
-     margin:-12px 0 0 auto;
+     margin:-13px 0 0 auto;
      @media screen and (min-width: 768px){
-        margin:-12px 555px 0 0;
+        margin:-10px  0 0 105px;
+        
+   
 }
 
-     /* margin-top: 2px;
-     margin-left: auto;
-     margin-right: auto; */
-     /* position: absolute; */
     
  `
  export const  ButtonEdit= styled.button`
@@ -212,6 +276,12 @@ font-size: 16px;
 line-height: 22px;
 color: #888888;
 cursor: pointer;
+:hover{
+        color: orange;
+    }
+svg{
+    color: #54ADFF;
+   }
 `
 export const ButtonAddPet = styled.button`
 cursor: pointer;
@@ -226,6 +296,9 @@ font-weight: 700;
 font-size: 16px;
 padding: 9px 16px;
 margin-left: auto;
+:hover{
+   background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%)
+}
 `
 
 export const MyPetsHeaderContainer = styled.div`
@@ -302,7 +375,11 @@ right: 0;
 top:-5px;
 border: none;
 background: transparent;
-/* margin-bottom: ; */
+svg{
+    color: #54ADFF;
+    :hover{
+        color: orange;
+    }}
 `
 
 export const PhotoContainer = styled.div `
