@@ -10,8 +10,8 @@ import {
 
 import ModalWrapper from '../ModalWrapper';
 
-const CongratsModal = props => {
-  const [openModal, setOpenModal] = useState(true);
+const CongratsModal = ({ handleOpenModal = true }) => {
+  const [openModal, setOpenModal] = useState(handleOpenModal);
 
   useEffect(() => {
     if (openModal === true) {

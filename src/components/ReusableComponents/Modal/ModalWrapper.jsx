@@ -6,8 +6,8 @@ import {
   CloseButton,
 } from './ModalWrapper.styled';
 
-const ModalWrapper = ({ children, buttonState }) => {
-  const [openModal, setOpenModal] = useState(false);
+const ModalWrapper = ({ children, buttonState, handleOpenModal = false }) => {
+  const [openModal, setOpenModal] = useState(handleOpenModal);
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
 
@@ -37,14 +37,6 @@ const ModalWrapper = ({ children, buttonState }) => {
 
   return (
     <>
-      <button
-        type="button"
-        onClick={() => {
-          setOpenModal(true);
-        }}
-      >
-        Open
-      </button>
       {openModal && (
         <Overlay onClick={handleBackdropClick}>
           <ModalView>

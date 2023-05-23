@@ -12,7 +12,12 @@ import {
 
 import ModalWrapper from '../ModalWrapper';
 
-const ModalApproveAction = ({ children, approveHandle, icon }) => {
+const ModalApproveAction = ({
+  children,
+  approveHandle,
+  icon,
+  handleOpenModal,
+}) => {
   const [openModal, setOpenModal] = useState(true);
 
   useEffect(() => {
@@ -24,7 +29,7 @@ const ModalApproveAction = ({ children, approveHandle, icon }) => {
 
   return (
     <>
-      <ModalWrapper buttonState={openModal}>
+      <ModalWrapper buttonState={openModal} handleOpenModal>
         {children}
         <ButtonFlexWrapper>
           <CancelButton
