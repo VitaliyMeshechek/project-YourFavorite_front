@@ -6,9 +6,9 @@ import{TbPencilMinus} from 'react-icons/tb';
 // import * as Yup from 'yup';
 import { useState } from "react";
 import { useDispatch } from 'react-redux';
-import { useAuth } from '../../hooks/useAuth';
+// import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
-import {  updateUser } from '../../redux/user/operations';
+// import {  updateUser } from '../../redux/user/operations';
 
 export const UserPageInfo =()=> {
 
@@ -72,18 +72,9 @@ const PetsData =()=>{
     <PetsList pets = {pets}/></div>)
 }
 
-
-
-
-
-
-
 const UserData =()=>{ 
-
-  const dispatch = useDispatch();
-  const { user } = useAuth();
-
-
+  // const dispatch = useDispatch();
+  // const { user } = useAuth();
 
 const [isPhotoEdit, setisPhotoEdit] =useState(false);
 const [isNameEdit, setisNameEdit] =useState(false);
@@ -120,8 +111,6 @@ const [PhoneEdit, setPhoneEdit] =useState(initialValues.phone);
 const [CityEdit, setCityEdit] =useState(initialValues.city);
 
 
-
-
     const editing =()=>{
         setisPhoneEdit(false);
        setisBirthEdit(false)
@@ -136,15 +125,9 @@ const [CityEdit, setCityEdit] =useState(initialValues.city);
 
   const handleSubmit = (values) => {
     console.log(",,mmm")
-    // dispatch(updateUser({ 
-    //   //  user.id, 
-    //    values }));
-
   };
   const updateUser = (values) => {
     console.log(values)
-    
-
   };
 
   
@@ -161,8 +144,6 @@ function validateName(value) {
     
   if(!error){
     setNameEdit(value)
-    
-
   }
     return error;
   }
@@ -311,35 +292,21 @@ name="email" readOnly={!isEmailEdit} validate={validateEmail}autoComplete='off'/
                </DataItemContainer>
                <Error name="city" component="div" /></DataContainer>
 
-
-
-
 </Form></Formik></div>
 )
-
-
-
 }
 
 const PetsList = (props)=>{
     const { pets} = props 
     return (
-        <div>
-        
-          
-      
-          {pets && <PetsItemUl >{pets.map(item => 
-          
-            (
-          
-          <PetsItem key={item.id} item={item}  />))}</PetsItemUl>}
+        <div>     
+          {pets && <PetsItemUl >{pets.map(item =>           
+            (<PetsItem key={item.id} item={item}  />))}</PetsItemUl>}
         </div>
     )
 }
 const PetsItem =({item})=>{
-    
-  
-      // console.log(item)
+          // console.log(item)
       const {photo, name, dateOfBirth, breed, comments} = item
      
       return (
