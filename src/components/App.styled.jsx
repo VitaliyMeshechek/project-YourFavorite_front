@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 
 export const PageColor = styled.div`
-  background-color: #fdf7f2;
+  /* background-color: #fdf7f2; */
   background-image: url('image/FirstMainPage/firstMain.png');
+  z-index: 2000;
+  position: relative;
 `;
