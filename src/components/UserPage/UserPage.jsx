@@ -1,5 +1,5 @@
 import { Formik, Form   } from "formik";
-import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContainer, UserPageContainer,UserImg ,ButtonPhoto, ButtonEdit, Label,LabelPet, ButtonLogout, ButtonAddPet, Header, MyPetsHeaderContainer, InfoPetItem,InfoPet,InfoPetText, PetsItemUl,PetImg, ButtonDeletePet, DataContainer, PhotoContainer,UserBlock, PetBlock} from './UserPage.styled';
+import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContainer, UserPageContainer,UserImg ,ButtonPhoto, ButtonEdit, Label,LabelPet, ButtonLogout, NavLinkStyled, Header, MyPetsHeaderContainer, InfoPetItem,InfoPet,InfoPetText, PetsItemUl,PetImg, ButtonDeletePet, DataContainer, PhotoContainer,UserBlock, PetBlock} from './UserPage.styled';
 import {FiCamera,FiLogOut, FiTrash2} from 'react-icons/fi';
 import{AiOutlineCheck}from 'react-icons/ai';
 import{TbPencilMinus} from 'react-icons/tb';
@@ -9,6 +9,7 @@ import { useDispatch } from 'react-redux';
 // import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
 // import {  updateUser } from '../../redux/user/operations';
+import { BsPlus } from 'react-icons/bs'
 
 export const UserPageInfo =()=> {
 
@@ -25,7 +26,10 @@ export const UserPageInfo =()=> {
         <PetBlock>
         <MyPetsHeaderContainer>
             <Header>My pets:</Header>
-        <ButtonAddPet>Add Pet + </ButtonAddPet>
+      <NavLinkStyled to="/add-pet" key="/add-pet">
+          <span>Add pet</span>
+            <BsPlus/>
+          </NavLinkStyled>
         </MyPetsHeaderContainer>
 
         

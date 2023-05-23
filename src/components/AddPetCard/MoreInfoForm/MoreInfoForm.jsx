@@ -1,19 +1,15 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 
 import { AddFormButtonWrapper } from '../PetPageForm/PetPageForm.styled';
 import AddFormButtonBack from '../AddFormButton/AddFormButtonBack';
 import AddFormButtonNext from '../AddFormButton/AddFormButtonNext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-
+import { TbPaw } from "react-icons/tb";
+import { BsPlus } from 'react-icons/bs';
+import { GiFemale } from 'react-icons/gi';
+import { GiMale } from 'react-icons/gi';
 import { validateField } from '../validatePet';
-
-import {
-  PlusIcon,
-  MaleIcon,
-  FemaleIcon,
-  PawPrintIcon,
-} from '../../../utils/icons';
 
 import {
   AddFormInput,
@@ -133,7 +129,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
                   onBlur={() => validateField('sex', formData, setErrors)}
                 />
                 <AddFormSexLabel htmlFor="female">
-                  <FemaleIcon stroke="#F43F5E" />
+                  <GiFemale stroke="#F43F5E" />
                   Female
                 </AddFormSexLabel>
                 <AddFormRadioButton
@@ -146,7 +142,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
                   onBlur={() => validateField('sex', formData, setErrors)}
                 />
                 <AddFormSexLabel htmlFor="male">
-                  <MaleIcon stroke="#54ADFF" />
+                  <GiMale stroke="#54ADFF" />
                   Male
                 </AddFormSexLabel>
               </AddFormRadioWrapper>
@@ -157,7 +153,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
               ? 'Add photo'
               : 'Load the pet’s image:'}
             <AddFormImageWrapper>
-              {!formData.petPhoto && <PlusIcon width="30" height="30" />}
+              {!formData.petPhoto && <BsPlus width="30" height="30" />}
               {!!formData.petPhoto && (
                 <img
                   id="image"
@@ -230,7 +226,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
         <AddFormButtonNext
           type="submit"
           text="Done"
-          icon={<PawPrintIcon />}
+          icon={<TbPaw />}
           filled={true}
           clickHandler={submit}
           isDisabled={isDisabled}
@@ -246,12 +242,12 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
   );
 };
 
-MoreInfo.propTypes = {
-  formData: PropTypes.object.isRequired,
-  setFormData: PropTypes.func.isRequired,
-  backStep: PropTypes.func.isRequired,
-  submit: PropTypes.func.isRequired,
-  isValid: PropTypes.bool.isRequired,
-};
+// MoreInfo.propTypes = {
+//   formData: PropTypes.object.isRequired,
+//   setFormData: PropTypes.func.isRequired,
+//   backStep: PropTypes.func.isRequired,
+//   submit: PropTypes.func.isRequired,
+//   isValid: PropTypes.bool.isRequired,
+// };
 
 export default MoreInfo;

@@ -12,7 +12,7 @@ import {
     AddFormStepName,
   } from './PetPageForm.styled';
 
-import { addNotice } from 'redux/notices/operations';
+import { addNotice } from 'redux/notice/operations';
 import { addMyPet } from 'redux/auth/operations';
 import { validatePetSchema } from '../validatePet';
 

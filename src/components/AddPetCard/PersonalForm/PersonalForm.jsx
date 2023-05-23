@@ -1,11 +1,11 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
 
 import { AddFormButtonWrapper } from '../PetPageForm/PetPageForm.styled';
 import AddFormButtonBack from '../AddFormButton/AddFormButtonBack';
 import AddFormButtonNext from '../AddFormButton/AddFormButtonNext';
 import ErrorMessage from '../ErrorMessage/ErrorMessage';
-import { PawPrintIcon } from 'utils/icons';
+import { TbPaw } from "react-icons/tb";
 
 import {
   PersonalFormWrapper,
@@ -154,7 +154,7 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
         <AddFormButtonNext
           type="button"
           text="Next"
-          icon={<PawPrintIcon />}
+          icon={<TbPaw />}
           clickHandler={nextStep}
           filled={false}
           isDisabled={isDisabled}
@@ -170,11 +170,11 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
   );
 };
 
-PersonalForm.propTypes = {
-  formData: PropTypes.object.isRequired,
-  setFormData: PropTypes.func.isRequired,
-  backStep: PropTypes.func.isRequired,
-  nextStep: PropTypes.func.isRequired,
-};
+// PersonalForm.propTypes = {
+//   formData: PropTypes.object.isRequired,
+//   setFormData: PropTypes.func.isRequired,
+//   backStep: PropTypes.func.isRequired,
+//   nextStep: PropTypes.func.isRequired,
+// };
 
 export default PersonalForm;
