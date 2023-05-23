@@ -1,9 +1,9 @@
 import ModalApproveAction from '../ModalApproveAction/ModalApproveAction';
 import { Title } from './LeavingModal.styled';
 
-const LeavingModal = () => {
+const LeavingModal = ({ approveHandle }) => {
   return (
-    <ModalApproveAction icon="ExitIcon">
+    <ModalApproveAction icon="ExitIcon" approveHandle>
       <Title>Already leaving?</Title>
     </ModalApproveAction>
   );

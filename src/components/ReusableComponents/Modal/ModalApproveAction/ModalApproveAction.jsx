@@ -12,11 +12,7 @@ import {
 
 import ModalWrapper from '../ModalWrapper';
 
-const ModalApproveAction = ({
-  children,
-  approveHandle = console.log,
-  icon,
-}) => {
+const ModalApproveAction = ({ children, approveHandle, icon }) => {
   const [openModal, setOpenModal] = useState(true);
 
   useEffect(() => {
