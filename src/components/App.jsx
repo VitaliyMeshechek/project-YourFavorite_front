@@ -32,8 +32,8 @@ export const App = () => {
   return (
     <PageColor>
       <Routes>
-        <Route path="/" element={<SharedLayout />} />
-        {/* <Route index element={<div></div>} /> */}
+        <Route path="/" element={<SharedLayout />}>
+        <Route index element={<MainPage />} />
         <Route path="main" element={<MainPage />} />
         <Route path="news" element={<NewsPage />} />
         {/* <Route path="FindPets" element={<FindPeds />} /> */}
@@ -46,6 +46,7 @@ export const App = () => {
         <Route path="user" element={<UserPage />} />
         <Route path="add-pet" element={<AddPetPage />} />
         <Route path="*" element={<PageNotFound />} />
+        </Route>
       </Routes>
     </PageColor>
   );
