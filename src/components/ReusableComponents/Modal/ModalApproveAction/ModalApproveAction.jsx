@@ -15,6 +15,11 @@ import ModalWrapper from '../ModalWrapper';
 const ModalApproveAction = ({ children, approveHandle, icon }) => {
   const dispatch = useDispatch();
 
+  const handleApprove = () => {
+    approveHandle();
+    dispatch(showModal(false));
+  };
+
   return (
     <>
       <ModalWrapper>
@@ -23,7 +28,7 @@ const ModalApproveAction = ({ children, approveHandle, icon }) => {
           <CancelButton onClick={() => dispatch(showModal(false))}>
             <CancelButtonText>Cancel</CancelButtonText>
           </CancelButton>
-          <ApproveButton onClick={() => approveHandle()}>
+          <ApproveButton onClick={handleApprove}>
             <ApproveButtonText>
               Yes
               {icon === 'TrashIcon' && <TrashIcon />}
