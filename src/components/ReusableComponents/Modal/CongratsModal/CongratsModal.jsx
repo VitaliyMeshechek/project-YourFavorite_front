@@ -1,5 +1,3 @@
-import { useEffect, useState } from 'react';
-
 import {
   Title,
   Description,
@@ -9,27 +7,18 @@ import {
 } from '../CongratsModal/CongratsModal.styled';
 
 import ModalWrapper from '../ModalWrapper';
+import { useDispatch } from 'react-redux';
+import { showModal } from 'redux/modal/slice';
 
-const CongratsModal = ({ handleOpenModal = true }) => {
-  const [openModal, setOpenModal] = useState(handleOpenModal);
-
-  useEffect(() => {
-    if (openModal === true) {
-      return;
-    }
-    return setOpenModal(true);
-  }, [openModal]);
+const CongratsModal = () => {
+  const dispatch = useDispatch();
 
   return (
     <>
-      <ModalWrapper buttonState={openModal}>
+      <ModalWrapper>
         <Title>Congrats!</Title>
         <Description>You`re registration is success</Description>
-        <PrimaryButton
-          onClick={() => {
-            setOpenModal(false);
-          }}
-        >
+        <PrimaryButton onClick={() => dispatch(showModal(false))}>
           <PrimaryButtonText>Go to profile</PrimaryButtonText>
           <IconPaw />
         </PrimaryButton>
