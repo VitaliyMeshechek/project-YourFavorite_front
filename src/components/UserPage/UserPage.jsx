@@ -4,12 +4,11 @@ import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContai
 import {FiCamera,FiLogOut, FiTrash2} from 'react-icons/fi';
 import{AiOutlineCheck}from 'react-icons/ai';
 import{TbPencilMinus} from 'react-icons/tb';
-// import * as Yup from 'yup';
-import { useState, useEffect, ChangeEvent } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 // import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
-// import {  updateUser } from '../../redux/user/operations';
+ import {  updateUser ,updateUserPhoto, deletePet} from '../../redux/user/operations';
 import { BsPlus } from 'react-icons/bs'
 import {selectModal} from '../../redux/modal/selectors'
 
@@ -19,7 +18,10 @@ import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
  import{showModal} from  '../../redux/modal/slice'
 export const UserPageInfo =()=> {
  
-const [isFirstTime, setIsFirstTime] = useState(false)
+const isFirstTime = false
+
+// коли буде в БД в Юзера буде це поле треба підтягнути
+
 
 
   const modalState = useSelector(selectModal)
@@ -29,7 +31,7 @@ const [isFirstTime, setIsFirstTime] = useState(false)
     if (!isFirstTime) {
     dispatch(showModal(false));
   
-}},[isFirstTime]);
+}},[isFirstTime,dispatch]);
 
 console.log(modalState)
 // if (modalState &&isLogoutModal) {
@@ -125,7 +127,7 @@ const PetsData =()=>{
 }
 
 const UserData =()=>{ 
-  // const dispatch = useDispatch();
+   const dispatch = useDispatch();
   // const { user } = useAuth();
 
 const [isPhotoEdit, setisPhotoEdit] =useState(false);
@@ -217,7 +219,7 @@ const [PhotoEdit, setPhotoEdit] =useState(null);
       formData.append("file", PhotoEdit);
 
         console.log('api process upload')
-
+        dispatch(updateUserPhoto(PhotoEdit))
         // // 👇 Uploading the file using the fetch API to the server
         // fetch('https://httpbin.org/post', {
         //   method: 'POST',
@@ -235,14 +237,17 @@ const [PhotoEdit, setPhotoEdit] =useState(null);
 
 
 
+  
+         
+
+
+
 
  
-
-  const handleSubmit = (values) => {
-    console.log(",,mmm")
-  };
-  const updateUser = (values) => {
+  const handleUpdateUser = (values) => {
     console.log(values)
+    dispatch(updateUser(values))
+    
   };
 
   
@@ -357,7 +362,7 @@ name="name" readOnly={!isNameEdit} validate={validateName} autoComplete='off'/>
 {!isNameEdit &&  <ButtonEdit type="button" onClick={(e)=> {editing(); setisNameEdit(true)} } ><TbPencilMinus style={{  width: '18px', height: '18px'}}/> </ButtonEdit> }
 
 {isNameEdit && isAllowedName &&<ButtonEdit type="button" 
-onClick={()=> {editing(); setisNameEdit(false); updateUser({"name":NameEdit})}} 
+onClick={()=> {editing(); setisNameEdit(false); handleUpdateUser({"name":NameEdit})}} 
 ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                   
                   </InputContainer>
@@ -371,7 +376,7 @@ onClick={()=> {editing(); setisNameEdit(false); updateUser({"name":NameEdit})}}
   <Input
 type="email"
 name="email" readOnly={!isEmailEdit} validate={validateEmail}autoComplete='off'/>{ !isEmailEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(true)}} ><TbPencilMinus style={{  hoverColor:'#00C3AD', width: '18px', height: '18px'}}/> </ButtonEdit>}
- { isEmailEdit && isAllowedEmail &&<ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(false); updateUser({"email":EmailEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ { isEmailEdit && isAllowedEmail &&<ButtonEdit type="button" onClick={()=> {editing(); setisEmailEdit(false); handleUpdateUser({"email":EmailEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                    
                     </InputContainer>
                </DataItemContainer>
@@ -383,7 +388,7 @@ name="email" readOnly={!isEmailEdit} validate={validateEmail}autoComplete='off'/
   type="text"
   name="birthday" readOnly={!isBirthEdit} autoComplete='off' validate={validateBirth}/>
  {!isBirthEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(true)}} ><TbPencilMinus style={{  width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isBirthEdit && isAllowedBIrth &&<ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(false); updateUser({"birthday":BirthEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ {isBirthEdit && isAllowedBIrth &&<ButtonEdit type="button" onClick={()=> {editing(); setisBirthEdit(false); handleUpdateUser({"birthday":BirthEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                    
                
                     </InputContainer>
@@ -397,7 +402,7 @@ name="email" readOnly={!isEmailEdit} validate={validateEmail}autoComplete='off'/
   type="text"
   name="phone" readOnly={!isPhoneEdit} validate={validatePhone} />
   {!isPhoneEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(true)}} ><TbPencilMinus style={{  width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isPhoneEdit && isAllowedPhone &&<ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(false); updateUser({"phone":PhoneEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ {isPhoneEdit && isAllowedPhone &&<ButtonEdit type="button" onClick={()=> {editing(); setisPhoneEdit(false); handleUpdateUser({"phone":PhoneEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                   
                     </InputContainer>
                </DataItemContainer>
@@ -409,7 +414,7 @@ name="email" readOnly={!isEmailEdit} validate={validateEmail}autoComplete='off'/
   type="text"
   name="city" readOnly={!isCityEdit} autoComplete='off' validate={validateCity}/>
   {!isCityEdit && <ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(true)}} ><TbPencilMinus style={{  width: '18px', height: '18px'}}/> </ButtonEdit>}
- {isCityEdit && isAllowedCity&&<ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(false);updateUser({"city":CityEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
+ {isCityEdit && isAllowedCity&&<ButtonEdit type="button" onClick={()=> {editing(); setisCityEdit(false);handleUpdateUser({"city":CityEdit})}} ><AiOutlineCheck  style={{ color: '#00C3AD', width: '22px', height: '18px' }}/> </ButtonEdit>}
                     
                     </InputContainer>
                </DataItemContainer>
@@ -430,14 +435,18 @@ const PetsList = (props)=>{
 }
 const PetsItem =({item})=>{
           // console.log(item)
-      const {photo, name, dateOfBirth, breed, comments} = item
-     
+      const {photo, name, dateOfBirth, breed, comments, id} = item
+    const  dispatch=useDispatch()
+
+     const HandleDeletePet =()=>{
+      dispatch(deletePet(id))
+     }
       return (
       
       <ContainerPet >
         <PetImg src={photo} alt={name} />
 
-        <InfoPet><InfoPetItem><LabelPet>Name:</LabelPet><InfoPetText>{name}</InfoPetText><ButtonDeletePet ><FiTrash2 style={{  width: '18px', height: '26px' }}/></ButtonDeletePet></InfoPetItem>
+        <InfoPet><InfoPetItem><LabelPet>Name:</LabelPet><InfoPetText>{name}</InfoPetText><ButtonDeletePet onClick={HandleDeletePet}><FiTrash2 style={{  width: '18px', height: '26px' }}/></ButtonDeletePet></InfoPetItem>
         <InfoPetItem><LabelPet>Date of birth:</LabelPet><InfoPetText>{dateOfBirth}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Breed:</LabelPet><InfoPetText>{breed}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Comments:</LabelPet><InfoPetText>{comments}</InfoPetText></InfoPetItem>
