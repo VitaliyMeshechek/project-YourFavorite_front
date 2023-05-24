@@ -143,14 +143,36 @@ margin: auto;
    
 }
 `
-export const ButtonPhoto = styled.button`
-    border: none;
-    background-color: inherit;
 
+export const InputPhoto = styled(Field) `
+ /* display:  none; */
+
+position: absolute;
+cursor: pointer;
+top:215px;
+left:35px;
+height: 30px;
+appearance: none;
+opacity: 0;
+@media screen and (min-width: 768px){
+    left:-20px;
+    top:200px;
+}
+@media screen and (min-width: 1280px){
+    top:215px;
+left:95px;
+}
+`
+
+
+
+export const ButtonPhoto = styled.button`
+position: relative;
 font-weight: 400;
 font-size: 12px;
 display: flex;
 align-items: center;
+
 /* margin-top: 15px; */
 cursor: pointer;
 /* display: block; */
@@ -162,6 +184,51 @@ cursor: pointer;
     }
 }
 `
+
+export const ButtonPhotoEdit = styled.div`
+
+font-weight: 400;
+font-size: 12px;
+display: flex;
+align-items: center;
+pointer-events: none;
+justify-content: center;
+
+/* margin-top: 15px; */
+cursor: pointer;
+/* display: block; */
+    margin: 15px auto 0;
+    svg{
+    color: #54ADFF;
+    :hover{
+        color: orange;
+    }
+}
+`
+
+
+
+
+
+// export const ButtonPhoto = styled.button`
+//     border: none;
+//     background-color: inherit;
+
+// font-weight: 400;
+// font-size: 12px;
+// display: flex;
+// align-items: center;
+// /* margin-top: 15px; */
+// cursor: pointer;
+// /* display: block; */
+//     margin: 15px auto 0;
+//     svg{
+//     color: #54ADFF;
+//     :hover{
+//         color: orange;
+//     }
+// }
+// `
 export const Label = styled.div`
 
 font-weight: 600;
@@ -410,13 +477,9 @@ export const UserBlock = styled.div `
 
 export const PetBlock = styled.div`
 `
-// export const styles = styled. `
- 
-// `
 
-// export const styles = styled. `
- 
-// `
+
+
 // export const styles = styled. `
  
 // `

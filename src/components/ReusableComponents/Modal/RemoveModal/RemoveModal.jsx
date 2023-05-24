@@ -3,7 +3,7 @@ import { Title, Description, DescriptionAccent } from './RemoveModal.styled';
 
 const RemoveModal = ({ approveHandle }) => {
   return (
-    <ModalApproveAction icon="TrashIcon" approveHandle handleOpenModal>
+    <ModalApproveAction icon="TrashIcon" approveHandle ={approveHandle} handleOpenModal>
       <Title>Delete adverstiment?</Title>
       <Description>
         Are you sure you want to delete

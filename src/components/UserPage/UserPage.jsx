@@ -1,26 +1,73 @@
 import { Formik, Form   } from "formik";
-import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContainer, UserPageContainer,UserImg ,ButtonPhoto, ButtonEdit, Label,LabelPet, ButtonLogout, NavLinkStyled, Header, MyPetsHeaderContainer, InfoPetItem,InfoPet,InfoPetText, PetsItemUl,PetImg, ButtonDeletePet, DataContainer, PhotoContainer,UserBlock, PetBlock} from './UserPage.styled';
+
+import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContainer, UserPageContainer,UserImg ,ButtonPhoto, ButtonEdit, Label,LabelPet, ButtonLogout, NavLinkStyled, Header, MyPetsHeaderContainer, InfoPetItem,InfoPet,InfoPetText, PetsItemUl,PetImg, ButtonDeletePet, DataContainer, PhotoContainer,UserBlock, PetBlock, InputPhoto, ButtonPhotoEdit} from './UserPage.styled';
 import {FiCamera,FiLogOut, FiTrash2} from 'react-icons/fi';
 import{AiOutlineCheck}from 'react-icons/ai';
 import{TbPencilMinus} from 'react-icons/tb';
 // import * as Yup from 'yup';
-import { useState } from "react";
-import { useDispatch } from 'react-redux';
+import { useState, useEffect, ChangeEvent } from "react";
+import { useDispatch, useSelector } from 'react-redux';
 // import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
 // import {  updateUser } from '../../redux/user/operations';
 import { BsPlus } from 'react-icons/bs'
+import {selectModal} from '../../redux/modal/selectors'
 
+import CongratsModal from "components/ReusableComponents/Modal/CongratsModal";
+import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
+
+ import{showModal} from  '../../redux/modal/slice'
 export const UserPageInfo =()=> {
+ 
+const [isFirstTime, setIsFirstTime] = useState(false)
+
+
+  const modalState = useSelector(selectModal)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isFirstTime) {
+    dispatch(showModal(false));
+  
+}},[isFirstTime]);
+
+console.log(modalState)
+// if (modalState &&isLogoutModal) {
+//   setIsFirstTime(false);
+  
+// }
+
+// console.log(modalState)
+// console.log(isFirstTime)
+
+
+
+
+  const toggleModal = () => {
+    console.log('Are you sure you want');
+    dispatch(showModal(true))
+  }
+
+  const approveLogOut= async() =>{
+    console.log("want to log out");
+      
+    await dispatch(logOut());
+    
+  }
+  
 
     return (
+      <div>
+        {isFirstTime && <CongratsModal/>}
+    {!isFirstTime &&<LeavingModal approveHandle={approveLogOut}/>}
+
         <UserPageContainer>
 <UserBlock>
         <Header>My information:</Header>
 
         <ContainerUser>
         <UserData/>
-        <Logout/>
+        <Logout toggleModal={toggleModal}/>
         </ContainerUser>
         </UserBlock>
         <PetBlock>
@@ -35,13 +82,14 @@ export const UserPageInfo =()=> {
         
         <PetsData/></PetBlock>
         </UserPageContainer>
+        </div>
     )
 }
 
 
-const Logout =()=>{
-  const dispatch = useDispatch();
-    return(<ButtonLogout type="button" onClick={() => dispatch(logOut())}><FiLogOut style={{rotate:"180deg", width: '22px', height: '21px', marginRight:'16px', }}/>Log Out</ButtonLogout>)
+const Logout =({toggleModal})=>{
+  
+  return(<ButtonLogout type="button" onClick={toggleModal}><FiLogOut style={{rotate:"180deg", width: '22px', height: '21px', marginRight:'16px', }}/>Log Out</ButtonLogout>)
 }
 const PetsData =()=>{
   const  pets=[
@@ -91,9 +139,10 @@ const [isAllowedEmail, setisAllowedEmail ] = useState(true);
 const [isAllowedBIrth, setisAllowedBirth ] = useState(true);
 const [isAllowedPhone, setisAllowedPhone ] = useState(true);
 const [isAllowedCity, setisAllowedCity ] = useState(true);
-// const [isPhotoEdit, setisPhotoEdit] =useState(false);
+
 
 const initialValues = {
+  photo:" https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
   name: 'User',
   email: 'user@pets.com',
   birthday:'00.00.0000',
@@ -113,7 +162,7 @@ const [EmailEdit, setEmailEdit] =useState(initialValues.email);
 const [BirthEdit, setBirthEdit] =useState(initialValues.birthday);
 const [PhoneEdit, setPhoneEdit] =useState(initialValues.phone);
 const [CityEdit, setCityEdit] =useState(initialValues.city);
-
+const [PhotoEdit, setPhotoEdit] =useState(null);
 
     const editing =()=>{
         setisPhoneEdit(false);
@@ -123,6 +172,68 @@ const [CityEdit, setCityEdit] =useState(initialValues.city);
        setisNameEdit(false)
        setisPhoneEdit(false)
     }
+
+
+    // function handleFileSelect(event) {
+    //   const files = event.target.files;
+    //   const file = files[0];
+
+    //   if (file) {
+    //     const reader = new FileReader();
+
+    //     reader.onload = function (e) {
+    //       const imgElement = document.getElementById('userPhoto');
+    //       imgElement.src = e.target.result;
+    //     };
+
+    //     reader.readAsDataURL(file);
+    //   }
+    // }
+
+
+
+  
+    // const [, setSelectedFile] = useState(null);
+    
+  //   const handleFileChange = (e) => {
+
+  //     const file = e.target.files[0];
+  //     setPhotoEdit(file);
+  //  };
+
+  useEffect(() => {
+  	if(PhotoEdit){
+    	    console.log("File has been set.")
+    }
+  },[PhotoEdit]);
+
+   const handleUpload = async () => {
+      if (!PhotoEdit) {
+         alert("Please first select a file");
+         return;
+      }
+
+      const formData = new FormData();
+      formData.append("file", PhotoEdit);
+
+        console.log('api process upload')
+
+        // // 👇 Uploading the file using the fetch API to the server
+        // fetch('https://httpbin.org/post', {
+        //   method: 'POST',
+        //   body: file,
+        //   // 👇 Set headers manually for single file upload
+        //   headers: {
+        //     'content-type': file.type,
+        //     'content-length': `${file.size}`, // 👈 Headers need to be a string
+        //   },
+        // })
+        //   .then((res) => res.json())
+        //   .then((data) => console.log(data))
+        //   .catch((err) => console.error(err));
+      }
+
+
 
 
  
@@ -214,17 +325,25 @@ function validateName(value) {
   }
 
 
+  
+
 return(
  <div>
-<Formik initialValues= {initialValues} validateOnChange onSubmit={handleSubmit} >
+<Formik initialValues= {initialValues} validateOnChange  >
           
          <Form >
-         <PhotoContainer><UserImg src=" https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80" alt="" />
+         <PhotoContainer>
+          
+          <InputPhoto type="file" onChange={(e) => setPhotoEdit(e.target.files[0])} onClick={()=> {editing(); setisPhotoEdit(true);}} name="photo"
+           value ={''}  
+          />
+
+          <UserImg src={initialValues.photo} alt="" />
 
          
-         {!isPhotoEdit &&  <ButtonPhoto type="button" onClick={()=> {editing(); setisPhotoEdit(true)}}><FiCamera  style={{  width: '20px', height: '16px', marginRight:'6px' }}/>Edit photo</ButtonPhoto> }
+         {!isPhotoEdit &&  <ButtonPhotoEdit><FiCamera  style={{  width: '20px', height: '16px', marginRight:'6px' }}/>Edit photo</ButtonPhotoEdit> }
 
-{isPhotoEdit &&<ButtonPhoto type="button" onClick={()=> {editing(); setisPhotoEdit(false)}}><AiOutlineCheck  style={{  width: '22px', height: '18px', marginRight:'6px' }}/>Confirm</ButtonPhoto>}
+{isPhotoEdit &&<ButtonPhoto  onClick={()=> {editing(); setisPhotoEdit(false);handleUpload() }}><AiOutlineCheck  style={{  width: '22px', height: '18px', marginRight:'6px' }}/>Confirm</ButtonPhoto>}
          
          </PhotoContainer>
          <DataContainer>
@@ -318,7 +437,7 @@ const PetsItem =({item})=>{
       <ContainerPet >
         <PetImg src={photo} alt={name} />
 
-        <InfoPet><InfoPetItem><LabelPet>Name:</LabelPet><InfoPetText>{name}</InfoPetText><ButtonDeletePet><FiTrash2 style={{  width: '18px', height: '26px' }}/></ButtonDeletePet></InfoPetItem>
+        <InfoPet><InfoPetItem><LabelPet>Name:</LabelPet><InfoPetText>{name}</InfoPetText><ButtonDeletePet ><FiTrash2 style={{  width: '18px', height: '26px' }}/></ButtonDeletePet></InfoPetItem>
         <InfoPetItem><LabelPet>Date of birth:</LabelPet><InfoPetText>{dateOfBirth}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Breed:</LabelPet><InfoPetText>{breed}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Comments:</LabelPet><InfoPetText>{comments}</InfoPetText></InfoPetItem>
