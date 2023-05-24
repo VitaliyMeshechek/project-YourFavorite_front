@@ -32,12 +32,12 @@ export const PrimaryButton = styled.button`
   justify-content: center;
   align-items: center;
 
+  width: 100%;
   padding: 8px 28px;
   margin-left: auto;
   margin-right: auto;
   gap: 12px;
 
-  max-width: 248px;
   height: 40px;
 
   background: ${colors.blue};
@@ -47,6 +47,10 @@ export const PrimaryButton = styled.button`
 
   &:hover {
     background: ${colors.grBlue};
+  }
+
+  @media screen and (min-width: ${breakPoints.tablet}) {
+    width: 248px;
   }
 `;
 

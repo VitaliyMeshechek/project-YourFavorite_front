@@ -7,7 +7,11 @@ const RemoveModal = ({ approveHandle }) => {
       <Title>Delete adverstiment?</Title>
       <Description>
         Are you sure you want to delete
-        <DescriptionAccent>“Cute dog looking for a home”</DescriptionAccent>?
+        <DescriptionAccent>
+          “Cute dog looking <br />
+          for a home”
+        </DescriptionAccent>
+        ?
         <br />
         You can`t undo this action.
       </Description>

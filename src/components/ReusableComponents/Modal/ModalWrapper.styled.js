@@ -19,32 +19,25 @@ export const Overlay = styled.div`
 `;
 
 export const ModalView = styled.div`
+  position: absolute;
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
-  position: absolute;
-  left: 50%;
-  top: 92px;
-  transform: translate(-50%);
 
   width: 280px;
-  height: 287px;
-
-  padding: 16px;
-  padding-top: 68px;
-  padding-bottom: 60px;
+  padding: 60px 12px;
 
   text-align: center;
-  border-radius: 12px;
+  border-radius: 20px;
   background-color: ${colors.white};
 
   z-index: 1201;
 
   @media screen and (min-width: ${breakPoints.tablet}) {
+    justify-content: center;
+
     width: 608px;
     height: 354px;
-    padding: 60px;
     border-radius: 40px;
   }
 `;
@@ -53,8 +46,8 @@ export const CloseButton = styled.button`
   display: flex;
 
   position: absolute;
-  top: 16px;
-  right: 16px;
+  top: 12px;
+  right: 12px;
 
   width: 24px;
   height: 24px;
