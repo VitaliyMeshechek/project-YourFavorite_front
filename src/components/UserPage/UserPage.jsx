@@ -1,44 +1,65 @@
 import { Formik, Form   } from "formik";
-<<<<<<< HEAD
-import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContainer, UserPageContainer,UserImg ,ButtonPhoto, ButtonEdit, Label,LabelPet, ButtonLogout, ButtonAddPet, Header, MyPetsHeaderContainer, InfoPetItem,InfoPet,InfoPetText, PetsItemUl,PetImg, ButtonDeletePet, DataContainer, PhotoContainer,UserBlock, PetBlock } from './UserPage.styled';
-=======
-import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContainer, UserPageContainer,UserImg ,ButtonPhoto, ButtonEdit, Label,LabelPet, ButtonLogout, NavLinkStyled, Header, MyPetsHeaderContainer, InfoPetItem,InfoPet,InfoPetText, PetsItemUl,PetImg, ButtonDeletePet, DataContainer, PhotoContainer,UserBlock, PetBlock} from './UserPage.styled';
->>>>>>> main
+
+import { Error, Input, ContainerUser,ContainerPet, DataItemContainer,InputContainer, UserPageContainer,UserImg ,ButtonPhoto, ButtonEdit, Label,LabelPet, ButtonLogout, NavLinkStyled, Header, MyPetsHeaderContainer, InfoPetItem,InfoPet,InfoPetText, PetsItemUl,PetImg, ButtonDeletePet, DataContainer, PhotoContainer,UserBlock, PetBlock, InputPhoto, ButtonPhotoEdit} from './UserPage.styled';
 import {FiCamera,FiLogOut, FiTrash2} from 'react-icons/fi';
 import{AiOutlineCheck}from 'react-icons/ai';
 import{TbPencilMinus} from 'react-icons/tb';
 // import * as Yup from 'yup';
 import { useState, useEffect, ChangeEvent } from "react";
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 // import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
 // import {  updateUser } from '../../redux/user/operations';
 import { BsPlus } from 'react-icons/bs'
+import {selectModal} from '../../redux/modal/selectors'
 
 import CongratsModal from "components/ReusableComponents/Modal/CongratsModal";
 import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
 
+ import{showModal} from  '../../redux/modal/slice'
 export const UserPageInfo =()=> {
-  const [isModalOpen, setisModalOpen] = useState(false)
+ 
+const [isFirstTime, setIsFirstTime] = useState(false)
 
 
+  const modalState = useSelector(selectModal)
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!isFirstTime) {
+    dispatch(showModal(false));
+  
+}},[isFirstTime]);
+
+console.log(modalState)
+// if (modalState &&isLogoutModal) {
+//   setIsFirstTime(false);
+  
+// }
+
+// console.log(modalState)
+// console.log(isFirstTime)
+
+
+
+
   const toggleModal = () => {
     console.log('Are you sure you want');
-    setisModalOpen(prevS=> !prevS)
+    dispatch(showModal(true))
   }
 
-  const approveLogOut= () =>{
-    console.log("ssdf");
+  const approveLogOut= async() =>{
+    console.log("want to log out");
+      
+    await dispatch(logOut());
     
-    dispatch(logOut());
   }
   
 
     return (
       <div>
-        <CongratsModal/>
-       {isModalOpen&& <LeavingModal approveHandle={approveLogOut}  />}
+        {isFirstTime && <CongratsModal/>}
+    {!isFirstTime &&<LeavingModal approveHandle={approveLogOut}/>}
 
         <UserPageContainer>
 <UserBlock>
@@ -416,7 +437,7 @@ const PetsItem =({item})=>{
       <ContainerPet >
         <PetImg src={photo} alt={name} />
 
-        <InfoPet><InfoPetItem><LabelPet>Name:</LabelPet><InfoPetText>{name}</InfoPetText><ButtonDeletePet><FiTrash2 style={{  width: '18px', height: '26px' }}/></ButtonDeletePet></InfoPetItem>
+        <InfoPet><InfoPetItem><LabelPet>Name:</LabelPet><InfoPetText>{name}</InfoPetText><ButtonDeletePet ><FiTrash2 style={{  width: '18px', height: '26px' }}/></ButtonDeletePet></InfoPetItem>
         <InfoPetItem><LabelPet>Date of birth:</LabelPet><InfoPetText>{dateOfBirth}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Breed:</LabelPet><InfoPetText>{breed}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Comments:</LabelPet><InfoPetText>{comments}</InfoPetText></InfoPetItem>
