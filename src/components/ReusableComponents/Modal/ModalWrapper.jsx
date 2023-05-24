@@ -1,46 +1,45 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import {
   Overlay,
   ModalView,
   CloseIcon,
   CloseButton,
 } from './ModalWrapper.styled';
+import { useSelector, useDispatch } from 'react-redux';
+import { selectModal } from 'redux/modal/selectors';
+import { showModal } from 'redux/modal/slice';
 
-const ModalWrapper = ({ children, buttonState, handleOpenModal = false }) => {
-  const [openModal, setOpenModal] = useState(handleOpenModal);
+const ModalWrapper = ({ children }) => {
+  let modal = useSelector(selectModal);
+
+  const dispatch = useDispatch();
+
   useEffect(() => {
     window.addEventListener('keydown', handleKeyDown);
 
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [openModal]);
-
-  useEffect(() => {
-    if (buttonState === true) {
-      return;
-    }
-    setOpenModal(false);
-  }, [buttonState]);
+  }, [modal]);
 
   const handleKeyDown = e => {
     if (e.code === 'Escape') {
-      setOpenModal(false);
+      dispatch(showModal(false));
     }
   };
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {
-      setOpenModal(false);
+      dispatch(showModal(false));
     }
   };
 
   return (
     <>
-      {openModal && (
+      {modal && (
         <Overlay onClick={handleBackdropClick}>
           <ModalView>
-            <CloseButton onClick={() => setOpenModal(false)}>
+            <CloseButton onClick={() => dispatch(showModal(false))}>
               <CloseIcon />
             </CloseButton>
             {children}

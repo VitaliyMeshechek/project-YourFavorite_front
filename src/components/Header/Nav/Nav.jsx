@@ -1,19 +1,21 @@
-import { NavLink } from 'react-router-dom';
+import { NavList, NavItem, Link } from './Nav.styled';
 
 const links = [
-  { href: '/news', text: 'News' },
-  { href: '/notices', text: 'Find pet' },
-  { href: '/friends', text: 'Our friends' },
+  { id: 1, href: '/news', text: 'News' },
+  { id: 2, href: '/FindPets', text: 'Find pet' },
+  { id: 3, href: '/friends', text: 'Our friends' },
 ];
 
 export const Nav = () => {
   return (
     <nav>
-      {links.map(({ href, text }) => (
-        <NavLink to={href} key={href}>
-          {text}
-        </NavLink>
-      ))}
+      <NavList>
+        {links.map(({ id, href, text }) => (
+          <NavItem key={id}>
+            <Link to={href}>{text}</Link>
+          </NavItem>
+        ))}
+      </NavList>
     </nav>
   );
 };

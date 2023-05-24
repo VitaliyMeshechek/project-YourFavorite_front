@@ -5,12 +5,11 @@ import {
   PrimaryButton,
   PrimaryButtonText,
 } from '../CongratsModal/CongratsModal.styled';
-import { colors } from 'base-styles/variables';
+import { colors, breakPoints } from 'base-styles/variables';
 
 export const CancelButton = styled(PrimaryButton)`
   padding: 8px 20px;
   gap: 8px;
-  width: 129px;
   border: 2px solid #54adff;
   background-color: ${colors.white};
 
@@ -19,6 +18,10 @@ export const CancelButton = styled(PrimaryButton)`
   &:hover {
     background: ${colors.grBlue};
     color: ${colors.background};
+  }
+
+  @media screen and (min-width: ${breakPoints.tablet}) {
+    width: 129px;
   }
 `;
 
@@ -33,16 +36,23 @@ export const ApproveButtonText = styled(PrimaryButtonText)`
   color: ${colors.background};
   display: flex;
   align-items: center;
+  flex-direction: row;
+
   gap: 8px;
 `;
 
 export const ButtonFlexWrapper = styled.div`
+  width: 100%;
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
-  align-items: center;
-  gap: 17px;
+  flex-direction: column;
+  gap: 8px;
+  @media screen and (min-width: ${breakPoints.tablet}) {
+    flex-direction: row;
+    gap: 17px;
+    width: auto;
+  }
 `;
 
 export const TrashIcon = styled(BiTrash)`
