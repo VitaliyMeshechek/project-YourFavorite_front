@@ -13,12 +13,12 @@ export const addNotice = createAsyncThunk(
     }
   );
 
-  export const fetchPets = createAsyncThunk(
-    'pets/fetchCategory',
+  export const fetchNotices = createAsyncThunk(
+    'notices/fetchCategory',
     async ({ category, query }, thunkAPI) => {
       console.log({ category, query });
       try {
-        await axios.get(`/notices/${category}`, newFormData);
+        await axios.get(`/notices/${category}`, { query: { query } });
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }

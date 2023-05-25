@@ -1,9 +1,8 @@
-import { useSelector, useDispatch } from 'react-redux';
+// import { useDispatch } from 'react-redux';
 import {useSearchParams} from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5'
-import { selectFilter } from 'redux/notices/selectors';
-import { setFilter } from 'redux/notices/filterSlice';
+
 import {
     Wrapper,
     SearchForm,
@@ -13,14 +12,11 @@ import {
 
 
 export const NoticesSearch = () => {
-    // const [searchParams, setSearchParams] = useSearchParams();
-    const dispatch = useDispatch();
+    const [searchParams, setSearchParams] = useSearchParams();
+    // const dispatch = useDispatch();
   
-    const handleSubmit = e => {
-      e.preventDefault();
-      dispatch(setFilter(e.currentTarget.value));
-      console.log(());
-      e.currentTarget.value=''
+    const handleSubmit = query => {
+      setSearchParams({ query: query });
     };
   
     return (
@@ -38,9 +34,9 @@ export const NoticesSearch = () => {
         <FiSearch />
       </SearchBtn>
 
-      <SearchBtn type="reset">
+      {searchParams && <SearchBtn type="reset">
         <IoClose />
-      </SearchBtn>
+      </SearchBtn>}
 
 </SearchForm>
 
