@@ -10,7 +10,7 @@ export const colors = {
   black: '#111111',
   accent: '#FF8356',
   blue: '#54ADFF',
-  grBlue: 'linear-gradient(290.46deg, #419EF1 0 %, #9BD0FF 107.89 %)',
+  grBlue: 'linear-gradient(290.46deg, #419EF1 0 %,  #9BD0FF 107.89 %)',
   blueLight: '#CCE4FB',
   red: '#F43F5E',
   green: '#00C3AD',
