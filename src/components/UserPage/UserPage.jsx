@@ -334,7 +334,7 @@ function validateName(value) {
 
 return(
  <div>
-<Formik initialValues= {initialValues} validateOnChange  >
+<Formik initialValues = {initialValues} validateOnChange  >
           
          <Form >
          <PhotoContainer>
