@@ -1,4 +1,4 @@
-import { Suspense } from 'react';
+import { Suspense} from 'react';
 import { Outlet } from 'react-router-dom';
 import {TbFilter} from 'react-icons/tb'
 import {BsPlus} from 'react-icons/bs'
@@ -13,6 +13,7 @@ import { NoticesCategoriesNav } from 'components/Notices/CategoriesNav/Categorie
 
 
 const NoticesPage = () => {
+
     return (
     <Container>
       <Title>Find your favorite pet</Title>

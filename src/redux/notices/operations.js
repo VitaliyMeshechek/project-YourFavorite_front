@@ -12,3 +12,16 @@ export const addNotice = createAsyncThunk(
       }
     }
   );
+
+  export const fetchPets = createAsyncThunk(
+    'pets/fetchCategory',
+    async ({ category, query }, thunkAPI) => {
+      console.log({ category, query });
+      try {
+        await axios.get(`/notices/${category}`, newFormData);
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  );
+

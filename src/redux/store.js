@@ -1,7 +1,7 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
-import { filterReducer } from './notices/slice';
+import { filterReducer } from './notices/filterSlice';
 import {
   persistStore,
   persistReducer,
