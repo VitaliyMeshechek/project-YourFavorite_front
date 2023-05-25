@@ -1,5 +1,5 @@
-import { useEffect, useState } from 'react';
-
+import { useDispatch } from 'react-redux';
+import { showModal } from 'redux/modal/slice';
 import {
   ButtonFlexWrapper,
   CancelButton,
@@ -12,34 +12,23 @@ import {
 
 import ModalWrapper from '../ModalWrapper';
 
-const ModalApproveAction = ({
-  children,
-  approveHandle,
-  icon,
-  handleOpenModal,
-}) => {
-  const [openModal, setOpenModal] = useState(true);
+const ModalApproveAction = ({ children, approveHandle, icon }) => {
+  const dispatch = useDispatch();
 
-  useEffect(() => {
-    if (openModal === true) {
-      return;
-    }
-    return setOpenModal(true);
-  }, [openModal]);
+  const handleApprove = () => {
+    approveHandle();
+    dispatch(showModal(false));
+  };
 
   return (
     <>
-      <ModalWrapper buttonState={openModal} handleOpenModal>
+      <ModalWrapper>
         {children}
         <ButtonFlexWrapper>
-          <CancelButton
-            onClick={() => {
-              setOpenModal(false);
-            }}
-          >
+          <CancelButton onClick={() => dispatch(showModal(false))}>
             <CancelButtonText>Cancel</CancelButtonText>
           </CancelButton>
-          <ApproveButton onClick={() => approveHandle('approve')}>
+          <ApproveButton onClick={handleApprove}>
             <ApproveButtonText>
               Yes
               {icon === 'TrashIcon' && <TrashIcon />}

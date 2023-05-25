@@ -26,26 +26,25 @@ import NoticesPage from 'pages/NoticesPage/NoticesPage';
 import NoticesCategoriesList from './Notices/CategoriesList/NoticesCategoriesList';
 // import FindPeds from 'pages/FindePets/FindPeds';
 
-
-
 export const App = () => {
   return (
     <PageColor>
       <Routes>
-        <Route path="/" element={<SharedLayout />} />
-        {/* <Route index element={<div></div>} /> */}
-        <Route path="main" element={<MainPage />} />
-        <Route path="news" element={<NewsPage />} />
-        {/* <Route path="FindPets" element={<FindPeds />} /> */}
-        <Route path="notices" element={<NoticesPage />}>
-          <Route path=":categoryName" element={<NoticesCategoriesList />}/>
+        <Route path="/" element={<SharedLayout />}>
+          <Route index element={<MainPage />} />
+          <Route path="main" element={<MainPage />} />
+          <Route path="news" element={<NewsPage />} />
+          {/* <Route path="FindPets" element={<FindPeds />} /> */}
+          <Route path="notices" element={<NoticesPage />}>
+            <Route path=":categoryName" element={<NoticesCategoriesList />} />
+          </Route>
+          <Route path="friends" element={<OurFriendsPage />} />
+          <Route path="register" element={<RegisterPage />} />
+          <Route path="login" element={<LoginPage />} />
+          <Route path="user" element={<UserPage />} />
+          <Route path="add-pet" element={<AddPetPage />} />
+          <Route path="*" element={<PageNotFound />} />
         </Route>
-        <Route path="friends" element={<OurFriendsPage />} />
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="user" element={<UserPage />} />
-        <Route path="add-pet" element={<AddPetPage />} />
-        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </PageColor>
   );

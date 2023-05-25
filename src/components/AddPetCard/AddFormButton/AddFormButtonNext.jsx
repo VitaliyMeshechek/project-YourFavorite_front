@@ -1,4 +1,4 @@
-import PropTypes from 'prop-types';
+// import PropTypes from 'prop-types';
 import { NextButton } from './AddFormButton.styled';
 
 const AddFormButtonNext = ({
@@ -24,11 +24,11 @@ const AddFormButtonNext = ({
   );
 };
 
-AddFormButtonNext.propTypes = {
-  text: PropTypes.string.isRequired,
-  icon: PropTypes.node,
-  clickHandler: PropTypes.func,
-  isDisabled: PropTypes.bool.isRequired,
-};
+// AddFormButtonNext.propTypes = {
+//   text: PropTypes.string.isRequired,
+//   icon: PropTypes.node,
+//   clickHandler: PropTypes.func,
+//   isDisabled: PropTypes.bool.isRequired,
+// };
 
 export default AddFormButtonNext;

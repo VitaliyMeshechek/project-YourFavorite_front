@@ -1,7 +1,9 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
-import { filterReducer } from './notices/filterSlice';
+import { filterReducer } from './notices/slice';
+import { modalReducer } from './modal/slice';
+
 import {
   persistStore,
   persistReducer,
@@ -21,6 +23,7 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
+    showModal: modalReducer,
     filter: filterReducer,
     auth: persistReducer(authPersistConfig, authReducer),
   },

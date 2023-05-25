@@ -65,7 +65,7 @@ export const refreshUser = createAsyncThunk(
 );
 
 export const addMyPet = createAsyncThunk(
-  'users/addMyPet',
+  'user/addMyPet',
   async (credentials, thunkAPI) => {
     try {
       await axios.post('/pets', credentials);
