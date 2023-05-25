@@ -19,6 +19,11 @@ export const UserLink = styled(Link)`
   gap: 12px;
   padding: 8px 16px 8px 16px;
   text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 `;
 
 export const UserName = styled.p`
@@ -32,19 +37,25 @@ export const UserName = styled.p`
   color: #ffc107;
 `;
 
-export const Avatar = styled(VscAccount)`
-  cursor: pointer;
-  fill: #ffc107;
-  width: 28px;
-  height: 28px;
-`;
 export const AvatarLink = styled(Link)`
   display: flex;
   justify-content: center;
   align-items: center;
   text-decoration: none;
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+  }
 
   @media screen and (min-width: 768px) {
     display: none;
   }
+`;
+
+export const Avatar = styled(VscAccount)`
+  cursor: pointer;
+  fill: #ffc107;
+  width: 28px;
+  height: 28px;
 `;
