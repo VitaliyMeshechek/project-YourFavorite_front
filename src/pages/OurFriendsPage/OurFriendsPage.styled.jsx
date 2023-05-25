@@ -15,6 +15,7 @@ export const FriendsContainer = styled.h2`
   }
 `;
 export const FriendsTitle = styled.h2`
+  text-align: center;
   @media screen and (max-width: 767.98px) {
     font-family: 'Manrope';
     font-style: normal;
@@ -48,5 +49,6 @@ export const FriendsTitle = styled.h2`
 
     margin-bottom: 60px;
     text-align: center;
+    margin-top: 80px;
   }
 `;
