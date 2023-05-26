@@ -20,7 +20,7 @@ const ModalWrapper = ({ children }) => {
     return () => {
       window.removeEventListener('keydown', handleKeyDown);
     };
-  }, [modal]);
+  });
 
   const handleKeyDown = e => {
     if (e.code === 'Escape') {

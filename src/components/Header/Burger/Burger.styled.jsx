@@ -16,6 +16,9 @@ export const Menu = styled.div`
 
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
+  @media screen and (min-width: 1280px) {
+    display: none;
+  }
 `;
 
 export const Button = styled.button`
@@ -42,19 +45,6 @@ export const Button = styled.button`
   span {
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
-
-  /* :hover,
-  :focus {
-    span:nth-of-type(1) {
-    
-    }
-    span:nth-of-type(2) {
-   
-    }
-    span:nth-of-type(3) {
-    
-    }
-  } */
 
   &.active {
     span:nth-of-type(1) {

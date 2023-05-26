@@ -3,7 +3,7 @@ import { Title } from './LeavingModal.styled';
 
 const LeavingModal = ({ approveHandle }) => {
   return (
-    <ModalApproveAction icon="ExitIcon" approveHandle>
+    <ModalApproveAction icon="ExitIcon" approveHandle ={approveHandle}>
       <Title>Already leaving?</Title>
     </ModalApproveAction>
   );

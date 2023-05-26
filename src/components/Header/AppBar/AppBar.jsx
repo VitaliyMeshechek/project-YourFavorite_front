@@ -19,7 +19,7 @@ import { useAuth } from 'hooks';
 export const AppBar = () => {
   const [menuOpen, setIsMenuOpen] = useState(false);
   const { isLoggedIn } = useAuth();
-  // const isLoggedIn = true;
+
   const toggleMenu = () => {
     setIsMenuOpen(prevIsMenuOpen => !prevIsMenuOpen);
   };

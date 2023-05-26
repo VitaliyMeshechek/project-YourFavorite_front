@@ -15,7 +15,7 @@
       { "isOpen": true, "from": "11:00", "to": "16:00" }
     ],
     "phone": "+380931934069",
-    "email": null
+    "email": "dogcat.sirius@gmail.com"
   },
   {
     "title": "Happy Paw",
@@ -39,7 +39,7 @@
     "title": "Харківський міський притулок для тварин",
     "url": "https://www.city.kharkov.ua/uk/news/-51132.html",
     "addressUrl": "https://goo.gl/maps/gjMzx3ifaRgXSftP9",
-    "imageUrl": null,
+    "imageUrl": "https://www.city.kharkiv.ua/images/logo-ru.png",
     "address": "м. Харків, вул. Квітки-Основ'яненка, 7, 2-й пов.",
     "workDays": null,
     "phone": "+380577607961",
@@ -51,18 +51,18 @@
     "addressUrl": "https://goo.gl/maps/4xMfxtahHPfXeAYU8",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_289.png",
     "address": "79024, м.Львів, вул. Промислова 56",
-    "workDays": null,
+    "workDays": " day and night",
     "phone": "+380685354545",
-    "email": null
+    "email": " lkplev@gmail.com"
   },
   {
     "title": "Притулок для собак Велике серце",
     "url": "https://pethelp.com.ua/interv_yu_z_zasnovnitseyu_pritulku_velike_sertse/",
-    "addressUrl": null,
+    "addressUrl": "https://pethelp.com.ua",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_286.png",
-    "address": null,
-    "workDays": null,
-    "phone": null,
+    "address": "website only",
+    "workDays": "day and night",
+    "phone": "email only",
     "email": "pethelp.ukr@gmail.com"
   },
   {
@@ -73,7 +73,7 @@
     "address": "м. Ужгород",
     "workDays": null,
     "phone": "+380664880480",
-    "email": null
+    "email": "barbos@gmail.com"
   },
   {
     "title": "Ветеринарний центр LicoVet",
@@ -90,16 +90,16 @@
       { "isOpen": true, "from": "09:00", "to": "20:00" },
       { "isOpen": true, "from": "09:00", "to": "20:00" }
     ],
-    "phone": null,
-    "email": null
+    "phone": "+38 097 509 8005",
+    "email": "lico@gmail.com"
   },
   {
     "title": "Purina",
     "url": "https://www.purina.ua/",
-    "addressUrl": null,
+    "addressUrl": "https://www.purina.ua",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_290.png",
-    "address": null,
-    "workDays": null,
+    "address": "website only",
+    "workDays": "day and night",
     "phone": "+380800500950",
     "email": "info@ua.nestle.com"
   },
@@ -108,16 +108,16 @@
     "url": "https://www.whiskas.ua/",
     "addressUrl": null,
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_285.png",
-    "address": null,
+    "address": "website only",
     "phone": "+380800500155",
-    "email": null
+    "email": "whiskas@gmail.com"
   },
   {
     "title": "Josera",
     "url": "https://josera.ua/",
-    "addressUrl": null,
+    "addressUrl": "https://josera.ua/?gad=1&gclid=CjwKCAjw67ajBhAVEiwA2g_jEBJGLfcGeBqnsqjX2pbDR2zaIXJ1u4-r_RCI4vwJrc284C5iC3o2FhoCyDUQAvD_BwE",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_291.png",
-    "address": null,
+    "address": "Sholom-Aleikhema St, 11",
     "workDays": [
       { "isOpen": true, "from": "09:00", "to": "17:00" },
       { "isOpen": true, "from": "09:00", "to": "17:00" },
@@ -129,5 +129,41 @@
     ],
     "phone": "+380800409060",
     "email": "info@josera.ua"
+  },
+  {
+    "title": "Pedigree",
+    "url": "https://www.pedigree.com/",
+    "addressUrl": "https://goo.gl/maps/iq8NXEUf31EAQCzc6",
+    "imageUrl": "https://www.pedigree.com/sites/g/files/fnmzdf1201/files/pedigree_us_logo_0.png",
+    "address": "website only",
+    "workDays": [
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": true, "from": "11:00", "to": "16:00" },
+      { "isOpen": true, "from": "11:00", "to": "16:00" }
+    ],
+    "phone": "1-800-525-5273",
+    "email": "pedigree@gmail.com"
+  },
+  {
+    "title": "Brit",
+    "url": "https://brit.in.ua/index.php?route=common/home",
+    "addressUrl": "https://www.google.com/maps/place/Brit/@49.9526447,36.2679558,15z/data=!4m2!3m1!1s0x0:0x3cebca6f47ead8d4?sa=X&ved=2ahUKEwjI7ML4_I__AhUDUeUKHTuqCQcQ_BJ6BAg9EAg",
+    "imageUrl": "https://brit.in.ua/image/catalog/brit.jpg",
+    "address": "м. Харків",
+    "workDays": [
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": false },
+      { "isOpen": true, "from": "11:00", "to": "16:00" },
+      { "isOpen": true, "from": "11:00", "to": "16:00" }
+    ],
+    "phone": "+380509850337",
+    "email": "pedigree@gmail.com"
   }
 ]
