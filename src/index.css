@@ -1,5 +1,4 @@
-
-@import-normalize;   /* bring in normalize.css styles */
+@import-normalize; /* bring in normalize.css styles */
 html {
   box-sizing: border-box;
 }
@@ -15,15 +14,17 @@ html {
   box-sizing: inherit;
 }
 
-body {
+input[type='search']::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+}
 
+body {
   margin: 0;
-  font-family: Manrope, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  font-family: Manrope, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-
 
   font-family: 'Manrope';
   font-style: normal;
@@ -34,8 +35,7 @@ body {
   letter-spacing: 0.04em;
   color: #111111;
 
-  background: #FEF9F9;
-
+  background: #fef9f9;
 }
 
 code {
@@ -93,5 +93,4 @@ button {
 
   /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
   line-height: normal;
-
 }
