@@ -1,22 +1,25 @@
 import styled from '@emotion/styled';
+import { colors, breakPoints } from '../../../base-styles/variables';
 
 export const Menu = styled.div`
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 20px;
+  padding-bottom: 100px;
   width: 100vw;
   height: 100vh;
   top: 100%;
   left: 0;
 
   overflow-y: auto;
-  background-color: #fef9f9;
+  background-color: ${colors.background};
 
   transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+
   transform: ${({ isOpen }) => (isOpen ? 'translateX(0)' : 'translateX(100%)')};
-  @media screen and (min-width: 1280px) {
+
+  @media screen and (min-width: ${breakPoints.desktop}) {
     display: none;
   }
 `;
@@ -38,7 +41,7 @@ export const Button = styled.button`
   padding-right: 4px;
   background: none;
   cursor: pointer;
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: ${breakPoints.desktop}) {
     display: none;
   }
 
@@ -70,15 +73,15 @@ export const Bar = styled.span`
   height: 2px;
   margin-bottom: 2px;
   border-radius: 1px;
-  background-color: #ffc107;
+  background-color: ${colors.yellow};
 `;
 export const UserNavWrapper = styled.div`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     display: none;
   }
 `;
 export const NawWrapper = styled.div`
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     padding-top: 100px;
   }
 `;

@@ -7,16 +7,18 @@ import { Nav } from '../Nav/Nav';
 
 export const BurgerMenu = ({ isMenuOpen, user, openMenu }) => {
   // useEffect(() => {
-  //   window.addEventListener('keydown', handleKeydown);
-  //   return () => window.removeEventListener('keydown', handleKeydown);
-  // });
-
-  // const handleKeydown = e => {
-  //   if (e.code === 'Escape') {
-  //
-  //     openMenu();
-  //   }
-  // };
+  //   // toggleEventListener(isMenuOpen);
+  //   //   window.addEventListener('keydown', handleKeydown);
+  //   //   return () => window.removeEventListener('keydown', handleKeydown);
+  //   const handleKeydown = e => {
+  //     if (e.code === 'Escape') {
+  //       openMenu();
+  //     }
+  //   };
+  //   isMenuOpen
+  //     ? window.addEventListener('keydown', handleKeydown)
+  //     : window.removeEventListener('keydown', handleKeydown);
+  // }, [isMenuOpen, openMenu]);
 
   const onBurgerMenuClick = e => {
     if (e.target) {

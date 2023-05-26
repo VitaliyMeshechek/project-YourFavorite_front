@@ -4,9 +4,9 @@ import logoSmall2x from '../../../images/logo/logo_small@2x.png';
 import logoBig1x from '../../../images/logo/logo_big@1x.png';
 import logoBig2x from '../../../images/logo/logo_big@2x.png';
 
-export const Logo = () => {
+export const Logo = ({ close }) => {
   return (
-    <LogoLink to="/main">
+    <LogoLink to="/main" onClick={close}>
       <picture>
         <source
           srcSet={`${logoBig1x} 1x, ${logoBig2x} 2x`}

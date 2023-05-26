@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
+import { colors, breakPoints } from '../../../base-styles/variables';
 
 export const NavList = styled.ul`
   display: flex;
@@ -10,7 +11,7 @@ export const NavList = styled.ul`
   padding: 0;
   gap: 20px;
 
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: ${breakPoints.desktop}) {
     flex-direction: row;
     gap: 40px;
   }
@@ -26,16 +27,16 @@ export const Link = styled(NavLink)`
   font-size: 32px;
   line-height: 1.38;
   letter-spacing: 0.04em;
-  color: #111111;
+  color: ${colors.black};
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   :hover,
   :focus {
-    color: #ffc107;
+    color: ${colors.yellow};
   }
   &.active {
-    color: #ffc107;
+    color: ${colors.yellow};
   }
-  @media screen and (min-width: 1280px) {
+  @media screen and (min-width: ${breakPoints.desktop}) {
     font-size: 20px;
     line-height: 27px;
   }
