@@ -77,7 +77,7 @@ margin: 0;
     margin: auto;
     width: 280px;
 border: 1px solid green;
-padding: 50px 0 137px;
+padding: 75px 0 137px;
 @media screen and (min-width: 768px){
     width: 704px;
     padding-bottom: 121px;
@@ -149,18 +149,22 @@ export const InputPhoto = styled(Field) `
 
 position: absolute;
 cursor: pointer;
-top:215px;
-left:35px;
+top:220px;
+left:85px;
 height: 30px;
 appearance: none;
 opacity: 0;
+
+::file-selector-button{
+    display: none;
+}
 @media screen and (min-width: 768px){
-    left:-20px;
+    left:40px;
     top:200px;
 }
 @media screen and (min-width: 1280px){
-    top:215px;
-left:95px;
+    top:220px;
+left:145px;
 }
 `
 
