@@ -1,5 +1,5 @@
-import { Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+// import { Suspense } from 'react';
+// import { Outlet } from 'react-router-dom';
 import { Title, Page } from './NewsPage.styled';
 import { Container } from 'pages/FindePets/FindPeds.styled';
 import SearchInput from 'components/News/Search/SearchInput';
