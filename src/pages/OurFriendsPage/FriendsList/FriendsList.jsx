@@ -5,15 +5,7 @@ export const FriendsList = ({ friends }) => {
   return (
     <List>
       {friends.map(friend => (
-        <FriendsItem
-          imageUrl={friend.imageUrl}
-          url={friend.url}
-          title={friend.title}
-          time={friend.workDays}
-          address={friend.address}
-          email={friend.email}
-          phone={friend.phone}
-        />
+        <FriendsItem key={friend.title} friend={friend} />
       ))}
     </List>
   );

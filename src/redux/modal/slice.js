@@ -2,7 +2,7 @@ const { createSlice } = require('@reduxjs/toolkit');
 
 export const modalSlice = createSlice({
   name: 'modal',
-  initialState: { modal: false },
+  initialState: { modal: true },
   reducers: {
     showModal(state, action) {
       state.modal = action.payload;

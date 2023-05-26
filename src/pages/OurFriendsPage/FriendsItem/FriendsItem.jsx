@@ -2,44 +2,52 @@ import {
   FlexContainer,
   ImgWrapper,
   Item,
-  ItemLink,
+  ItemLinkTitle,
+  LinkItem,
   SpanColor,
   TextContent,
   WrapperContent,
 } from './FriendsItem.styled';
 
 export const FriendsItem = ({
-  title,
-  workDays,
-  address,
-  email,
-  phone = '12343',
-  url,
-  imageUrl,
+  friend: { title, workDays, address, email, phone, url, imageUrl, addressUrl },
 }) => {
+  if (imageUrl === null) {
+    imageUrl = 'https://plastyr.in.ua/image/catalog/no-photo.png';
+  }
+
   return (
     <Item>
-      <ItemLink href={url}>{title}</ItemLink>
+      <ItemLinkTitle href={url} target="blank">
+        {title}
+      </ItemLinkTitle>
       <FlexContainer>
-        <ImgWrapper src={imageUrl} alt="" />
+        <ImgWrapper src={imageUrl} alt={title} target="blank" />
         <WrapperContent>
           <TextContent>
             <SpanColor>time:</SpanColor>
-            <br /> {workDays}
-          </TextContent>
-          <TextContent>
-            <SpanColor>adress:</SpanColor>
             <br />
-            {address}
           </TextContent>
           <TextContent>
-            <SpanColor>email:</SpanColor>
-            <br />
-            {email}
+            <LinkItem href={addressUrl} target="blank">
+              <SpanColor>adress:</SpanColor>
+              <br />
+              {address}
+            </LinkItem>
           </TextContent>
           <TextContent>
-            <SpanColor>phone:</SpanColor>
-            {phone}
+            <LinkItem href={email} target="blank">
+              <SpanColor>email:</SpanColor>
+              <br />
+              {email}
+            </LinkItem>
+          </TextContent>
+          <TextContent>
+            <LinkItem>
+              <SpanColor>phone:</SpanColor>
+              <br />
+              {phone}
+            </LinkItem>
           </TextContent>
         </WrapperContent>
       </FlexContainer>
