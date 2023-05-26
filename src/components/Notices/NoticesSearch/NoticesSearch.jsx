@@ -1,4 +1,5 @@
 // import { useDispatch } from 'react-redux';
+import { useState } from 'react';
 import {useSearchParams} from 'react-router-dom'
 import { FiSearch } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5'
@@ -12,11 +13,20 @@ import {
 
 
 export const NoticesSearch = () => {
+  const [query, setQuery] = useState('');
     const [searchParams, setSearchParams] = useSearchParams();
     // const dispatch = useDispatch();
+
+    const handleChange = e => {
+      const query = e.currentTarget.value
+      const normalizedQuery = query.toLowerCase();
+      setQuery(normalizedQuery)
+    }
   
-    const handleSubmit = query => {
-      setSearchParams({ query: query });
+    const handleSubmit = e => {
+      e.preventDefault();
+      setSearchParams({ query });
+      setQuery('')
     };
   
     return (
@@ -28,13 +38,14 @@ export const NoticesSearch = () => {
           name="search"
           autocomplete="off"
           autoFocus
-          placeholder="Search"        
+          placeholder="Search"
+          onChange={handleChange}        
       />
       <SearchBtn type="submit">
         <FiSearch />
       </SearchBtn>
 
-      {searchParams && <SearchBtn type="reset">
+      {query && <SearchBtn type="reset">
         <IoClose />
       </SearchBtn>}
 
