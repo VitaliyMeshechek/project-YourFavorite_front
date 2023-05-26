@@ -41,6 +41,8 @@ export const App = () => {
           <Route path="friends" element={<OurFriendsPage />} />
           <Route path="register" element={<RegisterPage />} />
           <Route path="login" element={<LoginPage />} />
+
+          
           <Route path="user" element={<UserPage />} />
           <Route path="add-pet" element={<AddPetPage />} />
           <Route path="*" element={<PageNotFound />} />
