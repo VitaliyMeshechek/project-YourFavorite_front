@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
+import { breakPoints } from '../../../base-styles/variables';
 
 export const LogoLink = styled(Link)`
   display: flex;
@@ -16,7 +17,7 @@ export const LogoImg = styled.img`
     transform: scale(1.1);
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     width: 162px;
     height: 28px;
   }

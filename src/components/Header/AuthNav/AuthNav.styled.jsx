@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { NavLink } from 'react-router-dom';
 import { TbPaw } from 'react-icons/tb';
+import { colors, breakPoints } from '../../../base-styles/variables';
 
 export const AuthWrapper = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const AuthWrapper = styled.div`
   gap: 12px;
   padding-top: 38px;
   padding-bottom: 40px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     flex-direction: row;
     justify-content: center;
     gap: 20px;
@@ -29,25 +30,25 @@ export const AuthLink = styled(NavLink)`
   font-weight: 600;
   font-size: 16px;
   line-height: 1.38;
-  color: #ffc107;
+  color: ${colors.yellow};
   text-decoration: none;
-  border: 2px solid #ffc107;
+  border: 2px solid ${colors.yellow};
   border-radius: 40px;
-  @media screen and (min-width: 768px) {
+  transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  @media screen and (min-width: ${breakPoints.tablet}) {
     padding-top: 7px;
     padding-bottom: 7px;
-    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   :hover,
   :focus {
-    color: #fef9f9;
-    background-color: #ffc107;
+    color: ${colors.background};
+    background-color: ${colors.yellow};
   }
 
   &.active {
-    color: #fef9f9;
-    background-color: #ffc107;
+    color: ${colors.background};
+    background-color: ${colors.yellow};
   }
 `;
 
