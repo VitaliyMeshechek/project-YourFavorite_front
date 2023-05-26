@@ -88,15 +88,14 @@ export const RegisterForm = () => {
       }),
   });
 
-  const handleSubmit = (values, props) => {
+  const handleSubmit = ({ email, password }, { resetForm }) => {
     dispatch(
       register({
-        email: values.email,
-        password: values.password,
-        confirmPassword: values.confirmPassword,
+        email,
+        password,
       })
     );
-    props.resetForm();
+    resetForm();
   };
 
   return (
@@ -105,7 +104,7 @@ export const RegisterForm = () => {
       initialValues={initialValues}
       validationSchema={registrationValidationSchema}
     >
-      {({  errors, touched }) => (
+      {({ errors, touched }) => (
         <Forms autoComplete="off">
           <FormTitle>Registration </FormTitle>
           <Label>
@@ -142,9 +141,7 @@ export const RegisterForm = () => {
             <Error name="confirmPassword" component="div" />
           </Label>
 
-          <Button type="submit" >
-            Registration
-          </Button>
+          <Button type="submit">Registration</Button>
           <Subtitle>
             Already have an account?
             <NavLink
@@ -159,4 +156,3 @@ export const RegisterForm = () => {
     </Formik>
   );
 };
-
