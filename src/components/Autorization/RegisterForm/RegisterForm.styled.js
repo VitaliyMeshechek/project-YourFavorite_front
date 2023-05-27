@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { colors } from 'base-styles/variables';
-
 import { ErrorMessage, Field } from 'formik';
 
 export const RegisterInput = styled(Field)`
@@ -23,7 +22,7 @@ export const Error = styled(ErrorMessage)`
 `;
 
 export const PasswordMessage = styled.div`
-font-size: 12px;
-line-height: 16px;
-color: ${colors.green};
-`
+  font-size: 12px;
+  line-height: 16px;
+  color: ${colors.green};
+`;
