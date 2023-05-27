@@ -133,6 +133,34 @@ border: none;
     }
 
 `
+
+export const TrashBtn = styled.button`
+    position: absolute;
+    top: 68px;
+    right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+height: 40px;
+background: #C5DFF6;
+color: #54ADFF;
+border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    svg {
+        width: 24px;
+        height: 24px;
+        color: inherit;
+    }
+
+    &:hover {
+        svg {
+        fill: #54ADFF;
+    }
+`
 export const Title = styled.h2`
 display: inline-block;
 margin-top: 20px;

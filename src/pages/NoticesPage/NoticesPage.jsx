@@ -2,15 +2,11 @@ import { Suspense} from 'react';
 import { Outlet } from 'react-router-dom';
 import {TbFilter} from 'react-icons/tb'
 import {BsPlus} from 'react-icons/bs'
-
-
 import { Title, Btn, NavLinkStyled, TabletWrapper, Wrapper } from './NoticesPage.styled';
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 
 import { Container } from 'components/ReusableComponents/MainContainer/MainContainer.styled';
 import { NoticesCategoriesNav } from 'components/Notices/CategoriesNav/CategoriesNav';
-
-
 
 const NoticesPage = () => {
 

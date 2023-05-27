@@ -1,6 +1,4 @@
-// import { useDispatch } from 'react-redux';
-import { useState } from 'react';
-import {useSearchParams} from 'react-router-dom'
+import { useDispatch } from 'react-redux';
 import { FiSearch } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5'
 
@@ -10,24 +8,25 @@ import {
     SearchBtn,
     SearchInput,
   } from './NoticesSearch.styled';
+import { setQuery } from 'redux/noticesPage/querySlice';
+import { useState } from 'react';
 
 
 export const NoticesSearch = () => {
-  const [query, setQuery] = useState('');
-    const [searchParams, setSearchParams] = useSearchParams();
-    // const dispatch = useDispatch();
+  const [search, setSearch] = useState('')
+const dispatch = useDispatch()
 
-    const handleChange = e => {
-      const query = e.currentTarget.value
-      const normalizedQuery = query.toLowerCase();
-      setQuery(normalizedQuery)
-    }
-  
-    const handleSubmit = e => {
-      e.preventDefault();
-      setSearchParams({ query });
-      setQuery('')
-    };
+const handleChange = e => {
+  setSearch(e.currentTarget.value)
+}
+
+const handleSubmit = e => {
+  e.preventDefault()
+  const query = e.target.search.value
+  const normalizedQuery = query.toLowerCase();  
+  dispatch(setQuery(normalizedQuery));
+};
+
   
     return (
       <Wrapper>
@@ -39,13 +38,13 @@ export const NoticesSearch = () => {
           autocomplete="off"
           autoFocus
           placeholder="Search"
-          onChange={handleChange}        
+          onChange={handleChange}
       />
       <SearchBtn type="submit">
         <FiSearch />
       </SearchBtn>
 
-      {query && <SearchBtn type="reset">
+      {search.length > 0 && <SearchBtn type="reset">
         <IoClose />
       </SearchBtn>}
 

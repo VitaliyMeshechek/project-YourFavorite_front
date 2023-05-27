@@ -2,11 +2,16 @@ import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
 export const fetchNotices = createAsyncThunk(
-    'notices/fetchCategory',
-    async ({ category, query }, thunkAPI) => {
-      console.log({ category, query });
+    'notices/fetchNotices',
+async ( {categoryName, query} , thunkAPI) => {
       try {
-        await axios.get(`/notices/${category}`, { query: { query } });
+        if(!query) {
+          const response = await axios.get(`/notices/${categoryName}`);
+        return response.data;
+        }
+        const response = await axios.get(`/notices/${categoryName}`, {params: {query}} );
+        console.log({ categoryName, query });
+        return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }

@@ -1,7 +1,7 @@
 import {HiOutlineLocationMarker, HiOutlineClock} from 'react-icons/hi'
-import {FiHeart} from 'react-icons/fi'
+import {FiHeart, FiTrash2} from 'react-icons/fi'
 import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
-import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title } from "./CategoriesItems.styled"
+import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
 
 export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, category}}) => {
 
@@ -17,6 +17,10 @@ export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, ca
             <FavoriteBtn type='button'>
                 <FiHeart/>
             </FavoriteBtn>
+
+            <TrashBtn type='button'>
+                <FiTrash2/>
+            </TrashBtn>
 
             <TabsWrapper>
             <Info>

@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { PageColor } from './App.styled';
 
@@ -34,8 +34,8 @@ export const App = () => {
           <Route index element={<MainPage />} />
           <Route path="main" element={<MainPage />} />
           <Route path="news" element={<NewsPage />} />
-          {/* <Route path="FindPets" element={<FindPeds />} /> */}
           <Route path="notices" element={<NoticesPage />}>
+            <Route index element={<Navigate to="/notices/sell" />}/>
             <Route path=":categoryName" element={<NoticesCategoriesList />} />
           </Route>
           <Route path="friends" element={<OurFriendsPage />} />
