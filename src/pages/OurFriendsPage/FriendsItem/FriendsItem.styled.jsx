@@ -11,7 +11,7 @@ export const Item = styled.li`
     border-radius: 40px;
     padding-right: 18px;
     margin-top: 20px;
-    &:first-child {
+    &:first-of-type {
       margin-top: 0;
     }
   }
@@ -126,10 +126,14 @@ export const SpanColor = styled.span`
 export const TextContent = styled.p`
   @media screen and (max-width: 767.98px) {
     width: 114px;
+    margin-top: 12px;
+    &:first-of-type {
+      margin-top: 0;
+    }
   }
   @media screen and (min-width: 1280px) {
     margin-top: 12px;
-    &:first-child {
+    &:first-of-type {
       margin-top: 0;
     }
   }
@@ -139,6 +143,15 @@ export const TextContent = styled.p`
   font-size: 14px;
   line-height: 1.36;
   color: #111111;
+
+  &:hover {
+    color: #ffc107;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  &:focus {
+    color: #ffc107;
+    transition: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
 `;
 
 export const ImgWrapper = styled.img`
