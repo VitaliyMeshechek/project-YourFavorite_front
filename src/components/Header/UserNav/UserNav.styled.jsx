@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { Link } from 'react-router-dom';
 import { VscAccount } from 'react-icons/vsc';
+import { colors, breakPoints } from '../../../base-styles/variables';
 
 export const UserWrapper = styled.div`
   display: flex;
@@ -9,7 +10,7 @@ export const UserWrapper = styled.div`
   gap: 12px;
   padding-top: 38px;
   padding-bottom: 84px;
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     padding: 0;
   }
 `;
@@ -34,7 +35,7 @@ export const UserName = styled.p`
   font-size: 16px;
   line-height: 1.38;
   letter-spacing: 0.04em;
-  color: #ffc107;
+  color: ${colors.yellow};
 `;
 
 export const AvatarLink = styled(Link)`
@@ -48,14 +49,21 @@ export const AvatarLink = styled(Link)`
     transform: scale(1.1);
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     display: none;
   }
 `;
 
 export const Avatar = styled(VscAccount)`
   cursor: pointer;
-  fill: #ffc107;
+  fill: ${colors.yellow};
   width: 28px;
   height: 28px;
 `;
+
+// export const AvatarImg = styled.img`
+//   cursor: pointer;
+//   border-radius: 50%;
+//   width: 28px;
+//   height: 28px;
+// `;

@@ -23,13 +23,19 @@ export const AppBar = () => {
   const toggleMenu = () => {
     setIsMenuOpen(prevIsMenuOpen => !prevIsMenuOpen);
   };
+  const closeMenu = () => {
+    if (menuOpen) {
+      setIsMenuOpen(false);
+    }
+    return;
+  };
 
   return (
     <>
       <AppBarWrapper>
         <Container>
           <Header>
-            <Logo />
+            <Logo close={closeMenu} />
             <SiteNavWrapper>
               <Nav></Nav>
             </SiteNavWrapper>

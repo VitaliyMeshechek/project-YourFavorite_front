@@ -15,6 +15,8 @@ import {selectModal} from '../../redux/modal/selectors'
 import CongratsModal from "components/ReusableComponents/Modal/CongratsModal";
 import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
 
+import PhotoDef from '../../../src/images/UserPhotoDefault.png'
+
  import{showModal} from  '../../redux/modal/slice'
 export const UserPageInfo =()=> {
  
@@ -144,7 +146,7 @@ const [isAllowedCity, setisAllowedCity ] = useState(true);
 
 
 const initialValues = {
-  photo:" https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MXx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&w=1000&q=80",
+  photo: PhotoDef,
   name: 'User',
   email: 'user@pets.com',
   birthday:'00.00.0000',
@@ -256,7 +258,7 @@ function validateName(value) {
     let error;
     if (!value) {
       error = 'Required';
-    } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
+    } else if (!/^([A-Za-z\-']{1,20})|([А-Яа-я\-']{1,20})$/u.test(value)) {
       error = 'You can use only letters, min 2 symbols';
     }
     setisAllowedName(true)
@@ -272,7 +274,7 @@ function validateName(value) {
     let error;
     if (!value) {
       error = 'Required';
-    } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(value)) {
+    } else if (!/^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/i.test(value)) {
       error = 'Invalid email address';
     }
     setisAllowedEmail(true)
@@ -287,7 +289,7 @@ function validateName(value) {
     let error;
     if (!value) {
       error = 'Required';
-    } else if (!/^[0-9]{2}?[.]?[0-9]{2}?[.]?[0-9]{4}$/.test(value)) {
+    } else if (! /^(0[1-9]|[12][0-9]|3[01])[- /.](0[1-9]|1[012])[- /.](19|20)\d\d$/.test(value)) {
       error = 'Should be in format 00.00.0000';
     }
     setisAllowedBirth(true)
@@ -303,7 +305,7 @@ function validateName(value) {
       error = 'Required';
     }
 
-    else if (!/^[+]?[(]?[380]{3}[)]?[0-9]{3}?[0-9]{6}$/.test(value)) {
+    else if (!/^\+38(0\d{9})$/.test(value)) {
       error = 'phone should start with +380 and have 12 symbols';
     }
     setisAllowedPhone(true)
@@ -318,7 +320,7 @@ function validateName(value) {
     let error;
     if (!value) {
       error = 'Required';
-    } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
+    } else if (!/^([A-Za-z]+)([,][ ][A-Za-z]+)*$/u.test(value)) {
       error = 'You can use only letters, min 2 symbols';
     }
     setisAllowedCity(true)
