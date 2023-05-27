@@ -27,6 +27,7 @@ export const FriendsTitle = styled.h2`
 
     margin-bottom: 24px;
     display: block;
+    margin-top: 66px;
   }
 
   @media screen and (min-width: 768px) {

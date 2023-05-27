@@ -36,14 +36,14 @@ export const FriendsItem = ({
             </LinkItem>
           </TextContent>
           <TextContent>
-            <LinkItem href={email} target="blank">
+            <LinkItem href={`mailto:${email}`} target="blank">
               <SpanColor>email:</SpanColor>
               <br />
               {email}
             </LinkItem>
           </TextContent>
           <TextContent>
-            <LinkItem>
+            <LinkItem target="blank" href={`tel:${phone}`}>
               <SpanColor>phone:</SpanColor>
               <br />
               {phone}
