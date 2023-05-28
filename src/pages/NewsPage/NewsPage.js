@@ -4,7 +4,7 @@ import { Title, Page } from './NewsPage.styled';
 import { Container } from 'pages/FindePets/FindPeds.styled';
 import SearchInput from 'components/News/Search/SearchInput';
 import NewsList from 'components/News/NewsList/NewsList';
-import NewsPagination from 'components/News/NewsPagination/NewsPagination';
+import Pagination from 'components/ReusableComponents/Pagination/Pagination';
 const NewsPage = () => {
   return (
     <Page>
@@ -12,7 +12,7 @@ const NewsPage = () => {
         <Title>News</Title>
         <SearchInput />
         <NewsList></NewsList>
-        <NewsPagination></NewsPagination>
+        <Pagination></Pagination>
         {/* <Suspense fallback={null}>
         <Outlet />
       </Suspense> */}

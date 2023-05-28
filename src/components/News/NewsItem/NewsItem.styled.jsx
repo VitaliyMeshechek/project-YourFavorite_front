@@ -1,4 +1,6 @@
 import styled from '@emotion/styled';
+import { Link } from 'react-router-dom';
+
 import { breakPoints, colors } from 'base-styles/variables';
 export const Rectangle = styled.div`
   width: 280px;
@@ -87,7 +89,7 @@ export const BottomWrapper = styled.div`
   justify-content: space-between;
 `;
 
-export const ReadMoreButton = styled.button`
+export const ReadMoreButton = styled(Link)`
   font-weight: 500;
   color: #54adff;
 `;
