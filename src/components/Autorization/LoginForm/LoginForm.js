@@ -36,8 +36,8 @@ export const LoginForm = () => {
     password: Yup.string()
       .nullable()
       .required('Password is required')
-      .min(6, 'Password must be at least 6 characters')
-      .max(16, 'Password must be no more than 16 characters')
+      .min(6, 'Password must have at least 6 characters')
+      .max(16, 'Password must have no more than 16 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
         'Must have at least one lowercase and uppercase letter, and one number'
