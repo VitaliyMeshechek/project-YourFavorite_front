@@ -17,10 +17,11 @@ export const FormTitle = styled.h2`
   font-weight: 500;
   font-size: 24px;
   line-height: 1.37;
-  color: #111111;
+  color: ${colors.black};
   text-align: center;
   margin: 0;
   margin-bottom: 40px;
+  
 
   @media screen and (min-width: 768px) {
     font-size: 36px;
@@ -31,7 +32,7 @@ export const FormTitle = styled.h2`
 export const Forms = styled.form`
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: ${colors.white};
   gap: 24px;
   text-align: center;
   margin: 50px auto 0;
@@ -43,6 +44,7 @@ export const Forms = styled.form`
     padding: 60px 75px;
     width: 608px;
     margin: 82px auto 0;
+    border-radius: 40px;
   }
 `;
 
@@ -52,7 +54,7 @@ export const Input = styled(Field)`
   padding: 12px 16px;
   font-size: 16px;
   background-color: transparent;
-  border: 1px solid #54adff;
+  border: 1px solid ${colors.blue};
   border-radius: 40px;
   outline: none;
 

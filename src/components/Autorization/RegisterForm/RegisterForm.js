@@ -34,7 +34,7 @@ export const RegisterForm = () => {
 
   const dispatch = useDispatch();
 
-  const togglePassInput = e => {
+  const togglePassInput = () => {
     if (type === 'password') {
       setType('text');
       setToggleIconPass(
@@ -50,7 +50,7 @@ export const RegisterForm = () => {
     }
   };
 
-  const toggleConfirmPassInput = e => {
+  const toggleConfirmPassInput = () => {
     if (typeConfirm === 'password') {
       setTypeConfirm('text');
       setToggleIconConfirmPass(
