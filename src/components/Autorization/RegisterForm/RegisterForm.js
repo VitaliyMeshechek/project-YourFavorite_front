@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { register } from 'redux/auth/operations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Error, PasswordMessage } from './RegisterForm.styled';
 import {
+  Error,
+  PasswordMessage,
   FormTitle,
   Forms,
   Input,
@@ -13,7 +14,8 @@ import {
   IconButton,
   Subtitle,
   Button,
-} from '../LoginForm/LoginForm.styled';
+} from './RegisterForm.styled';
+
 import { BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const RegisterForm = () => {
@@ -34,7 +36,7 @@ export const RegisterForm = () => {
 
   const dispatch = useDispatch();
 
-  const togglePassInput = e => {
+  const togglePassInput = () => {
     if (type === 'password') {
       setType('text');
       setToggleIconPass(
@@ -50,7 +52,7 @@ export const RegisterForm = () => {
     }
   };
 
-  const toggleConfirmPassInput = e => {
+  const toggleConfirmPassInput = () => {
     if (typeConfirm === 'password') {
       setTypeConfirm('text');
       setToggleIconConfirmPass(
@@ -71,11 +73,11 @@ export const RegisterForm = () => {
     password: Yup.string()
       .nullable()
       .required('Password is required')
-      .min(6, 'Password must be at least 6 characters')
-      .max(16, 'Password must be no more than 16 characters')
+      .min(6, 'Password must have at least 6 characters')
+      .max(16, 'Password must have no more than 16 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-        'Must be at least one lowercase and uppercase letter, one number'
+        'Must have at least one lowercase and uppercase letter and one number'
       ),
     confirmPassword: Yup.string()
       .nullable()
@@ -88,11 +90,11 @@ export const RegisterForm = () => {
       }),
   });
 
-  const handleSubmit = ({ email, password }, { resetForm }) => {
+  const handleSubmit = (values, { resetForm }) => {
     dispatch(
       register({
-        email,
-        password,
+        email: values.email,
+        password: values.password,
       })
     );
     resetForm();
@@ -104,11 +106,18 @@ export const RegisterForm = () => {
       initialValues={initialValues}
       validationSchema={registrationValidationSchema}
     >
-      {({ errors, touched }) => (
+      {({ errors, touched, isSubmitting }) => (
         <Forms autoComplete="off">
           <FormTitle>Registration </FormTitle>
           <Label>
-            <Input type="email" name="email" placeholder="Email" />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              valid={touched.email && !errors.email ? 'true' : undefined}
+              error={touched.email && errors.email}
+            />
+
             <Error name="email" component="div" />
           </Label>
           <Label>
@@ -117,6 +126,8 @@ export const RegisterForm = () => {
               name="password"
               placeholder="Password"
               as={Input}
+              valid={touched.password && !errors.password ? 'true' : undefined}
+              error={touched.password && errors.password}
             />
 
             <IconButton type="button" onClick={togglePassInput}>
@@ -134,14 +145,23 @@ export const RegisterForm = () => {
               name="confirmPassword"
               placeholder="ConfirmPassword"
               as={Input}
+              valid={
+                touched.confirmPassword && !errors.confirmPassword
+                  ? 'true'
+                  : undefined
+              }
+              error={touched.confirmPassword && errors.confirmPassword}
             />
             <IconButton type="button" onClick={toggleConfirmPassInput}>
               {toggleIconConfirmPass}
             </IconButton>
-            <Error name="confirmPassword" component="div" />
+            {touched.confirmPassword && errors.confirmPassword ? (
+              <Error name="confirmPassword" component="div" />
+            ) : null}
           </Label>
-
-          <Button type="submit">Registration</Button>
+          <Button type="submit" disabled={isSubmitting}>
+            Registration
+          </Button>
           <Subtitle>
             Already have an account?
             <NavLink
