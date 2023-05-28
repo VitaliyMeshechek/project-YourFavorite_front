@@ -43,13 +43,13 @@ export const App = () => {
           </Route>
           <Route path="friends" element={<OurFriendsPage />} />
           <Route path="register" element={
-            <RestrictedRoute redirectTo="user" component={<RegisterPage />} />
+            <RestrictedRoute redirectTo="login" component={<RegisterPage />} />
           } />
           <Route path="login" element={
             <RestrictedRoute redirectTo="user" component={<LoginPage />} />
           } />
           <Route path="user" element={
-            <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            <PrivateRoute redirectTo="login" component={<UserPage />} />
           } />
           <Route path="add-pet" element={<AddPetPage />} />
           <Route path="*" element={<PageNotFound />} />
