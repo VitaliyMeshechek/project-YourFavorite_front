@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, useNavigate } from 'react-router-dom';
 import { register } from 'redux/auth/operations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -28,13 +28,14 @@ export const RegisterForm = () => {
     <BsEyeSlash style={{ fill: '#54adff', width: '24px', height: '24px' }} />
   );
 
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
   const initialValues = {
     email: '',
     password: '',
     confirmPassword: '',
   };
-
-  const dispatch = useDispatch();
 
   const togglePassInput = () => {
     if (type === 'password') {
@@ -90,14 +91,22 @@ export const RegisterForm = () => {
       }),
   });
 
-  const handleSubmit = (values, { resetForm }) => {
-    dispatch(
+  const handleSubmit = async (values, { resetForm }) => {
+    const UserRegistration = await dispatch(
       register({
         email: values.email,
         password: values.password,
       })
     );
-    resetForm();
+    try {
+      const status = UserRegistration.payload.response.status;
+      if (status === 'Success') {
+        navigate('/user');
+        resetForm();
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
@@ -106,7 +115,7 @@ export const RegisterForm = () => {
       initialValues={initialValues}
       validationSchema={registrationValidationSchema}
     >
-      {({ errors, touched, isSubmitting }) => (
+      {({ errors, touched}) => (
         <Forms autoComplete="off">
           <FormTitle>Registration </FormTitle>
           <Label>
@@ -117,7 +126,6 @@ export const RegisterForm = () => {
               valid={touched.email && !errors.email ? 'true' : undefined}
               error={touched.email && errors.email}
             />
-
             <Error name="email" component="div" />
           </Label>
           <Label>
@@ -159,7 +167,7 @@ export const RegisterForm = () => {
               <Error name="confirmPassword" component="div" />
             ) : null}
           </Label>
-          <Button type="submit" disabled={isSubmitting}>
+          <Button type="submit" >
             Registration
           </Button>
           <Subtitle>

@@ -115,9 +115,6 @@ export const Button = styled.button`
   :hover {
     transform: scale(1.02);
   }
-  :disabled {
-    opacity: 0.35;
-  }
 
   @media screen and (min-width: 768px) {
     padding: 10px 201px;
