@@ -1,7 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = 'https://project-yourfavorite-back.onrender.com';
+axios.defaults.baseURL = 'https://project-yourfavorite-back.onrender.com/api';
 
 export const updateUser = createAsyncThunk(
     'users/updateUser',
