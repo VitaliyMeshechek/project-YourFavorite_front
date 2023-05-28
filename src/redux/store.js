@@ -3,6 +3,7 @@ import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
 import { filterReducer } from './notices/slice';
 import { modalReducer } from './modal/slice';
+import { petReducer } from './user/slice';
 
 import {
   persistStore,
@@ -26,6 +27,7 @@ export const store = configureStore({
     showModal: modalReducer,
     filter: filterReducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    pet: petReducer,
   },
   middleware: [
     ...getDefaultMiddleware({
