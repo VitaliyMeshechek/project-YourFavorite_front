@@ -1,13 +1,16 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+axios.defaults.baseURL = 'https://project-yourfavorite-back.onrender.com';
 
 export const updateUser = createAsyncThunk(
     'users/updateUser',
     async (values , thunkAPI) => {
       try {
-        const response = await axios.patch(`/user`, values);
-        return response.data;
+        console.log(values)
+        const response = await axios.put(`/cardPets`, values);
+       
+        return ("data", response.data);
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
       }
@@ -21,8 +24,8 @@ export const updateUser = createAsyncThunk(
         const formData = new FormData();
       formData.append('file', values);
 
-        const response = await axios.patch(`/user`, formData);
-        return response.data;
+        const response = await axios.put(`/cardPets`, formData);
+        return ("data", response.data);
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
       }
@@ -81,11 +84,11 @@ export const addPet = createAsyncThunk(
   );
   
   export const deletePet = createAsyncThunk(
-    "Pets/deletePet",
+    "pets/deletePet",
     async (id, thunkAPI) => {
       console.log(id)
         try {
-          const response = await axios.delete(`/pets/${id}`);
+          const response = await axios.delete(`/pet/${id}`);
         return response.data;
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
