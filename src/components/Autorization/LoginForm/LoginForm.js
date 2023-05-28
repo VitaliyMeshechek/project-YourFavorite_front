@@ -108,8 +108,8 @@ export const LoginForm = () => {
               type={type}
               name="password"
               placeholder="Password"
-              valid={touched.email && !errors.email ? 'true' : undefined}
-              error={touched.email && errors.email}
+              valid={touched.password && !errors.password ? 'true' : undefined}
+              error={touched.password && errors.password}
             />
 
             {touched.password && !errors.password ? (
