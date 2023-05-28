@@ -1,6 +1,6 @@
 import { useDispatch } from 'react-redux';
 import { useState } from 'react';
-import { NavLink, useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { logIn } from 'redux/auth/operations';
@@ -21,7 +21,6 @@ import { BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
-  const navigate = useNavigate();
   const [type, setType] = useState('password');
   const [toggleIconPass, setToggleIconPass] = useState(
     <BsEyeSlash style={{ fill: '#54adff', width: '24px', height: '24px' }} />
@@ -37,27 +36,20 @@ export const LoginForm = () => {
     password: Yup.string()
       .nullable()
       .required('Password is required')
-      .min(6, 'Password must be at least 6 characters')
-      .max(16, 'Password must be no more than 16 characters')
+      .min(6, 'Password must have at least 6 characters')
+      .max(16, 'Password must have no more than 16 characters')
       .matches(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
         'Must have at least one lowercase and uppercase letter, and one number'
       ),
   });
 
-  const handleSubmit = async (values, { resetForm }) => {
-    const UserLogin = await dispatch(logIn(values));
-    try {
-      const status = UserLogin.payload.response;
-      if (status === 'Success') {
-        navigate('/user');
-        resetForm();
-      } else {
-        console.log('unauthorized');
-      }
-    } catch (error) {
-      console.log(error);
-    }
+  const handleSubmit = ({ email, password }, { resetForm }) => {
+    dispatch(logIn({
+      email,
+      password,
+    }));
+    resetForm();
   };
 
   const togglePassInput = () => {
