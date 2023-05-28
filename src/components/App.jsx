@@ -24,6 +24,9 @@ import LoginPage from 'pages/LoginPage/LoginPage';
 import UserPage from 'pages/UserPage/UserPage';
 import AddPetPage from 'pages/AddPetPage/AddPetPage';
 import PageNotFound from 'pages/PageNotFound/PageNotFound';
+
+import { PrivateRoute } from './PrivateRoute';
+import { RestrictedRoute } from './RestrictedRoute';
 // import FindPeds from 'pages/FindePets/FindPeds';
 
 export const App = () => {
@@ -39,9 +42,15 @@ export const App = () => {
             <Route path=":categoryName" element={<NoticesCategoriesList />} />
           </Route>
           <Route path="friends" element={<OurFriendsPage />} />
-          <Route path="register" element={<RegisterPage />} />
-          <Route path="login" element={<LoginPage />} />
-          <Route path="user" element={<UserPage />} />
+          <Route path="register" element={
+            <RestrictedRoute redirectTo="user" component={<RegisterPage />} />
+          } />
+          <Route path="login" element={
+            <RestrictedRoute redirectTo="user" component={<LoginPage />} />
+          } />
+          <Route path="user" element={
+            <PrivateRoute redirectTo="/login" component={<UserPage />} />
+          } />
           <Route path="add-pet" element={<AddPetPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
