@@ -45,10 +45,12 @@ export const LoginForm = () => {
   });
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
-    dispatch(logIn({
-      email,
-      password,
-    }));
+    dispatch(
+      logIn({
+        email,
+        password,
+      })
+    );
     resetForm();
   };
 
@@ -82,7 +84,7 @@ export const LoginForm = () => {
               type="email"
               name="email"
               placeholder="Email"
-              valid={!errors.email && touched.email}
+              valid={touched.email && !errors.email ? 'true' : undefined}
               error={touched.email && errors.email}
             />
 
@@ -106,8 +108,8 @@ export const LoginForm = () => {
               type={type}
               name="password"
               placeholder="Password"
-              valid={!errors.password && touched.password}
-              error={touched.password && errors.password}
+              valid={touched.email && !errors.email ? 'true' : undefined}
+              error={touched.email && errors.email}
             />
 
             {touched.password && !errors.password ? (

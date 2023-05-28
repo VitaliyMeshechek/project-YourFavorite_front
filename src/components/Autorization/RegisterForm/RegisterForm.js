@@ -108,7 +108,13 @@ export const RegisterForm = () => {
         <Forms autoComplete="off">
           <FormTitle>Registration </FormTitle>
           <Label>
-            <Input type="email" name="email" placeholder="Email" />
+            <Input
+              type="email"
+              name="email"
+              placeholder="Email"
+              valid={touched.email && !errors.email ? 'true' : undefined}
+              error={touched.email && errors.email}
+            />
             <Error name="email" component="div" />
           </Label>
           <Label>
@@ -116,7 +122,8 @@ export const RegisterForm = () => {
               type={type}
               name="password"
               placeholder="Password"
-              as={Input}
+              valid={touched.email && !errors.email ? 'true' : undefined}
+              error={touched.email && errors.email}
             />
 
             <IconButton type="button" onClick={togglePassInput}>
@@ -133,12 +140,19 @@ export const RegisterForm = () => {
               type={typeConfirm}
               name="confirmPassword"
               placeholder="ConfirmPassword"
-              as={Input}
+              valid={
+                touched.confirmPassword && !errors.confirmPassword
+                  ? 'true'
+                  : undefined
+              }
+              error={touched.confirmPassword && errors.confirmPassword}
             />
             <IconButton type="button" onClick={toggleConfirmPassInput}>
               {toggleIconConfirmPass}
             </IconButton>
-            <Error name="confirmPassword" component="div" />
+            {touched.confirmPassword && errors.confirmPassword ? (
+              <Error name="confirmPassword" component="div" />
+            ) : null}
           </Label>
 
           <Button type="submit">Registration</Button>
