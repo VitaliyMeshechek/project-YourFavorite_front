@@ -75,7 +75,7 @@ export const Info = styled.div`
     justify-content: center;
     align-items: center;
     padding: 2px 4px;
-    width: 80px;
+    min-width: 80px;
     height: 28px;
     background: #CCE4FB;
     border-radius: 16px;
@@ -132,6 +132,35 @@ border: none;
     }
     }
 
+`
+
+export const TrashBtn = styled.button`
+    position: absolute;
+    top: 68px;
+    right: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+height: 40px;
+background: #C5DFF6;
+color: #54ADFF;
+border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    
+    svg {
+        width: 24px;
+        height: 24px;
+        color: inherit;
+    }
+
+    &:hover {
+        background: #54ADFF;
+        svg {
+        color: #C5DFF6;
+    }
 `
 export const Title = styled.h2`
 display: inline-block;

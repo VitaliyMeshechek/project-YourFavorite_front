@@ -1,3 +1,4 @@
+import { useAuth } from 'hooks';
 import { Nav, NavLinkStyled } from './CategoriesNav.styled';
 
 const links = [
@@ -8,11 +9,12 @@ const links = [
 ];
 
 const userLinks = [
-  { href: 'favorite', text: 'favorite ads' },
+  { href: 'favorite', text: 'favorite' },
   { href: 'own', text: 'my ads' },
 ]
 
 export const NoticesCategoriesNav = () => {
+  const {isLoggedIn} = useAuth()
   return (
       <Nav>
         {links.map(({ href, text }) => (
@@ -20,7 +22,7 @@ export const NoticesCategoriesNav = () => {
             {text}
           </NavLinkStyled>
         ))}
-        {userLinks.map(({ href, text }) => (
+        {isLoggedIn && userLinks.map(({ href, text }) => (
           <NavLinkStyled to={href} key={href}>
             {text}
           </NavLinkStyled>

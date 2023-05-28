@@ -2,7 +2,7 @@ import { NavList, NavItem, Link } from './Nav.styled';
 
 const links = [
   { id: 1, href: '/news', text: 'News' },
-  { id: 2, href: '/FindPets', text: 'Find pet' },
+  { id: 2, href: '/notices', text: 'Find pet' },
   { id: 3, href: '/friends', text: 'Our friends' },
 ];
 

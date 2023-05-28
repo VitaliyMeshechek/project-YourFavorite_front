@@ -1,11 +1,27 @@
 import {HiOutlineLocationMarker, HiOutlineClock} from 'react-icons/hi'
-import {FiHeart} from 'react-icons/fi'
+import {FiHeart, FiTrash2} from 'react-icons/fi'
 import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
-import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title } from "./CategoriesItems.styled"
+import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
+import { useDispatch, useSelector } from 'react-redux'
+import { selectFavorite } from 'redux/noticesPage/selectors'
+import { addToFavorite } from 'redux/noticesPage/operations'
+import { getAge } from 'utils/getAge'
+import { toast } from 'react-toastify'
 
-export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, category}}) => {
-
+export const NoticesCategoriesItems = ({pet: {_id, img, title, location, birthday, sex, category}}) => {
+    const favorites = useSelector(selectFavorite)
+    const dispatch = useDispatch()
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
+    const old = getAge(birthday)
+
+
+const handleFavorite = () => {
+const favorite = favorites.find(item => item._id === _id)
+if(favorite) {
+    return toast('already in favorites');
+}
+dispatch(addToFavorite(_id))
+}
 
 
     return (
@@ -14,9 +30,13 @@ export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, ca
             <Photo src={img}/>
             <Category>{category}</Category>
 
-            <FavoriteBtn type='button'>
+            <FavoriteBtn type='button' onClick={handleFavorite}>
                 <FiHeart/>
             </FavoriteBtn>
+
+            <TrashBtn type='button'>
+                <FiTrash2/>
+            </TrashBtn>
 
             <TabsWrapper>
             <Info>
@@ -25,7 +45,7 @@ export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, ca
             </Info>
             <Info>
                 <HiOutlineClock/>
-                {old}
+                {old > 1? `${old} years`: `${old} year`} 
             </Info>
             <Info>
                 {sex === 'female'? <TbGenderFemale/> : <TbGenderMale/>}
