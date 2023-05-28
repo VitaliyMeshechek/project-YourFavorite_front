@@ -11,10 +11,16 @@ import {
 } from 'components/News/Search/SearchInput.styled';
 
 import { Formik, ErrorMessage } from 'formik';
+import { useSearchParams } from 'react-router-dom';
 import * as yup from 'yup';
 
 const SearchInput = () => {
-  const handleSubmit = (values, { resetForm }) => {
+  // eslint-disable-next-line no-unused-vars
+  const [searchParams, setSearchParams] = useSearchParams();
+
+  const handleSubmit = ({ search }, { resetForm }) => {
+    const nextParams = search !== '' ? { search } : {};
+    setSearchParams(nextParams);
     resetForm();
   };
 

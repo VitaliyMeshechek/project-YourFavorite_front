@@ -11,14 +11,11 @@ import {
   ItemWrapper,
 } from './NewsItem.styled';
 
-import { useNavigate } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 
 const NewsItem = () => {
-  const navigate = useNavigate();
+  const location = useLocation();
 
-  const handleReadMore = () => {
-    navigate('/', { replace: true });
-  };
   return (
     <ItemWrapper>
       <Rectangle></Rectangle>
@@ -35,7 +32,7 @@ const NewsItem = () => {
           </Desc>
           <BottomWrapper>
             <Date>15/03/2023</Date>
-            <ReadMoreButton type="button" onClick={handleReadMore}>
+            <ReadMoreButton to="/" state={{ from: location }}>
               Read more
             </ReadMoreButton>
           </BottomWrapper>
