@@ -1,5 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addToFavorite, deleteFromFavorite, fetchAll, fetchFavorites, fetchNotices } from './operations';
+import {
+  addToFavorite,
+  deleteFromFavorite,
+  fetchAll,
+  fetchFavorites,
+  fetchNotices,
+  addNotice,
+} from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -16,17 +23,19 @@ const noticesPageSlice = createSlice({
     isLoading: false,
     error: null,
     favorite: [],
-    own: []
+    own: [],
   },
 
   extraReducers: {
     [fetchAll.pending]: handlePending,
+    [addNotice.pending]: handlePending,
     [fetchAll.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     },
     [fetchAll.rejected]: handleRejected,
+    [addNotice.rejected]: handleRejected,
 
     [fetchNotices.pending]: handlePending,
     [fetchNotices.fulfilled](state, action) {
@@ -51,7 +60,11 @@ const noticesPageSlice = createSlice({
       state.favorite.push(action.payload);
     },
     [addToFavorite.rejected]: handleRejected,
-
+    [addNotice.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+    },
     [deleteFromFavorite.pending]: handlePending,
     [deleteFromFavorite.fulfilled](state, action) {
       state.isLoading = false;
@@ -61,9 +74,8 @@ const noticesPageSlice = createSlice({
       );
       state.favorite.splice(index, 1);
     },
-    },
-    [deleteFromFavorite.rejected]: handleRejected,
   },
-);
+  [deleteFromFavorite.rejected]: handleRejected,
+});
 
 export const noticesPageReducer = noticesPageSlice.reducer;
