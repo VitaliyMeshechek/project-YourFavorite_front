@@ -1,5 +1,5 @@
-export const selectNotices = state => state.notices.items;
-export const selectIsLoading = state => state.notices.isLoading;
-export const selectError = state => state.notices.error;
+export const selectNotices = state => state.noticesPage.items;
+export const selectIsLoading = state => state.noticesPage.isLoading;
+export const selectError = state => state.noticesPage.error;
 export const selectQuery = state => state.query;
-export const selectFavorite = state => state.favorite;
+export const selectFavorite = state => state.noticesPage.favorite;

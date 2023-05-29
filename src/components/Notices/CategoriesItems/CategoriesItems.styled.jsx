@@ -75,7 +75,7 @@ export const Info = styled.div`
     justify-content: center;
     align-items: center;
     padding: 2px 4px;
-    width: 80px;
+    min-width: 80px;
     height: 28px;
     background: #CCE4FB;
     border-radius: 16px;
@@ -157,8 +157,9 @@ border: none;
     }
 
     &:hover {
+        background: #54ADFF;
         svg {
-        fill: #54ADFF;
+        color: #C5DFF6;
     }
 `
 export const Title = styled.h2`

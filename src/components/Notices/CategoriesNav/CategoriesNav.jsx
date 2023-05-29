@@ -8,7 +8,7 @@ const links = [
 ];
 
 const userLinks = [
-  { href: 'favorite', text: 'favorite ads' },
+  { href: 'favorite', text: 'favorite' },
   { href: 'own', text: 'my ads' },
 ]
 

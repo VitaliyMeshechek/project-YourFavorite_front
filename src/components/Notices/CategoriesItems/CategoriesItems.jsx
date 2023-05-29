@@ -5,11 +5,13 @@ import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Ti
 import { useDispatch, useSelector } from 'react-redux'
 import { selectFavorite } from 'redux/noticesPage/selectors'
 import { addToFavorite } from 'redux/noticesPage/operations'
+import { getAge } from 'utils/getAge'
 
-export const NoticesCategoriesItems = ({pet: {id, img, title, location, old, sex, category}}) => {
+export const NoticesCategoriesItems = ({pet: {id, img, title, location, birthday, sex, category}}) => {
     const favorites = useSelector(selectFavorite)
     const dispatch = useDispatch()
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
+    const old = getAge(birthday)
 
 
 const handleFavorite = () => {
@@ -42,7 +44,7 @@ dispatch(addToFavorite)
             </Info>
             <Info>
                 <HiOutlineClock/>
-                {old}
+                {old > 1? `${old} years`: `${old} year`} 
             </Info>
             <Info>
                 {sex === 'female'? <TbGenderFemale/> : <TbGenderMale/>}
