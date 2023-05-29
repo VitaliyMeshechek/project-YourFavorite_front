@@ -2,10 +2,23 @@ import {HiOutlineLocationMarker, HiOutlineClock} from 'react-icons/hi'
 import {FiHeart, FiTrash2} from 'react-icons/fi'
 import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
+import { useDispatch, useSelector } from 'react-redux'
+import { selectFavorite } from 'redux/noticesPage/selectors'
+import { addToFavorite } from 'redux/noticesPage/operations'
 
-export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, category}}) => {
-
+export const NoticesCategoriesItems = ({pet: {id, img, title, location, old, sex, category}}) => {
+    const favorites = useSelector(selectFavorite)
+    const dispatch = useDispatch()
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
+
+
+const handleFavorite = () => {
+const favorite = favorites.find(item => item.id === id)
+if(favorite) {
+    return console.log('already in favorites');
+}
+dispatch(addToFavorite)
+}
 
 
     return (
@@ -14,7 +27,7 @@ export const NoticesCategoriesItems = ({pet: {img, title, location, old, sex, ca
             <Photo src={img}/>
             <Category>{category}</Category>
 
-            <FavoriteBtn type='button'>
+            <FavoriteBtn type='button' onClick={handleFavorite}>
                 <FiHeart/>
             </FavoriteBtn>
 
