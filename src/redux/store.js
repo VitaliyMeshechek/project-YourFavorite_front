@@ -2,6 +2,7 @@ import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
 import { modalReducer } from './modal/slice';
+import { petReducer } from './user/slice';
 
 import {
   persistStore,
@@ -27,7 +28,8 @@ export const store = configureStore({
     showModal: modalReducer,
     auth: persistReducer(authPersistConfig, authReducer),
     noticesPage: noticesPageReducer,
-    query: queryReducer
+    query: queryReducer,
+    pet: petReducer,
   },
   middleware: [
     ...getDefaultMiddleware({

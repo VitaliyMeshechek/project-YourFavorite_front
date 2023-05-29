@@ -42,4 +42,4 @@ export const petsSlice = createSlice({
   
   
   
-  export const PetReducer = petsSlice.reducer
+  export const petReducer = petsSlice.reducer
