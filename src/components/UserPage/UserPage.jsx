@@ -8,7 +8,7 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
 import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
- import {  updateUser ,updateUserPhoto, deletePet} from '../../redux/user/operations';
+ import {  updateUser ,updateUserPhoto, deletePet, fetchPets} from '../../redux/user/operations';
 import { BsPlus } from 'react-icons/bs'
 import {selectModal} from '../../redux/modal/selectors'
 
@@ -20,9 +20,10 @@ import PhotoDef from '../../../src/images/UserPhotoDefault.png'
  import{showModal} from  '../../redux/modal/slice'
 export const UserPageInfo =()=> {
   const { user } = useAuth();
-const isFirstTime = user.isFirstTime
+const firstLogin = user.firstLogin
 
-console.log(user.isFirstTime)
+
+console.log(user.firstLogin)
 // коли буде в БД в Юзера буде це поле треба підтягнути
 
 
@@ -31,10 +32,10 @@ console.log(user.isFirstTime)
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (!isFirstTime) {
+    if (!firstLogin) {
     dispatch(showModal(false));
   
-}},[isFirstTime,dispatch]);
+}},[firstLogin,dispatch]);
 
 console.log(modalState)
 // if (modalState &&isLogoutModal) {
@@ -63,8 +64,8 @@ console.log(modalState)
 
     return (
       <div>
-        {isFirstTime && <CongratsModal/>}
-    {!isFirstTime &&<LeavingModal approveHandle={approveLogOut}/>}
+        {firstLogin && <CongratsModal/>}
+    {!firstLogin &&<LeavingModal approveHandle={approveLogOut}/>}
 
         <UserPageContainer>
 <UserBlock>
@@ -97,10 +98,17 @@ const Logout =({toggleModal})=>{
   return(<ButtonLogout type="button" onClick={toggleModal}><FiLogOut style={{rotate:"180deg", width: '22px', height: '21px', marginRight:'16px', }}/>Log Out</ButtonLogout>)
 }
 const PetsData =()=>{
+  const dispatch = useDispatch();
 
+  useEffect(() => {
+    dispatch(fetchPets());
+}, [dispatch]);
+  const { user } = useAuth()
+  const allPets= user.pets
+console.log(allPets)
 
-
-
+  const visiblePets = allPets? allPets.filter(pet => pet.category.includes("your pet")) : [];
+  console.log(visiblePets)
   
   const  pets=[
     
@@ -130,8 +138,8 @@ const PetsData =()=>{
     ]
     return(
         <div>
-    {pets.length===0 && <Header>You have not added your pets yet</Header>}
-    <PetsList pets = {pets}/></div>)
+    {visiblePets.length===0 && <Header>You have not added your pets yet</Header>}
+    <PetsList pets = {visiblePets}/></div>)
 }
 
 const UserData =()=>{ 
