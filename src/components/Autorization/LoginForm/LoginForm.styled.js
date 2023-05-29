@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 import { Form, Field, ErrorMessage } from 'formik';
-import { colors } from 'base-styles/variables';
+import { colors, breakPoints } from 'base-styles/variables';
 import { BsXLg, BsCheck, BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const FormTitle = styled.h2`
@@ -12,7 +12,7 @@ export const FormTitle = styled.h2`
   margin: 0;
   margin-bottom: 40px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     font-size: 36px;
     line-height: 1.36;
   }
@@ -29,7 +29,7 @@ export const Forms = styled(Form)`
   border-radius: 20px;
   padding: 40px 12px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     padding: 60px 75px;
     width: 608px;
     margin: 82px auto 0;
@@ -108,7 +108,7 @@ export const Button = styled.button`
     transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     padding: 10px 201px;
   }
 `;
