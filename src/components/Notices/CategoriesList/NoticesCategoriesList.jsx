@@ -35,7 +35,7 @@ const NoticesCategoriesList = () => {
         return null
     };
 
-
+    console.log(searchParams);
 return (
 <>
     <CategoriesList>
