@@ -33,6 +33,12 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+
+  transition: transform 300ms ease;
+
+  &:hover {
+    transform: scale(1.2);
+  }
 `;
 
 export const BackButton = styled(Button)``;
@@ -41,4 +47,8 @@ export const BackIcon = styled(BsArrowLeft)``;
 export const ForwardButton = styled(Button)``;
 export const ForwardIcon = styled(BsArrowRight)``;
 
-export const PageButton = styled(Button)``;
+export const PageButton = styled(Button)`
+  background-color: ${({ accent }) => accent && '#54ADFF;'};
+  color: ${({ accent }) => accent && '#FEF9F9;'};
+  transform: scale(${({ accent }) => accent && '1.2'});
+`;

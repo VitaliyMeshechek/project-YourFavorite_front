@@ -7,21 +7,23 @@ export const Title = styled.h1`
   line-height: 33px;
 
   text-align: center;
-  margin-top: 40px;
   margin-bottom: 24px;
 
   @media screen and (min-width: ${breakPoints.tablet}) {
     font-size: 48px;
     line-height: 66px;
-    margin-top: 80px;
     margin-bottom: 40px;
   }
 `;
 
 export const Page = styled.div`
+  margin-top: 88px;
+
   padding-bottom: 100px;
 
   @media screen and (min-width: ${breakPoints.tablet}) {
+    margin-top: 148px;
+
     padding-bottom: 110px;
   }
 `;

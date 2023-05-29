@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
-import { Form, Field } from 'formik';
+import { Form, Field, ErrorMessage } from 'formik';
+import { colors } from 'base-styles/variables';
+import { BsXLg, BsCheck } from 'react-icons/bs';
 
 export const FormTitle = styled.h2`
   font-weight: 500;
@@ -108,4 +110,27 @@ export const Subtitle = styled.p`
   line-height: 1.33;
   color: #888888;
   text-align: center;
+`;
+
+export const Error = styled(ErrorMessage)`
+  font-size: 12px;
+  color: ${colors.red};
+`;
+
+export const PasswordMessage = styled.div`
+  font-size: 12px;
+  line-height: 16px;
+  color: ${colors.green};
+`;
+
+export const ErrorEmailIcon = styled(BsXLg)`
+  fill: ${colors.red};
+  width: 16px;
+  height: 16px;
+`;
+
+export const SecuredPasswordIcon = styled(BsCheck)`
+  fill: ${colors.green};
+  width: 24px;
+  height: 28px;
 `;
