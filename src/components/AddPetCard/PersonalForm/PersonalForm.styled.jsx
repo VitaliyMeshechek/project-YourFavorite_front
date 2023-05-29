@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
+import { breakPoints, colors } from 'base-styles/variables';
 
 export const PersonalFormWrapper = styled.div`
   display: flex;
@@ -22,9 +23,9 @@ export const AddFormLabel = styled.label`
   font-size: 14px;
   line-height: 1.36;
 
-  color: #111111;
+  color: ${colors.black};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     gap: 8px;
     font-size: 20px;
     line-height: 1.3;
@@ -37,12 +38,12 @@ export const AddFormInput = styled(Field)`
   font-size: 14px;
   line-height: 1.5;
 
-  border: 1px solid #54ADFF;
+  border: 1px solid ${colors.blue};
   border-radius: 40px;
-  outline-color: #54ADFF;
+  outline-color: ${colors.blue};
   transition: outline 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     font-size: 16px;
     min-width: 394px;
     padding: 12px 16px;

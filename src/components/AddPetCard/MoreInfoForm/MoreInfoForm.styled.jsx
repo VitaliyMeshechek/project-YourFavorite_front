@@ -1,11 +1,7 @@
 import styled from '@emotion/styled';
 import { Field } from 'formik';
-// import {
-//   AddFormInput,
-//   AddFormLabel,
-// } from '../PersonalForm/PersonalForm.styled';
-// import { AddFormRadioButton } from '../ChooseForm/ChooseForm.styled';
-// import { visuallyHidden } from '../../../utils/visuallyHidden';
+import { breakPoints, colors } from 'base-styles/variables';
+
 
 export const MoreInfoFormWrapper = styled.div`
   display: flex;
@@ -13,38 +9,38 @@ export const MoreInfoFormWrapper = styled.div`
   flex-grow: 1;
   padding: 16px 0 24px;
   gap: 20px;
+    @media screen and (min-width: ${breakPoints.tablet}) {
+    ${({ category }) =>
+      category !== 'your-pet' ? 'flex-direction: row; column-gap:44px' : ''};
+  }
 
 `;
-  // @media screen and (min-width: 768px) {
-  //   ${({ category }) =>
-  //     category !== 'your-pet' ? 'flex-direction: row; column-gap:44px' : ''};
-  // }
+
 
 export const FirstPartFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
 
+    @media screen and (min-width: ${breakPoints.tablet}) {
+    ${({ category }) => (category !== 'your-pet' ? 'row-gap: 48px;' : '')};
+  }
 
 `;
 
-//   @media screen and (min-width: 768px) {
-  //   ${({ category }) => (category !== 'your-pet' ? 'row-gap: 48px;' : '')};
-  // }
+
 
 export const SecondPartFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     gap: 24px;
   }
 `;
 
-// export const FileInput = styled(Field)`
-//   ${visuallyHidden}
-// `;
+
 export const FileInput = styled(Field)`
   position: absolute;
   width: 1px;
@@ -68,16 +64,15 @@ export const AddFormTextAreaLabel = styled.label`
   font-size: 14px;
   line-height: 1.36;
 
-  color: #111111;
+  color: ${colors.black};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     gap: 8px;
     font-size: 20px;
     line-height: 1.3;
-  }
-  @media screen and (min-width: 768px) {
     height: 100%;
   }
+
 `;
 
 
@@ -92,10 +87,11 @@ padding: 10px 16px;
   outline-color: #54ADFF;
   transition: outline 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     font-size: 16px;
     min-width: 394px;
     padding: 12px 16px;
+    height: 108px;
   }
 
   &[type='date']::-webkit-calendar-picker-indicator {
@@ -107,9 +103,7 @@ padding: 10px 16px;
 
   border-radius: 20px;
 
-  @media screen and (min-width: 768px) {
-    height: 108px;
-  }
+
 `;
 
 export const AddFormSexWrapper = styled.div`
@@ -118,8 +112,10 @@ export const AddFormSexWrapper = styled.div`
   row-gap: 8px;
   column-gap: 16px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     row-gap: 20px;
+    font-size: 20px;
+    line-height: 1.3;
   }
 
   & p {
@@ -127,12 +123,8 @@ export const AddFormSexWrapper = styled.div`
     font-size: 14px;
     line-height: 1.36;
 
-    color: #111111;
+    color: ${colors.black};
 
-    @media screen and (min-width: 768px) {
-      font-size: 20px;
-      line-height: 1.3;
-    }
   }
 `;
 
@@ -148,13 +140,13 @@ export const AddFormSexLabel = styled.label`
   font-size: 16px;
   line-height: 1.5;
 
-  color: #888888;
+  color: ${colors.gray};
 
   cursor: pointer;
   transition: color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
 
   &:hover {
-    color: #54ADFF;
+    color: ${colors.blue};
   }
 
 
@@ -173,12 +165,14 @@ export const AddFormImageLabel = styled.label`
   font-size: 14px;
   line-height: 1.36;
 
-  color: #111111;
+  color: ${colors.black};
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     gap: 8px;
     font-size: 20px;
     line-height: 1.3;
+       ${({ category }) =>
+      category !== 'your-pet' ? 'flex-direction: column' : ''};
   }
   display: flex;
   flex-direction: row;
@@ -187,7 +181,6 @@ export const AddFormImageLabel = styled.label`
 
 
 `;
-//   @media screen and (min-width: 768px) {    ${({ category }) =>      category !== 'your-pet' ? 'flex-direction: column' : ''};}
 export const AddFormImageWrapper = styled.div`
   display: flex;
   align-items: center;
@@ -195,9 +188,9 @@ export const AddFormImageWrapper = styled.div`
   width: 112px;
   height: 112px;
 
-  background-color: #CCE4FB;
+  background-color: ${colors.blueLight};
   border-radius: 20px;
-  color: #54ADFF;
+  color: ${colors.blue};
 
   cursor: pointer;
   overflow: hidden;
@@ -208,7 +201,7 @@ export const AddFormImageWrapper = styled.div`
     stroke: currentColor;
   }
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: ${breakPoints.tablet}) {
     min-width: 182px;
     height: 182px;
   }

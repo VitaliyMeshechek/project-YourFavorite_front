@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { colors } from 'base-styles/variables';
 
 export const ErrorText = styled.p`
   position: absolute;
@@ -7,6 +8,6 @@ export const ErrorText = styled.p`
 
   font-size: 12px;
   line-height: 1.33;
-  color: #F43F5E;
+  color: ${colors.red};
   transform: translateY(100%);
 `;
