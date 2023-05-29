@@ -6,11 +6,12 @@ import{AiOutlineCheck}from 'react-icons/ai';
 import{TbPencilMinus} from 'react-icons/tb';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-import { useAuth } from '../../hooks/useAuth';
+import { useAuth} from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
  import {  updateUser ,updateUserPhoto, deletePet, fetchPets} from '../../redux/user/operations';
 import { BsPlus } from 'react-icons/bs'
 import {selectModal} from '../../redux/modal/selectors'
+// import { selectPet, selectUser } from "redux/auth/selectors";
 
 import CongratsModal from "components/ReusableComponents/Modal/CongratsModal";
 import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
@@ -18,6 +19,8 @@ import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
 import PhotoDef from '../../../src/images/UserPhotoDefault.png'
 
  import{showModal} from  '../../redux/modal/slice'
+
+import { selectPet } from "redux/auth/selectors";
 export const UserPageInfo =()=> {
   const { user } = useAuth();
 const firstLogin = user.firstLogin
@@ -100,14 +103,18 @@ const Logout =({toggleModal})=>{
 const PetsData =()=>{
   const dispatch = useDispatch();
 
+
+  const pet = useSelector(selectPet)
+  console.log(pet)
+  
   useEffect(() => {
     dispatch(fetchPets());
 }, [dispatch]);
-  const { user } = useAuth()
-  const allPets= user.pets
-console.log(allPets)
 
-  const visiblePets = allPets? allPets.filter(pet => pet.category.includes("your pet")) : [];
+  
+
+
+  const visiblePets = pet? pet.filter(pet => pet.category.includes("your pet")) : [];
   console.log(visiblePets)
   
   // const  pets=[
@@ -448,17 +455,18 @@ const PetsList = (props)=>{
     return (
         <div>     
           {pets && <PetsItemUl >{pets.map(item =>           
-            (<PetsItem key={item.id} item={item}  />))}</PetsItemUl>}
+            (<PetsItem key={item._id} item={item}  />))}</PetsItemUl>}
         </div>
     )
 }
 const PetsItem =({item})=>{
           // console.log(item)
-      const {photo, name, dateOfBirth, breed, comments, id} = item
+      const {photo, name, dateOfBirth, breed, comments, _id} = item
+      console.log(_id)
     const  dispatch=useDispatch()
 
      const HandleDeletePet =()=>{
-      dispatch(deletePet(id))
+      dispatch(deletePet(_id))
      }
       return (
       

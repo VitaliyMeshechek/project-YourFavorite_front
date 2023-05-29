@@ -46,27 +46,17 @@ export const updateUser = createAsyncThunk(
         //   .then((data) => console.log(data))
         //   .catch((err) => console.error(err));
 
-export const editData = createAsyncThunk(
-    "pets/fetchAll",
-    async (_, thunkAPI) => {
-      try {
-        const response = await axios.get("/pets");
-        return response.data;
-      } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
-      }
-    }
-  );
+
 
 
 export const fetchPets = createAsyncThunk(
-    "pets/fetchAll",
+    "pet/fetchAll",
     async (_, thunkAPI) => {
       try {
-        const response = await axios.get("/");
-        console.log (response.data)
-        console.log (response.data.pets)
-        return response.data;
+        console.log ("i m here")
+        const response = await axios.get("/cardPets");
+        console.log (response.data.user.pets)
+        return response.data.user.pets;
        
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
@@ -87,11 +77,11 @@ export const addPet = createAsyncThunk(
   );
   
   export const deletePet = createAsyncThunk(
-    "pets/deletePet",
+    "pet/deletePet",
     async (id, thunkAPI) => {
       console.log(id)
         try {
-          const response = await axios.delete(`/pet/${id}`);
+          const response = await axios.delete(`/cardPets/pet/${id}`);
         return response.data;
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
