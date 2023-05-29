@@ -13,7 +13,9 @@ import {
   } from './PetPageForm.styled';
 
 import { addNotice } from 'redux/noticesPage/operations';
-import { addMyPet } from 'redux/auth/operations';
+// import { addMyPet } from 'redux/auth/operations';
+import { addPet } from 'redux/user/operations';
+
 import { validatePetSchema } from '../validatePet';
 
 import MoreInfo from '../MoreInfoForm/MoreInfoForm';
@@ -87,7 +89,7 @@ const AddPetPageForm = () => {
       newFormData.append('comments', formData.comments);
   
       if (formData.category === 'my-pet') {
-        dispatch(addMyPet(newFormData));
+        dispatch(addPet(newFormData));
         navigate(backLink);
         return;
       }
