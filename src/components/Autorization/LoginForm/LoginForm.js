@@ -16,15 +16,14 @@ import {
   PasswordMessage,
   ErrorEmailIcon,
   SecuredPasswordIcon,
+  CloseEyeIcon,
+  OpenEyeIcon,
 } from './LoginForm.styled';
-import { BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const [type, setType] = useState('password');
-  const [toggleIconPass, setToggleIconPass] = useState(
-    <BsEyeSlash style={{ fill: '#54adff', width: '24px', height: '24px' }} />
-  );
+  const [toggleIconPass, setToggleIconPass] = useState(<CloseEyeIcon />);
 
   const initialValues = {
     email: '',
@@ -57,16 +56,10 @@ export const LoginForm = () => {
   const togglePassInput = () => {
     if (type === 'password') {
       setType('text');
-      setToggleIconPass(
-        <BsEye style={{ fill: '#54adff', width: '24px', height: '24px' }} />
-      );
+      setToggleIconPass(<OpenEyeIcon />);
     } else {
       setType('password');
-      setToggleIconPass(
-        <BsEyeSlash
-          style={{ fill: '#54adff', width: '24px', height: '24px' }}
-        />
-      );
+      setToggleIconPass(<CloseEyeIcon />);
     }
   };
 

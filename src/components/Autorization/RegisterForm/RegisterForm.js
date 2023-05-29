@@ -4,8 +4,9 @@ import { NavLink } from 'react-router-dom';
 import { register } from 'redux/auth/operations';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { Error, PasswordMessage } from './RegisterForm.styled';
 import {
+  CloseEyeIcon,
+  OpenEyeIcon,
   FormTitle,
   Forms,
   Input,
@@ -13,17 +14,16 @@ import {
   IconButton,
   Subtitle,
   Button,
+  Error,
+  PasswordMessage,
 } from '../LoginForm/LoginForm.styled';
-import { BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const RegisterForm = () => {
   const [type, setType] = useState('password');
   const [typeConfirm, setTypeConfirm] = useState('password');
-  const [toggleIconPass, setToggleIconPass] = useState(
-    <BsEyeSlash style={{ fill: '#54adff', width: '24px', height: '24px' }} />
-  );
+  const [toggleIconPass, setToggleIconPass] = useState(<CloseEyeIcon />);
   const [toggleIconConfirmPass, setToggleIconConfirmPass] = useState(
-    <BsEyeSlash style={{ fill: '#54adff', width: '24px', height: '24px' }} />
+    <CloseEyeIcon />
   );
 
   const initialValues = {
@@ -37,32 +37,20 @@ export const RegisterForm = () => {
   const togglePassInput = () => {
     if (type === 'password') {
       setType('text');
-      setToggleIconPass(
-        <BsEye style={{ fill: '#54adff', width: '24px', height: '24px' }} />
-      );
+      setToggleIconPass(<OpenEyeIcon />);
     } else {
       setType('password');
-      setToggleIconPass(
-        <BsEyeSlash
-          style={{ fill: '#54adff', width: '24px', height: '24px' }}
-        />
-      );
+      setToggleIconPass(<CloseEyeIcon />);
     }
   };
 
   const toggleConfirmPassInput = () => {
     if (typeConfirm === 'password') {
       setTypeConfirm('text');
-      setToggleIconConfirmPass(
-        <BsEye style={{ fill: '#54adff', width: '24px', height: '24px' }} />
-      );
+      setToggleIconConfirmPass(<OpenEyeIcon />);
     } else {
       setTypeConfirm('password');
-      setToggleIconConfirmPass(
-        <BsEyeSlash
-          style={{ fill: '#54adff', width: '24px', height: '24px' }}
-        />
-      );
+      setToggleIconConfirmPass(<CloseEyeIcon />);
     }
   };
 

@@ -1,13 +1,13 @@
 import styled from '@emotion/styled';
 import { Form, Field, ErrorMessage } from 'formik';
 import { colors } from 'base-styles/variables';
-import { BsXLg, BsCheck } from 'react-icons/bs';
+import { BsXLg, BsCheck, BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const FormTitle = styled.h2`
   font-weight: 500;
   font-size: 24px;
   line-height: 1.37;
-  color: #111111;
+  color: ${colors.black};
   text-align: center;
   margin: 0;
   margin-bottom: 40px;
@@ -21,7 +21,7 @@ export const FormTitle = styled.h2`
 export const Forms = styled(Form)`
   display: flex;
   flex-direction: column;
-  background-color: #ffffff;
+  background-color: ${colors.white};
   gap: 24px;
   text-align: center;
   margin: 50px auto 0;
@@ -33,6 +33,7 @@ export const Forms = styled(Form)`
     padding: 60px 75px;
     width: 608px;
     margin: 82px auto 0;
+    border-radius: 40px;
   }
 `;
 
@@ -42,21 +43,28 @@ export const Input = styled(Field)`
   padding: 12px 16px;
   font-size: 16px;
   background-color: transparent;
-  border: 1px solid #54adff;
+  border: 1px solid;
+  border-color: ${colors.blue};
   border-radius: 40px;
   outline: none;
 
   :hover svg {
-    fill: #ffc107;
+    fill: ${colors.yellow};
   }
-  :invalid {
-    border: 1px solid red;
-  }
+  ${props =>
+    props.valid &&
+    `border-color: #00C3AD;
+  `}
+
+  ${props =>
+    props.error &&
+    `border-color: #F43F5E;
+  `}
 `;
 
 export const Label = styled.label`
   position: relative;
-  color: #888888;
+  color: ${colors.gray};
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -85,18 +93,19 @@ export const Button = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  background: #54adff;
+  background: ${colors.blue};
   border-radius: 40px;
   padding: 10px 100px;
   font-weight: 600;
   font-size: 20px;
   line-height: 1.35;
   letter-spacing: 0.04em;
-  color: #ffffff;
+  color: ${colors.white};
   border: none;
-  transition: all 300ms ease;
   :hover {
-    scale: 1.02;
+    transform: scale(1.02);
+    background: ${colors.grBlue};
+    transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
   }
 
   @media screen and (min-width: 768px) {
@@ -108,18 +117,19 @@ export const Subtitle = styled.p`
   font-weight: 400;
   font-size: 12px;
   line-height: 1.33;
-  color: #888888;
+  color: ${colors.gray};
   text-align: center;
 `;
 
 export const Error = styled(ErrorMessage)`
   font-size: 12px;
+  line-height: 1.33;
   color: ${colors.red};
 `;
 
 export const PasswordMessage = styled.div`
   font-size: 12px;
-  line-height: 16px;
+  line-height: 1.33;
   color: ${colors.green};
 `;
 
@@ -133,4 +143,16 @@ export const SecuredPasswordIcon = styled(BsCheck)`
   fill: ${colors.green};
   width: 24px;
   height: 28px;
+`;
+
+export const CloseEyeIcon = styled(BsEyeSlash)`
+  fill: ${colors.blue};
+  width: 24px;
+  height: 24px;
+`;
+
+export const OpenEyeIcon = styled(BsEye)`
+  fill: ${colors.blue};
+  width: 24px;
+  height: 24px;
 `;
