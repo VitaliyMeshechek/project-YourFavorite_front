@@ -18,11 +18,9 @@ export const AddFormLabel = styled.label`
   display: flex;
   flex-direction: column;
   gap: 4px;
-
   font-weight: 500;
   font-size: 14px;
   line-height: 1.36;
-
   color: ${colors.black};
 
   @media screen and (min-width: ${breakPoints.tablet}) {
@@ -34,10 +32,8 @@ export const AddFormLabel = styled.label`
 
 export const AddFormInput = styled(Field)`
   padding: 10px 16px;
-
   font-size: 14px;
   line-height: 1.5;
-
   border: 1px solid ${colors.blue};
   border-radius: 40px;
   outline-color: ${colors.blue};
@@ -48,7 +44,6 @@ export const AddFormInput = styled(Field)`
     min-width: 394px;
     padding: 12px 16px;
   }
-
   &[type='date']::-webkit-calendar-picker-indicator {
     cursor: pointer;
   }

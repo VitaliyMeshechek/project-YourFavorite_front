@@ -33,23 +33,18 @@ export const NextButton = styled.button`
     background-image: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
     opacity: 0;
     transition: opacity 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
-
   }
-
   &:hover,
   &:focus {
     background-color: ${({ filled }) => filled && 'transparent'};
   }
-
   &:hover::before,
   &:focus::before {
     opacity: 1;
   }
-
   & svg {
     fill: currentColor;
   }
-
   &:disabled {
     color: ${colors.gray};
     background-color: ${colors.blueLight};
@@ -69,15 +64,12 @@ export const BackButton = styled.button`
   font-weight: 700;
   line-height: 1.38;
   color: ${colors.blue};
-
   background-color: transparent;
   border: none;
-    transition: color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
-
+  transition: color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
   & svg {
     stroke: currentColor;
   }
-
 `;
 
 export const BackLink = styled(Link)`
@@ -92,7 +84,6 @@ export const BackLink = styled(Link)`
   background-color: transparent;
   border-radius: 40px;
   cursor: pointer;
-  
   }
 `;
 
