@@ -110,32 +110,32 @@ console.log(allPets)
   const visiblePets = allPets? allPets.filter(pet => pet.category.includes("your pet")) : [];
   console.log(visiblePets)
   
-  const  pets=[
+  // const  pets=[
     
-        {
-          id:"1",
-          photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",
-        name:"zuza",
-        dateOfBirth:"01.01.2015",
-        breed: "mongrel",
-        comments:"trararar",},
+  //       {
+  //         id:"1",
+  //         photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",
+  //       name:"zuza",
+  //       dateOfBirth:"01.01.2015",
+  //       breed: "mongrel",
+  //       comments:"trararar",},
     
-        {
-          id:"2",
-          photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",name:"zuza",
-        dateOfBirth:"01.01.2015",
-        breed: "mongrel",
-        comments: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab mollitia praesentium iste reiciendis impedit, accusamus rerum aliquam tempora tenetur aspernatur similique, odit velit a itaque quidem dolorem magni possimus!",}, {
-          id:"3",
-          photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",name:"zuza",
-        dateOfBirth:"01.01.2015",
-        breed: "mongrel",
-        comments: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab mollitia praesentium iste reiciendis impedit, accusamus rerum aliquam tempora tenetur aspernatur similique, odit velit a itaque quidem dolorem magni possimus!",}, {
-          id:"4",photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",name:"zuza",
-        dateOfBirth:"01.01.2015",
-        breed: "mongrel",
-        comments: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab mollitia praesentium iste reiciendis impedit, accusamus rerum aliquam tempora tenetur aspernatur similique, odit velit a itaque quidem dolorem magni possimus!",},
-    ]
+  //       {
+  //         id:"2",
+  //         photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",name:"zuza",
+  //       dateOfBirth:"01.01.2015",
+  //       breed: "mongrel",
+  //       comments: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab mollitia praesentium iste reiciendis impedit, accusamus rerum aliquam tempora tenetur aspernatur similique, odit velit a itaque quidem dolorem magni possimus!",}, {
+  //         id:"3",
+  //         photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",name:"zuza",
+  //       dateOfBirth:"01.01.2015",
+  //       breed: "mongrel",
+  //       comments: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab mollitia praesentium iste reiciendis impedit, accusamus rerum aliquam tempora tenetur aspernatur similique, odit velit a itaque quidem dolorem magni possimus!",}, {
+  //         id:"4",photo:"https://cdn.pixabay.com/photo/2017/02/20/18/03/cat-2083492_1280.jpg",name:"zuza",
+  //       dateOfBirth:"01.01.2015",
+  //       breed: "mongrel",
+  //       comments: "Lorem ipsum dolor sit amet consectetur adipisicing elit. Vero ab mollitia praesentium iste reiciendis impedit, accusamus rerum aliquam tempora tenetur aspernatur similique, odit velit a itaque quidem dolorem magni possimus!",},
+  //   ]
     return(
         <div>
     {visiblePets.length===0 && <Header>You have not added your pets yet</Header>}
