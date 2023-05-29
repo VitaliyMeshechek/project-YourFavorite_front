@@ -6,7 +6,7 @@ import{AiOutlineCheck}from 'react-icons/ai';
 import{TbPencilMinus} from 'react-icons/tb';
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from 'react-redux';
-// import { useAuth } from '../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
 import { logOut } from '../../redux/auth/operations';
  import {  updateUser ,updateUserPhoto, deletePet} from '../../redux/user/operations';
 import { BsPlus } from 'react-icons/bs'
@@ -19,9 +19,10 @@ import PhotoDef from '../../../src/images/UserPhotoDefault.png'
 
  import{showModal} from  '../../redux/modal/slice'
 export const UserPageInfo =()=> {
- 
-const isFirstTime = false
+  const { user } = useAuth();
+const isFirstTime = user.isFirstTime
 
+console.log(user.isFirstTime)
 // коли буде в БД в Юзера буде це поле треба підтягнути
 
 
@@ -96,6 +97,11 @@ const Logout =({toggleModal})=>{
   return(<ButtonLogout type="button" onClick={toggleModal}><FiLogOut style={{rotate:"180deg", width: '22px', height: '21px', marginRight:'16px', }}/>Log Out</ButtonLogout>)
 }
 const PetsData =()=>{
+
+
+
+
+  
   const  pets=[
     
         {
@@ -130,7 +136,7 @@ const PetsData =()=>{
 
 const UserData =()=>{ 
    const dispatch = useDispatch();
-  // const { user } = useAuth();
+   const { user } = useAuth();
 
 const [isPhotoEdit, setisPhotoEdit] =useState(false);
 const [isNameEdit, setisNameEdit] =useState(false);
@@ -145,20 +151,23 @@ const [isAllowedPhone, setisAllowedPhone ] = useState(true);
 const [isAllowedCity, setisAllowedCity ] = useState(true);
 
 
+
+console.log(user)
+
 const initialValues = {
-  photo: PhotoDef,
-  name: 'User',
-  email: 'user@pets.com',
-  birthday:'00.00.0000',
-  phone:'+380000000000',
-  city:'Kyiv'
+  // photo: PhotoDef,
+  // name: 'User',
+  // email: 'user@pets.com',
+  // birthday:'00.00.0000',
+  // phone:'+380000000000',
+  // city:'Kyiv'
 
-
-  // name: user.name,
-  // email: user.email,
-  // birthday:user.birthday,
-  // phone:user.phone,
-  // city:user.city
+  avatarUrl: user.avatarUrl ? user.avatarUrl : PhotoDef,
+  name: user.name? user.name : user.email.split('@')[0],
+  email: user.email,
+  birthday:user.birthday? user.birthday:'00.00.0000',
+  phone:user.phone? user.phone:'+380000000000',
+  city:user.city?user.city:"City"
 
 };
 const [NameEdit, setNameEdit] =useState(initialValues.name);
@@ -258,7 +267,7 @@ function validateName(value) {
     let error;
     if (!value) {
       error = 'Required';
-    } else if (!/^([A-Za-z\-']{1,20})|([А-Яа-я\-']{1,20})$/u.test(value)) {
+    } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
       error = 'You can use only letters, min 2 symbols';
     }
     setisAllowedName(true)
@@ -320,7 +329,7 @@ function validateName(value) {
     let error;
     if (!value) {
       error = 'Required';
-    } else if (!/^([A-Za-z]+)([,][ ][A-Za-z]+)*$/u.test(value)) {
+    } else if (!/^[\p{L}'][ \p{L}'-]*[\p{L}]$/u.test(value)) {
       error = 'You can use only letters, min 2 symbols';
     }
     setisAllowedCity(true)
@@ -341,7 +350,7 @@ return(
          <Form >
          <PhotoContainer>
           
-          <InputPhoto type="file" onChange={(e) => setPhotoEdit(e.target.files[0])} onClick={()=> {editing(); setisPhotoEdit(true);}} name="photo"
+          <InputPhoto type="file" onChange={(e) => setPhotoEdit(e.target.files[0])} onClick={()=> {editing(); setisPhotoEdit(true);}} name="avatarUrl"
            value ={''}  
           />
 

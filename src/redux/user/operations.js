@@ -8,7 +8,7 @@ export const updateUser = createAsyncThunk(
     async (values , thunkAPI) => {
       try {
         console.log(values)
-        const response = await axios.put(`/cardPets`, values);
+        const response = await axios.patch(`/cardPets`, values);
        
         return ("data", response.data);
       } catch (e) {
@@ -17,14 +17,14 @@ export const updateUser = createAsyncThunk(
     }
   );
   export const updateUserPhoto = createAsyncThunk(
-    'users/updateUser',
+    'users/updateUserPhoto',
     async ( values , thunkAPI) => {
       console.log(values)
       try {
         const formData = new FormData();
       formData.append('file', values);
 
-        const response = await axios.put(`/cardPets`, formData);
+        const response = await axios.patch(`/cardPets`, formData);
         return ("data", response.data);
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
