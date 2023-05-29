@@ -6,21 +6,21 @@ import { useDispatch, useSelector } from 'react-redux'
 import { selectFavorite } from 'redux/noticesPage/selectors'
 import { addToFavorite } from 'redux/noticesPage/operations'
 import { getAge } from 'utils/getAge'
+import { toast } from 'react-toastify'
 
-export const NoticesCategoriesItems = ({pet: {id, img, title, location, birthday, sex, category}}) => {
+export const NoticesCategoriesItems = ({pet: {_id, img, title, location, birthday, sex, category}}) => {
     const favorites = useSelector(selectFavorite)
     const dispatch = useDispatch()
-    
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
     const old = getAge(birthday)
 
 
 const handleFavorite = () => {
-const favorite = favorites.find(item => item.id === id)
+const favorite = favorites.find(item => item._id === _id)
 if(favorite) {
-    return console.log('already in favorites');
+    return toast('already in favorites');
 }
-dispatch(addToFavorite)
+dispatch(addToFavorite(_id))
 }
 
 

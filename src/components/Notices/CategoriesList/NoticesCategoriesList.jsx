@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useSearchParams, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectNotices, selectQuery } from 'redux/noticesPage/selectors';
-import { fetchNotices } from "redux/noticesPage/operations";
+import { fetchFavorites, fetchNotices } from "redux/noticesPage/operations";
 import { NoticesCategoriesItems } from "../CategoriesItems/CategoriesItems";
 import { CategoriesList } from "./NoticesCategoriesList.styled";
 
@@ -22,6 +22,10 @@ const NoticesCategoriesList = () => {
     }, [setSearchParams, query])
     
     useEffect(() => {
+        if(categoryName === 'favorite') {
+            dispatch(fetchFavorites(query))
+            return;
+        }
         dispatch(fetchNotices({categoryName, query}))
     }, [dispatch, categoryName, query])
 
