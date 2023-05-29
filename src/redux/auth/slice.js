@@ -23,13 +23,11 @@ const authSlice = createSlice({
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        console.log(action.payload.newUser);
       })
       .addCase(logIn.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.token = action.payload.token;
         state.isLoggedIn = true;
-        console.log(action.payload.user);
       })
       .addCase(logIn.rejected, state => {
         state.isLoading = false;
