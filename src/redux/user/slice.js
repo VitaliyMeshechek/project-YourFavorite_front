@@ -1,5 +1,45 @@
 import { createSlice, isAnyOf } from "@reduxjs/toolkit";
 import { deletePet, fetchPets,addPet } from "./operations";
+import { updateUser, updateUserPhoto } from "./operations";
+
+
+
+export const userDateSlice = createSlice({
+  name: 'user',
+  initialState: {
+    items: [],
+    isLoading: false,
+    error: null
+  },
+  extraReducers: (builder) => {
+    builder
+      
+      .addCase(updateUser.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+      })
+      .addCase(updateUserPhoto.fulfilled, (state, action) =>{
+      state.isLoading = false;
+      state.error = null;
+      state.items = action.payload;
+      })
+      
+    .addMatcher(isAnyOf(updateUser.pending,updateUserPhoto.pending), (state) => {
+      state.isLoading = true;
+    })
+    .addMatcher(isAnyOf(updateUser.rejected,updateUserPhoto.rejected), (state, action) =>{
+      state.isLoading = false;
+      state.error = action.payload;
+    })
+  
+  }
+
+})
+
+
+
+
 
 
 export const petsSlice = createSlice({
@@ -20,7 +60,7 @@ export const petsSlice = createSlice({
         .addCase(addPet.fulfilled, (state, action) =>{
         state.isLoading = false;
         state.error = null;
-        state.items.push(action.payload)
+         state.items = action.payload;
         })
         .addCase(deletePet.fulfilled, (state, action) => {
         state.isLoading = false;
@@ -43,3 +83,5 @@ export const petsSlice = createSlice({
   
   
   export const petReducer = petsSlice.reducer
+
+  export const userDateReducer = userDateSlice.reducer
