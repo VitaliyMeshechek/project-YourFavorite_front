@@ -10,6 +10,7 @@ import { getAge } from 'utils/getAge'
 export const NoticesCategoriesItems = ({pet: {id, img, title, location, birthday, sex, category}}) => {
     const favorites = useSelector(selectFavorite)
     const dispatch = useDispatch()
+    
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
     const old = getAge(birthday)
 
