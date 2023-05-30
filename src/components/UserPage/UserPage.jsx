@@ -67,10 +67,13 @@ const firstLogin = false
     
   }
   
+  const toggleFirstLogin=()=>{
+    
+  }
 
     return (
       <div>
-        {firstLogin && <CongratsModal />}
+        {firstLogin && <CongratsModal func= {toggleFirstLogin}/>}
     {!firstLogin &&<LeavingModal approveHandle={approveLogOut}/>}
 
         <UserPageContainer>
