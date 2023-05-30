@@ -30,6 +30,11 @@ export const CancelButtonText = styled(PrimaryButtonText)``;
 export const ApproveButton = styled(CancelButton)`
   background: ${colors.blue};
   color: ${colors.white};
+  @media screen and (min-width: ${breakPoints.tablet}) {
+    width: ${({ approvedWidth }) => {
+      return approvedWidth;
+    }};
+  }
 `;
 
 export const ApproveButtonText = styled(PrimaryButtonText)`

@@ -7,7 +7,6 @@ import {
   SpanColor,
   TextContent,
   WrapperContent,
-  TimeText,
 } from './FriendsItem.styled';
 
 import { TimePicker } from '../TimePicker/TimePicker';
@@ -30,10 +29,11 @@ export const FriendsItem = ({
           <TextContent>
             <SpanColor>time:</SpanColor>
             <br />
-             {workDays?.length ? (
-                           <TimePicker workDays={workDays} />) :
-                            ( <TimeText>day and night</TimeText>
-                        )}
+            {workDays?.length ? (
+              <TimePicker workDays={workDays} />
+            ) : (
+              <TextContent>Day and night</TextContent>
+            )}
           </TextContent>
           <TextContent>
             <LinkItem href={addressUrl} target="blank">

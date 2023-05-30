@@ -14,13 +14,19 @@ import { Formik, ErrorMessage } from 'formik';
 import { useSearchParams } from 'react-router-dom';
 import * as yup from 'yup';
 
+import { useDispatch } from 'react-redux';
+import { setFilter } from 'redux/notices/slice';
+
 const SearchInput = () => {
   // eslint-disable-next-line no-unused-vars
   const [searchParams, setSearchParams] = useSearchParams();
+  const dispatch = useDispatch();
 
   const handleSubmit = ({ search }, { resetForm }) => {
-    const nextParams = search !== '' ? { search } : {};
-    setSearchParams(nextParams);
+    // const nextParams = search !== '' ? { search } : {};
+    // setSearchParams(nextParams);
+    dispatch(setFilter(search));
+
     resetForm();
   };
 
