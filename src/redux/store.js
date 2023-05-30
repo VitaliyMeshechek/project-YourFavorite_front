@@ -1,8 +1,8 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import { authReducer } from './auth/slice';
-import { filterReducer } from './notices/slice';
 import { modalReducer } from './modal/slice';
+import { petReducer, userDateReducer } from './user/slice';
 
 import {
   persistStore,
@@ -14,7 +14,10 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
 import { newsReducer } from './news/slice';
+import { noticesPageReducer } from './noticesPage/noticesSlice';
+import { queryReducer } from './noticesPage/querySlice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -26,8 +29,11 @@ export const store = configureStore({
   reducer: {
     news: newsReducer,
     showModal: modalReducer,
-    filter: filterReducer,
     auth: persistReducer(authPersistConfig, authReducer),
+    noticesPage: noticesPageReducer,
+    query: queryReducer,
+    pet: petReducer,
+    user: userDateReducer,
   },
   middleware: [
     ...getDefaultMiddleware({

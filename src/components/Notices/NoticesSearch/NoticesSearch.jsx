@@ -1,45 +1,52 @@
-import { useSelector, useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { FiSearch } from 'react-icons/fi';
 import { IoClose } from 'react-icons/io5'
-import { selectFilter } from 'redux/notices/selectors';
-import { setFilter } from 'redux/notices/slice';
+
 import {
     Wrapper,
     SearchForm,
     SearchBtn,
     SearchInput,
   } from './NoticesSearch.styled';
+import { setQuery } from 'redux/noticesPage/querySlice';
+import { useState } from 'react';
 
 
 export const NoticesSearch = () => {
-    const filter = useSelector(selectFilter);
-    const dispatch = useDispatch();
-  
-    const handleFilterChange = e => {
-      dispatch(setFilter(e.currentTarget.value));
-    };
+  const [search, setSearch] = useState('')
+const dispatch = useDispatch()
+
+const handleChange = e => {
+  setSearch(e.currentTarget.value)
+}
+
+const handleSubmit = e => {
+  e.preventDefault()
+  const query = e.target.search.value
+  const normalizedQuery = query.toLowerCase();  
+  dispatch(setQuery(normalizedQuery));
+};
+
   
     return (
       <Wrapper>
-        <SearchForm  >
+        <SearchForm  onSubmit={handleSubmit}>
         <SearchInput
           label="search"
           type="search"
           name="search"
-          onChange={handleFilterChange}
           autocomplete="off"
           autoFocus
           placeholder="Search"
-          value={filter}
-        
+          onChange={handleChange}
       />
       <SearchBtn type="submit">
         <FiSearch />
       </SearchBtn>
 
-      <SearchBtn type="reset">
+      {search.length > 0 && <SearchBtn type="reset">
         <IoClose />
-      </SearchBtn>
+      </SearchBtn>}
 
 </SearchForm>
 

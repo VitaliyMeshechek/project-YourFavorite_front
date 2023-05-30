@@ -16,15 +16,14 @@ import {
   PasswordMessage,
   ErrorEmailIcon,
   SecuredPasswordIcon,
+  CloseEyeIcon,
+  OpenEyeIcon,
 } from './LoginForm.styled';
-import { BsEyeSlash, BsEye } from 'react-icons/bs';
 
 export const LoginForm = () => {
   const dispatch = useDispatch();
   const [type, setType] = useState('password');
-  const [toggleIconPass, setToggleIconPass] = useState(
-    <BsEyeSlash style={{ fill: '#54adff', width: '24px', height: '24px' }} />
-  );
+  const [toggleIconPass, setToggleIconPass] = useState(<CloseEyeIcon />);
 
   const initialValues = {
     email: '',
@@ -45,26 +44,22 @@ export const LoginForm = () => {
   });
 
   const handleSubmit = ({ email, password }, { resetForm }) => {
-    dispatch(logIn({
-      email,
-      password,
-    }));
+    dispatch(
+      logIn({
+        email,
+        password,
+      })
+    );
     resetForm();
   };
 
   const togglePassInput = () => {
     if (type === 'password') {
       setType('text');
-      setToggleIconPass(
-        <BsEye style={{ fill: '#54adff', width: '24px', height: '24px' }} />
-      );
+      setToggleIconPass(<OpenEyeIcon />);
     } else {
       setType('password');
-      setToggleIconPass(
-        <BsEyeSlash
-          style={{ fill: '#54adff', width: '24px', height: '24px' }}
-        />
-      );
+      setToggleIconPass(<CloseEyeIcon />);
     }
   };
 
@@ -82,7 +77,7 @@ export const LoginForm = () => {
               type="email"
               name="email"
               placeholder="Email"
-              valid={!errors.email && touched.email}
+              valid={touched.email && !errors.email ? 'true' : undefined}
               error={touched.email && errors.email}
             />
 
@@ -106,7 +101,7 @@ export const LoginForm = () => {
               type={type}
               name="password"
               placeholder="Password"
-              valid={!errors.password && touched.password}
+              valid={touched.password && !errors.password ? 'true' : undefined}
               error={touched.password && errors.password}
             />
 

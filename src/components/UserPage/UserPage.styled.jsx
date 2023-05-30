@@ -3,59 +3,21 @@ import { NavLink } from 'react-router-dom';
  import { Field ,ErrorMessage} from 'formik'
 
 export const NavLinkStyled = styled(NavLink)`
-display: flex;
-flex-direction: column-reverse;
-align-items: center;
-justify-content: center;
-width: 80px;
-height: 80px;
-border-radius: 50px;
-border: none;
-background: #54ADFF;
-box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
-font-family: inherit;
-text-decoration: none;
-font-weight: 600;
-font-size: 12px;
-line-height: 1.33;
-letter-spacing: 0.04em;
-color: #FFFFFF;
-transition: all 300ms ease;
-
-  &.active, :hover:not(.active) {
-    background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%);
-  }
-
-  @media screen and (max-width: 767px) {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 5;
-  }
-
-  @media screen and (min-width: 768px) {
-    margin-left: 12px;
-    flex-direction: row;
-    min-width: 129px;
-    height: 40px;
-    padding: 8px 16px;
-    border-radius: 40px;
-    font-weight: 700;
-    font-size: 16px;
-    line-height: 1.38;
-
-span {
-    margin-right: 8px;
+cursor: pointer;
+   border: none;
+   width: 129px;
+   height: 40px;
+   border-radius: 40px;
+ background: #54ADFF;
+ color: #fff;
+font-weight: 700;
+font-size: 16px;
+padding: 9px 16px;
+margin-left: auto;
+:hover{
+   background: linear-gradient(290.46deg, #419EF1 0%, #9BD0FF 107.89%)
 }
-  }
-
-  svg {
-    width: 24px;
-    height: 24px;
-    color: inherit;
-  }
-
-`;
+`
 
  export const Header = styled.h2`
 

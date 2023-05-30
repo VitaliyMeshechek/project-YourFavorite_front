@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import { Formik, Form } from 'formik';
 
 import {
@@ -56,9 +57,36 @@ import { useAuth } from 'hooks';
 export const UserPageInfo = () => {
   const isFirstTime = false;
   const { user } = useAuth();
+=======
+import { Logout } from "./Logout";
+import { PetsData } from "./PetsData";
+import {UserData} from "./UserData";
+import {  ContainerUser, UserPageContainer, NavLinkStyled, Header, MyPetsHeaderContainer,UserBlock, PetBlock} from './UserPage.styled';
+import { useEffect, useState } from "react";
+import { useDispatch
+  // , useSelector 
+} from 'react-redux';
+import { logOut } from '../../redux/auth/operations';
+import { BsPlus } from 'react-icons/bs'
+// import {selectModal} from '../../redux/modal/selectors'
+import CongratsModal from "components/ReusableComponents/Modal/CongratsModal";
+import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
+import{showModal} from  '../../redux/modal/slice'
+import { Loader } from "components/Loader/Loader";
+// import { useAuth} from '../../hooks/useAuth';
+
+
+export const UserPageInfo =()=> {
+const [isLoading, setisLoading] = useState(true)
+
+  // const { user } = useAuth();
+const firstLogin = false
+// user.firstLogin
+>>>>>>> main
 
   // коли буде в БД в Юзера буде це поле треба підтягнути
 
+<<<<<<< HEAD
   const modalState = useSelector(selectModal);
   const dispatch = useDispatch();
 
@@ -67,6 +95,16 @@ export const UserPageInfo = () => {
       dispatch(showModal(false));
     }
   }, [isFirstTime, dispatch]);
+=======
+  // const modalState = useSelector(selectModal)
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!firstLogin) {
+    dispatch(showModal(false));
+  
+}},[firstLogin,dispatch]);
+>>>>>>> main
 
   console.log(modalState);
   // if (modalState &&isLogoutModal) {
@@ -78,6 +116,7 @@ export const UserPageInfo = () => {
   // console.log(isFirstTime)
 
   const toggleModal = () => {
+<<<<<<< HEAD
     console.log('Are you sure you want');
     dispatch(showModal(true));
   };
@@ -92,6 +131,31 @@ export const UserPageInfo = () => {
     // eslint-disable-next-line no-unused-vars
     const firstLogin = user.firstLogin;
   };
+=======
+  
+    dispatch(showModal(true))
+  }
+
+  const approveLogOut= async() =>{
+  
+      
+    await dispatch(logOut());
+    
+  }
+  
+  const toggleFirstLogin=()=>{
+    
+  }
+  useEffect(() => {
+    setisLoading(false);
+}, [dispatch]);
+
+    return (
+      <div>
+      { isLoading &&  <  Loader ></Loader>}
+        {firstLogin && <CongratsModal func= {toggleFirstLogin}/>}
+    {!firstLogin &&<LeavingModal approveHandle={approveLogOut}/>}
+>>>>>>> main
 
   return (
     <div>
@@ -123,6 +187,7 @@ export const UserPageInfo = () => {
   );
 };
 
+<<<<<<< HEAD
 const Logout = ({ toggleModal }) => {
   return (
     <ButtonLogout type="button" onClick={toggleModal}>
@@ -708,3 +773,5 @@ const PetsItem = ({ item }) => {
     </ContainerPet>
   );
 };
+=======
+>>>>>>> main

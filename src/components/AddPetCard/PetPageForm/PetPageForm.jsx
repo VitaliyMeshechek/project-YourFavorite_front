@@ -12,9 +12,10 @@ import {
     AddFormStepName,
   } from './PetPageForm.styled';
 
-// import { addPet } from 'redux/user/operations';
-// import { addNotice } from 'redux/notice/operations';
-import { addMyPet } from 'redux/auth/operations';
+import { addNotice } from 'redux/noticesPage/operations';
+// import { addMyPet } from 'redux/auth/operations';
+import { addPet } from 'redux/user/operations';
+
 import { validatePetSchema } from '../validatePet';
 
 import MoreInfo from '../MoreInfoForm/MoreInfoForm';
@@ -88,7 +89,7 @@ const AddPetPageForm = () => {
       newFormData.append('comments', formData.comments);
   
       if (formData.category === 'my-pet') {
-        dispatch(addMyPet(newFormData));
+        dispatch(addPet(newFormData));
         navigate(backLink);
         return;
       }
@@ -97,24 +98,24 @@ const AddPetPageForm = () => {
       newFormData.append('sex', formData.sex);
       newFormData.append('location', formData.location);
   
-      // if (formData.category === 'lost-found') {
-      //   dispatch(addNotice({ category: 'lost-found', newFormData }));
-      //   navigate(backLink);
-      //   return;
-      // }
+      if (formData.category === 'lost-found') {
+        dispatch(addNotice({ category: 'lost-found', newFormData }));
+        navigate(backLink);
+        return;
+      }
   
-      // if (formData.category === 'for-free') {
-      //   dispatch(addNotice({ category: 'in-good-hands', newFormData }));
-      //   navigate(backLink);
-      //   return;
-      // }
+      if (formData.category === 'for-free') {
+        dispatch(addNotice({ category: 'in-good-hands', newFormData }));
+        navigate(backLink);
+        return;
+      }
   
       newFormData.append('price', formData.price);
   
-      // if (formData.category === 'sell') {
-      //   dispatch(addNotice({ category: formData.category, newFormData }));
-      //   navigate(backLink);
-      // }
+      if (formData.category === 'sell') {
+        dispatch(addNotice({ category: formData.category, newFormData }));
+        navigate(backLink);
+      }
     };
   
     return (
