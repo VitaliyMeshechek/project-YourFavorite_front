@@ -2,12 +2,13 @@ import NewsItem from '../NewsItem/NewsItem';
 
 const { List } = require('./NewsList.styled');
 
-const NewsList = () => {
+const NewsList = ({ news }) => {
   return (
     <List>
-      <NewsItem></NewsItem>
-      <NewsItem></NewsItem>
-      <NewsItem></NewsItem>
+      {news.map(el => {
+        const { _id } = el;
+        return <NewsItem key={_id} item={el}></NewsItem>;
+      })}
     </List>
   );
 };
