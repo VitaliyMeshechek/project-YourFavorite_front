@@ -363,7 +363,7 @@ return(
            value ={''}  
           />
 
-          <UserImg src={initialValues.photo} alt="" />
+          <UserImg src={initialValues.avatarUrl} alt="" />
 
          
          {!isPhotoEdit &&  <ButtonPhotoEdit><FiCamera  style={{  width: '20px', height: '16px', marginRight:'6px' }}/>Edit photo</ButtonPhotoEdit> }
