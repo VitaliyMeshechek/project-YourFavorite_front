@@ -21,12 +21,15 @@ import PhotoDef from '../../../src/images/UserPhotoDefault.png'
  import{showModal} from  '../../redux/modal/slice'
 
 import { selectPet } from "redux/auth/selectors";
+
+
 export const UserPageInfo =()=> {
-  const { user } = useAuth();
-const firstLogin = user.firstLogin
+  // const { user } = useAuth();
+const firstLogin = false
+// user.firstLogin
 
 
-console.log(user.firstLogin)
+// console.log(user.firstLogin)
 // коли буде в БД в Юзера буде це поле треба підтягнути
 
 
@@ -53,21 +56,24 @@ console.log(modalState)
 
 
   const toggleModal = () => {
-    console.log('Are you sure you want');
+    // console.log('Are you sure you want');
     dispatch(showModal(true))
   }
 
   const approveLogOut= async() =>{
-    console.log("want to log out");
+    // console.log("want to log out");
       
     await dispatch(logOut());
     
   }
   
+  const toggleFirstLogin=()=>{
+    
+  }
 
     return (
       <div>
-        {firstLogin && <CongratsModal/>}
+        {firstLogin && <CongratsModal func= {toggleFirstLogin}/>}
     {!firstLogin &&<LeavingModal approveHandle={approveLogOut}/>}
 
         <UserPageContainer>
@@ -105,7 +111,7 @@ const PetsData =()=>{
 
 
   const pet = useSelector(selectPet)
-  console.log(pet)
+  // console.log(pet)
   
   useEffect(() => {
     dispatch(fetchPets());
@@ -115,7 +121,7 @@ const PetsData =()=>{
 
 
   const visiblePets = pet? pet.filter(pet => pet.category.includes("your pet")) : [];
-  console.log(visiblePets)
+  // console.log(visiblePets)
   
   // const  pets=[
     
@@ -167,19 +173,15 @@ const [isAllowedCity, setisAllowedCity ] = useState(true);
 
 
 
-console.log(user)
+// console.log(user)
 
+const defaultName = user.email ? user.email.split('@')[0] : 'User'
 const initialValues = {
-  // photo: PhotoDef,
-  // name: 'User',
-  // email: 'user@pets.com',
-  // birthday:'00.00.0000',
-  // phone:'+380000000000',
-  // city:'Kyiv'
+
 
   avatarUrl: user.avatarUrl ? user.avatarUrl : PhotoDef,
-  name: user.name? user.name : user.email.split('@')[0],
-  email: user.email,
+  name: user.name? user.name : defaultName,
+  email: user.email? user.email:'user@pets.com',
   birthday:user.birthday? user.birthday:'00.00.0000',
   phone:user.phone? user.phone:'+380000000000',
   city:user.city?user.city:"City"
@@ -231,7 +233,7 @@ const [PhotoEdit, setPhotoEdit] =useState(null);
 
   useEffect(() => {
   	if(PhotoEdit){
-    	    console.log("File has been set.")
+    	    // console.log("File has been set.")
     }
   },[PhotoEdit]);
 
@@ -262,16 +264,8 @@ const [PhotoEdit, setPhotoEdit] =useState(null);
       }
 
 
-
-  
-         
-
-
-
-
- 
   const handleUpdateUser = (values) => {
-    console.log(values)
+    // console.log(values)
     dispatch(updateUser(values))
     
   };
@@ -462,12 +456,15 @@ const PetsList = (props)=>{
 const PetsItem =({item})=>{
           // console.log(item)
       const {photo, name, dateOfBirth, breed, comments, _id} = item
-      console.log(_id)
+      // console.log(_id)
     const  dispatch=useDispatch()
 
      const HandleDeletePet =()=>{
       dispatch(deletePet(_id))
      }
+
+
+
       return (
       
       <ContainerPet >
