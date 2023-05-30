@@ -21,7 +21,7 @@ const NoticesCategoriesList = () => {
         }
         
     }, [setSearchParams, query])
-    console.log(searchParams)
+    
     
     useEffect(() => {
         dispatch(fetchFavorites(query))

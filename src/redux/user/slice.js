@@ -55,9 +55,9 @@ export const petsSlice = createSlice({
         .addCase(fetchPets.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
+        // console.log(action.payload);
         state.pet = action.payload;
-        console.log( state.pet);
+        // console.log( state.pet);
         })
         .addCase(addPet.fulfilled, (state, action) =>{
         state.isLoading = false;
@@ -67,7 +67,10 @@ export const petsSlice = createSlice({
         .addCase(deletePet.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-          state.pet = state.pet.filter(pet => pet._id !== action.payload) 
+        console.log(action.payload.id);
+        console.log(state.pet);
+          state.pet = state.pet.filter(pet => pet._id !== action.payload.id) 
+          console.log(state.items);
         })
       .addMatcher(isAnyOf(fetchPets.pending,addPet.pending,deletePet.pending), (state) => {
         state.isLoading = true;
