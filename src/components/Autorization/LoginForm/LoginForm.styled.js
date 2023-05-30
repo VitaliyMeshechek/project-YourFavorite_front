@@ -24,7 +24,7 @@ export const Forms = styled(Form)`
   background-color: ${colors.white};
   gap: 24px;
   text-align: center;
-  margin: 50px auto 0;
+  margin: 100px auto 0;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 20px;
   padding: 40px 12px;
@@ -32,7 +32,7 @@ export const Forms = styled(Form)`
   @media screen and (min-width: ${breakPoints.tablet}) {
     padding: 60px 75px;
     width: 608px;
-    margin: 82px auto 0;
+    margin: 140px auto 0;
     border-radius: 40px;
   }
 `;
@@ -53,12 +53,12 @@ export const Input = styled(Field)`
   }
   ${props =>
     props.valid &&
-    `border-color: #00C3AD;
+    `border-color : ${colors.green};
   `}
 
   ${props =>
     props.error &&
-    `border-color: #F43F5E;
+    `border-color: ${colors.red};
   `}
 `;
 
