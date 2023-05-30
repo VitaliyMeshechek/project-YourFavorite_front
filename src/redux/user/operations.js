@@ -10,7 +10,7 @@ export const updateUser = createAsyncThunk(
       // console.log(values)
       const response = await axios.patch('/cardPets', values);
 
-      return 'data', response.data;
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
@@ -25,7 +25,7 @@ export const updateUserPhoto = createAsyncThunk(
       formData.append('file', values);
 
       const response = await axios.patch('/cardPets', formData);
-      return 'data', response.data;
+      return response.data;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
     }
