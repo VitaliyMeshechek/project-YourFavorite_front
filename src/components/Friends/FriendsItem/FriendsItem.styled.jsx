@@ -177,12 +177,13 @@ export const LinkItem = styled.a`
   @media screen and (max-width: 767.98px) {
     width: 114px;
     display: block;
+    overflow: auto;
   }
 `;
 
 export const TimeText = styled.div`
-    margin-bottom: 16px;
-    font-weight: 400;
-    font-size: 11px;
-    color: #111111;
-  `;
+  margin-bottom: 16px;
+  font-weight: 400;
+  font-size: 11px;
+  color: #111111;
+`;

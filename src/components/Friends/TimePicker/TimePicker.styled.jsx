@@ -5,22 +5,29 @@ export const List = styled.ul`
   position: absolute;
   display: grid;
   row-gap: 4px;
-  top: 20px;
-  left: 0;
-  width: 120px;
-  height: 135px;
-  padding: 8px;
+  top: 0;
+  left: -6px;
+  width: 160px;
+  padding: 6px;
   box-sizing: border-box;
   background: #ffffff;
   border: 1px solid #54adff;
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
   border-radius: 8px;
+  color: #000;
+
+  font-family: 'Manrope';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 1.33;
   @media screen and (min-width: 768px) {
-    height: 160px;
-    top: 25px;
+    top: 0;
+    padding: 8px;
   }
   @media screen and (min-width: 1280px) {
-    top: 30px;
+    top: 0;
+    padding: 10px;
   }
 `;
 
@@ -28,14 +35,14 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const Button = styled.button`
+export const TextContent = styled.button`
   padding: 0;
   border: none;
   display: block;
   background-color: transparent;
   font-weight: 400;
   font-size: 12px;
-  color: #111111;
+  color: #54adff;
   width: 100%;
   text-align: inherit;
   cursor: pointer;
@@ -51,7 +58,7 @@ export const Button = styled.button`
   &:hover {
     color: ${colors.blue};
   }
-  `;
+`;
 
 export const Item = styled.li`
   width: 100%;
