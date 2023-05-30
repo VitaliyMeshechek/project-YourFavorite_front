@@ -4,7 +4,7 @@ import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
 import { useDispatch, useSelector } from 'react-redux'
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
-import { addToFavorite, deleteFromFavorite, fetchFavorites } from 'redux/noticesPage/operations'
+import { addToFavorite, deleteFromFavorite } from 'redux/noticesPage/operations'
 import { getAge } from 'utils/getAge'
 import { toast } from 'react-toastify'
 import { useAuth } from 'hooks'
