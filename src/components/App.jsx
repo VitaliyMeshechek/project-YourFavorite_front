@@ -30,16 +30,26 @@ import PageNotFound from 'pages/PageNotFound/PageNotFound';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
 import { refreshUser } from 'redux/auth/operations';
+import { Loader } from './Loader/Loader';
+import { useAuth } from 'hooks/useAuth';
 
 // import FindPeds from 'pages/FindePets/FindPeds';
 
 export const App = () => {
+  const { isRefreshing } = useAuth();
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(refreshUser());
   }, [dispatch]);
-  return (
+
+  // const shouldRedirect = !isLoggedIn && !isRefreshing;
+
+  return isRefreshing ? (
+    <Loader />
+  ) : (
     <PageColor>
+      {/* <Loader /> */}
       <Routes>
         <Route path="/" element={<SharedLayout />}>
           <Route index element={<MainPage />} />
