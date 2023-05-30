@@ -1,6 +1,14 @@
 import React, { useState } from 'react';
 
-import { List, Item, Wrap, Wrapper, Days, Button } from './TimePicker.styled';
+import {
+  List,
+  Item,
+  Wrap,
+  Wrapper,
+  Days,
+  TextContent,
+} from './TimePicker.styled';
+import { nanoid } from 'nanoid';
 
 export const TimePicker = ({ workDays }) => {
   const [isShow, setIsShow] = useState(false);
@@ -25,24 +33,23 @@ export const TimePicker = ({ workDays }) => {
         return `${day.from} - ${day.to}`;
       }
       if (currentDay === day.dayOfWeek && !day.isOpen) {
-        return 'closed';
+        return 'Close';
       }
     }
   };
-
   return (
     <Wrapper
       onMouseLeave={() => {
         setIsShow(false);
       }}
     >
-      <Button type="button" onClick={handleToggle}>
+      <TextContent onMouseOver={handleToggle}>
         {workOurs(newWorkDays)}
-      </Button>
+      </TextContent>
       {isShow && (
         <List>
           {newWorkDays.map(({ isOpen, from, to, dayOfWeek }) => (
-            <Item key={dayOfWeek}>
+            <Item key={nanoid()}>
               {isShow && (
                 <Wrap>
                   <div>
@@ -50,12 +57,13 @@ export const TimePicker = ({ workDays }) => {
                   </div>
 
                   {!isOpen ? (
-                    <div>closed</div>
+                    <p style={{ color: isOpen ? 'black' : 'red' }}>close</p>
                   ) : (
                     <div>
                       {[from]}-{[to]}
                     </div>
                   )}
+                  {isOpen || isShow || Item}
                 </Wrap>
               )}
             </Item>

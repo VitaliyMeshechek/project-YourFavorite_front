@@ -61,7 +61,7 @@
     "addressUrl": "https://pethelp.com.ua",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_286.png",
     "address": "website only",
-    "workDays": "day and night",
+    "workDays": " day and night",
     "phone": "email only",
     "email": "pethelp.ukr@gmail.com"
   },
@@ -164,6 +164,6 @@
       { "isOpen": true, "from": "11:00", "to": "16:00" }
     ],
     "phone": "+380509850337",
-    "email": "pedigree@gmail.com"
+    "email": "brit@gmail.com"
   }
 ]
