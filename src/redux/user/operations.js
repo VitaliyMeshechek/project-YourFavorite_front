@@ -8,7 +8,7 @@ export const updateUser = createAsyncThunk(
     async (values , thunkAPI) => {
       try {
         console.log(values)
-        const response = await axios.put(`/cardPets`, values);
+        const response = await axios.patch(`/cardPets`, values);
        
         return ("data", response.data);
       } catch (e) {
@@ -17,14 +17,14 @@ export const updateUser = createAsyncThunk(
     }
   );
   export const updateUserPhoto = createAsyncThunk(
-    'users/updateUser',
+    'users/updateUserPhoto',
     async ( values , thunkAPI) => {
       console.log(values)
       try {
         const formData = new FormData();
       formData.append('file', values);
 
-        const response = await axios.put(`/cardPets`, formData);
+        const response = await axios.patch(`/cardPets`, formData);
         return ("data", response.data);
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
@@ -46,25 +46,18 @@ export const updateUser = createAsyncThunk(
         //   .then((data) => console.log(data))
         //   .catch((err) => console.error(err));
 
-export const editData = createAsyncThunk(
-    "pets/fetchAll",
-    async (_, thunkAPI) => {
-      try {
-        const response = await axios.get("/pets");
-        return response.data;
-      } catch (e) {
-        return thunkAPI.rejectWithValue(e.message);
-      }
-    }
-  );
+
 
 
 export const fetchPets = createAsyncThunk(
-    "pets/fetchAll",
+    "pet/fetchAll",
     async (_, thunkAPI) => {
       try {
-        const response = await axios.get("/pets");
-        return response.data;
+        console.log ("i m here")
+        const response = await axios.get("/cardPets");
+        console.log (response.data.user.pets)
+        return response.data.user.pets;
+       
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
       }
@@ -84,11 +77,11 @@ export const addPet = createAsyncThunk(
   );
   
   export const deletePet = createAsyncThunk(
-    "pets/deletePet",
+    "pet/deletePet",
     async (id, thunkAPI) => {
       console.log(id)
         try {
-          const response = await axios.delete(`/pet/${id}`);
+          const response = await axios.delete(`/cardPets/pet/${id}`);
         return response.data;
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);

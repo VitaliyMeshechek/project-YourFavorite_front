@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-export const FriendsContainer = styled.h2`
+export const FriendsContainer = styled.div`
   @media screen and (max-width: 767.98px) {
     padding-top: 40px;
     padding-bottom: 75px;

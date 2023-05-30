@@ -123,7 +123,7 @@ export const SpanColor = styled.span`
   }
 `;
 
-export const TextContent = styled.p`
+export const TextContent = styled.div`
   @media screen and (max-width: 767.98px) {
     width: 114px;
     margin-top: 12px;
@@ -179,3 +179,10 @@ export const LinkItem = styled.a`
     display: block;
   }
 `;
+
+export const TimeText = styled.div`
+    margin-bottom: 16px;
+    font-weight: 400;
+    font-size: 11px;
+    color: #111111;
+  `;

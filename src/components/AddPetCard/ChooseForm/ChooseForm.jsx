@@ -74,7 +74,7 @@ const ChooseForm = ({ formData, setFormData, nextStep, cancel, setValues }) => {
           text="Next"
           icon={<TbPaw style={{ stroke: '#FEF9F9', width: '24px', height: '24px' }}/>}
           clickHandler={nextStep}
-          // filled={false}
+          filled={false}
         />
         <AddFormButtonBack text="Cancel" isLink={true} path={cancel} />
       </AddFormButtonWrapper>
