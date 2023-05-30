@@ -15,7 +15,6 @@ export const NotFoundSection = styled.section`
     padding-bottom: 275px;
   }
   @media screen and (min-width: 1280px) {
-    padding-bottom: 100px;
   }
 `;
 
@@ -61,6 +60,7 @@ export const Image = styled.div`
 
   @media screen and (min-width: 1280px) {
     background-image: url(${desktop_bg_1x});
+    background-position: top center;
     background-size: 822px 360px;
     @media (min-device-pixel-ratio: 2),
       (min-resolution: 192dpi),
@@ -87,7 +87,7 @@ export const NotFoundButton = styled(NavLink)`
   height: 40px;
   margin-left: auto;
   margin-right: auto;
-  margin-top: -100px;
+  margin-top: -120px;
   text-decoration: none;
 
   @media screen and (min-width: 768px) {
@@ -95,7 +95,7 @@ export const NotFoundButton = styled(NavLink)`
   }
 
   @media screen and (min-width: 1280px) {
-    margin-top: -580px;
+    margin-top: -900px;
   }
 `;
 
