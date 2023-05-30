@@ -1,5 +1,7 @@
+import { useDispatch } from 'react-redux';
+import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import { PageColor } from './App.styled';
 
 // const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
@@ -27,9 +29,15 @@ import PageNotFound from 'pages/PageNotFound/PageNotFound';
 
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
+import { refreshUser } from 'redux/auth/operations';
+
 // import FindPeds from 'pages/FindePets/FindPeds';
 
 export const App = () => {
+  const dispatch = useDispatch();
+  useEffect(() => {
+    dispatch(refreshUser());
+  }, [dispatch]);
   return (
     <PageColor>
       <Routes>
@@ -38,21 +46,33 @@ export const App = () => {
           <Route path="main" element={<MainPage />} />
           <Route path="news" element={<NewsPage />} />
           <Route path="notices" element={<NoticesPage />}>
-            <Route index element={<Navigate to="/notices/sell" />}/>
+            <Route index element={<Navigate to="/notices/sell" />} />
             <Route path=":categoryName" element={<NoticesCategoriesList />} />
             {/* <Route path="favorite" element={<PrivateRoute redirectTo="/login" component={<NoticesCategoriesList />} />} />
             <Route path="own" element={<PrivateRoute redirectTo="/login" component={<NoticesCategoriesList />} />} /> */}
           </Route>
           <Route path="friends" element={<OurFriendsPage />} />
-          <Route path="register" element={
-            <RestrictedRoute redirectTo="/user" component={<RegisterPage />} />
-          } />
-          <Route path="login" element={
-            <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
-          } />
-          <Route path="user" element={
-            <PrivateRoute redirectTo="/login" component={<UserPage />} />
-          } />
+          <Route
+            path="register"
+            element={
+              <RestrictedRoute
+                redirectTo="/user"
+                component={<RegisterPage />}
+              />
+            }
+          />
+          <Route
+            path="login"
+            element={
+              <RestrictedRoute redirectTo="/user" component={<LoginPage />} />
+            }
+          />
+          <Route
+            path="user"
+            element={
+              <PrivateRoute redirectTo="/login" component={<UserPage />} />
+            }
+          />
           <Route path="add-pet" element={<AddPetPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
@@ -68,8 +88,7 @@ export const App = () => {
         draggable
         pauseOnHover
         theme="light"
-/>
+      />
     </PageColor>
-    
   );
 };
