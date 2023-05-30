@@ -24,7 +24,7 @@ import { selectPet } from "redux/auth/selectors";
 
 
 export const UserPageInfo =()=> {
-  const { user } = useAuth();
+  // const { user } = useAuth();
 const firstLogin = false
 // user.firstLogin
 
@@ -43,7 +43,7 @@ const firstLogin = false
   
 }},[firstLogin,dispatch]);
 
-// console.log(modalState)
+console.log(modalState)
 // if (modalState &&isLogoutModal) {
 //   setIsFirstTime(false);
   
