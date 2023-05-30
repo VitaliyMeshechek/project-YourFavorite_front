@@ -7,7 +7,7 @@ export const updateUser = createAsyncThunk(
     'users/updateUser',
     async (values , thunkAPI) => {
       try {
-        console.log(values)
+        // console.log(values)
         const response = await axios.patch(`/cardPets`, values);
        
         return ("data", response.data);
@@ -19,7 +19,7 @@ export const updateUser = createAsyncThunk(
   export const updateUserPhoto = createAsyncThunk(
     'users/updateUserPhoto',
     async ( values , thunkAPI) => {
-      console.log(values)
+      // console.log(values)
       try {
         const formData = new FormData();
       formData.append('file', values);
@@ -53,9 +53,9 @@ export const fetchPets = createAsyncThunk(
     "pet/fetchAll",
     async (_, thunkAPI) => {
       try {
-        console.log ("i m here")
+         console.log ("i m here")
         const response = await axios.get("/cardPets");
-        console.log (response.data.user.pets)
+         console.log (response.data.user.pets)
         return response.data.user.pets;
        
       } catch (e) {
@@ -65,10 +65,11 @@ export const fetchPets = createAsyncThunk(
   );
 
 export const addPet = createAsyncThunk(
-    "Pets/addPet",
-    async (Pet, thunkAPI) => {
+    "pets/addPet",
+    async (pet, thunkAPI) => {
         try {
-          const response = await axios.post("/pets", Pet);
+          
+          const response = await axios.post("/cardPets/pet", pet);
         return response.data;
       } catch (e) {
         return thunkAPI.rejectWithValue(e.message);
