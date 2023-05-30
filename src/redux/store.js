@@ -14,6 +14,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+import { newsReducer } from './news/slice';
 
 const authPersistConfig = {
   key: 'auth',
@@ -23,6 +24,7 @@ const authPersistConfig = {
 
 export const store = configureStore({
   reducer: {
+    news: newsReducer,
     showModal: modalReducer,
     filter: filterReducer,
     auth: persistReducer(authPersistConfig, authReducer),

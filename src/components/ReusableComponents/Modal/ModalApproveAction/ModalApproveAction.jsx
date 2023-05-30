@@ -11,8 +11,16 @@ import {
 } from '../ModalApproveAction/ModalApproveAction.styled';
 
 import ModalWrapper from '../ModalWrapper';
+import { IconPaw } from '../CongratsModal/CongratsModal.styled';
 
-const ModalApproveAction = ({ children, approveHandle, icon }) => {
+const ModalApproveAction = ({
+  children,
+  approveHandle,
+  icon,
+  canceled = 'Cancel',
+  approved = 'Yes',
+  approvedWidth = '128px',
+}) => {
   const dispatch = useDispatch();
 
   const handleApprove = () => {
@@ -26,13 +34,14 @@ const ModalApproveAction = ({ children, approveHandle, icon }) => {
         {children}
         <ButtonFlexWrapper>
           <CancelButton onClick={() => dispatch(showModal(false))}>
-            <CancelButtonText>Cancel</CancelButtonText>
+            <CancelButtonText>{canceled}</CancelButtonText>
           </CancelButton>
-          <ApproveButton onClick={handleApprove}>
+          <ApproveButton onClick={handleApprove} approvedWidth={approvedWidth}>
             <ApproveButtonText>
-              Yes
+              {approved}
               {icon === 'TrashIcon' && <TrashIcon />}
               {icon === 'ExitIcon' && <ExitIcon />}
+              {icon === 'IconPaw' && <IconPaw />}
             </ApproveButtonText>
           </ApproveButton>
         </ButtonFlexWrapper>
