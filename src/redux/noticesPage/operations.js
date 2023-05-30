@@ -21,10 +21,6 @@ export const fetchNotices = createAsyncThunk(
     'noticesPage/fetchNotices',
 async ( {categoryName, query} , thunkAPI) => {
       try {
-        // if(categoryName === 'favorite' || categoryName === 'own') {
-        //   const { token } = thunkAPI.getState().auth;
-        //   setAuthHeader(token);
-        // }
         const response = await axios.get(`/notices/${categoryName}`, {params: {query: query? query : null}} );
         console.log(response.data);
         return response.data;
@@ -36,16 +32,17 @@ async ( {categoryName, query} , thunkAPI) => {
 
   export const fetchFavorites = createAsyncThunk(
     'notices/fetchFavorites',
-    async(query, thunkAPI) => {
+    async (query, thunkAPI) => {
       const { token } = thunkAPI.getState().auth;
       try {
         setAuthHeader(token);
         const response = await axios.get(`/notices/favorite`, {params: {query: query? query : null}} );
+        console.log(response.data);
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
       }
-    } 
+    }
   )
 
   export const addToFavorite = createAsyncThunk(
@@ -55,6 +52,7 @@ async ( {categoryName, query} , thunkAPI) => {
       try {
         setAuthHeader(token);
         const response = await axios.post(`/notices/favorite/${id}` );
+        console.log(response.data);
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -75,5 +73,22 @@ async ( {categoryName, query} , thunkAPI) => {
       }
     }
   )
+
+  export const fetchUsersNotices = createAsyncThunk(
+    'notices/fetchUsersNotices',
+    async (query, thunkAPI) => {
+      const { token } = thunkAPI.getState().auth;
+      try {
+        setAuthHeader(token);
+        const response = await axios.get(`/notices/own`, {params: {query: query? query : null}} );
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
+  )
+
+
 
 

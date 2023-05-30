@@ -3,24 +3,52 @@ import {FiHeart, FiTrash2} from 'react-icons/fi'
 import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
 import { useDispatch, useSelector } from 'react-redux'
-import { selectFavorite } from 'redux/noticesPage/selectors'
-import { addToFavorite } from 'redux/noticesPage/operations'
+import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
+import { addToFavorite, deleteFromFavorite, fetchFavorites } from 'redux/noticesPage/operations'
 import { getAge } from 'utils/getAge'
 import { toast } from 'react-toastify'
+import { useAuth } from 'hooks'
+import { useEffect, useState } from 'react'
 
 export const NoticesCategoriesItems = ({pet: {_id, img, title, location, birthday, sex, category}}) => {
-    const favorites = useSelector(selectFavorite)
+    const {isLoggedIn} = useAuth()
+    const [favStyle, setFavStyle] = useState(false)
+    const [own, setOwn] = useState(false)
+    // const favorites = useSelector(selectFavorite)
+    // const own = useSelector(selectOwn)
     const dispatch = useDispatch()
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
     const old = getAge(birthday)
 
+    const favoriteItem = useSelector(selectFavorite).find(item => item._id === _id)
+    const ownItem = useSelector(selectOwn).find(item => item._id === _id)
 
-const handleFavorite = () => {
-const favorite = favorites.find(item => item._id === _id)
-if(favorite) {
-    return toast('already in favorites');
+useEffect(() => {
+    if(ownItem) {
+        setOwn(true)
+    }
+    if(favoriteItem) {
+        setFavStyle(true)
+    }
+}, [favoriteItem, ownItem])
+
+const handleFavorite = e => {
+    e.preventDefault()
+if(!isLoggedIn) {
+    toast.warn('Sorry, this option is available only for authorized users');
+}
+if(favoriteItem) {
+    dispatch(deleteFromFavorite(_id))
+    setFavStyle(false)
+    return 
 }
 dispatch(addToFavorite(_id))
+
+}
+
+const handleDeleteOwn = e => {
+    e.preventDefault()
+    setOwn(false)
 }
 
 
@@ -30,13 +58,13 @@ dispatch(addToFavorite(_id))
             <Photo src={img}/>
             <Category>{category}</Category>
 
-            <FavoriteBtn type='button' onClick={handleFavorite}>
+            <FavoriteBtn type='button' className={favStyle? 'active' : null} onClick={handleFavorite}>
                 <FiHeart/>
             </FavoriteBtn>
 
-            <TrashBtn type='button'>
+            {own && <TrashBtn type='button' onClick={handleDeleteOwn}>
                 <FiTrash2/>
-            </TrashBtn>
+            </TrashBtn>}
 
             <TabsWrapper>
             <Info>

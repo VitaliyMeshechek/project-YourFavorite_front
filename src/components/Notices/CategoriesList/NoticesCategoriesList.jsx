@@ -1,18 +1,19 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useSearchParams, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectNotices, selectQuery } from 'redux/noticesPage/selectors';
-import { fetchFavorites, fetchNotices } from "redux/noticesPage/operations";
+import { selectFavorite, selectNotices, selectOwn, selectQuery } from 'redux/noticesPage/selectors';
+import { fetchFavorites, fetchNotices, fetchUsersNotices } from "redux/noticesPage/operations";
 import { NoticesCategoriesItems } from "../CategoriesItems/CategoriesItems";
 import { CategoriesList } from "./NoticesCategoriesList.styled";
 
 const NoticesCategoriesList = () => {
-    const pets = useSelector(selectNotices)
     const {categoryName} = useParams();
+    const favorites = useSelector(selectFavorite)
+    const own = useSelector(selectOwn)
+    const pets = useSelector(selectNotices)
     const query = useSelector(selectQuery)
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
-
   
     useEffect(()=> {
         if(query) {
@@ -22,27 +23,38 @@ const NoticesCategoriesList = () => {
     }, [setSearchParams, query])
     
     useEffect(() => {
-        if(categoryName === 'favorite') {
-            dispatch(fetchFavorites(query))
-            return;
-        }
+        dispatch(fetchFavorites(query))
+        dispatch(fetchUsersNotices(query))
         dispatch(fetchNotices({categoryName, query}))
+        // switch (categoryName) {
+        //     case 'favorite':
+                
+        //         break;
+        //     case 'own':
+                 
+        //         break;
+        
+        //     default:
+                
+        //         break;
+        // }
     }, [dispatch, categoryName, query])
+
+       
 
 
     
-    if(!pets.length) {
+    if(!pets) {
         return null
     };
 
-    console.log(searchParams);
 return (
-<>
-    <CategoriesList>
-        {pets.map(pet => (
+    <>
+        <CategoriesList>
+        { pets.map(pet => (
             <NoticesCategoriesItems pet={pet} key={pet._id}/>
         ))}
-    </CategoriesList>
+        </CategoriesList>
     </>
 )
 

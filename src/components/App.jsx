@@ -40,8 +40,8 @@ export const App = () => {
           <Route path="notices" element={<NoticesPage />}>
             <Route index element={<Navigate to="/notices/sell" />}/>
             <Route path=":categoryName" element={<NoticesCategoriesList />} />
-            <Route path="favorite" element={<PrivateRoute redirectTo="/login" component={<NoticesCategoriesList />} />} />
-            <Route path="own" element={<PrivateRoute redirectTo="/login" component={<NoticesCategoriesList />} />} />
+            {/* <Route path="favorite" element={<PrivateRoute redirectTo="/login" component={<NoticesCategoriesList />} />} />
+            <Route path="own" element={<PrivateRoute redirectTo="/login" component={<NoticesCategoriesList />} />} /> */}
           </Route>
           <Route path="friends" element={<OurFriendsPage />} />
           <Route path="register" element={

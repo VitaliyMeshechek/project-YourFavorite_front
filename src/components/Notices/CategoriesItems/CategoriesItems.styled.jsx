@@ -126,7 +126,7 @@ border: none;
         color: inherit;
     }
 
-    &:hover {
+    &:hover, .active {
         svg {
         fill: #54ADFF;
     }

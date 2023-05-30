@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { addToFavorite, deleteFromFavorite, fetchAll, fetchFavorites, fetchNotices } from './operations';
+import { addToFavorite, deleteFromFavorite, fetchAll, fetchFavorites, fetchNotices, fetchUsersNotices } from './operations';
 
 const handlePending = state => {
   state.isLoading = true;
@@ -63,6 +63,16 @@ const noticesPageSlice = createSlice({
     },
     },
     [deleteFromFavorite.rejected]: handleRejected,
+
+    [fetchUsersNotices.pending]: handlePending,
+    [fetchUsersNotices.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.own = action.payload;
+    },
+    [fetchUsersNotices.rejected]: handleRejected,
+
+
   },
 );
 
