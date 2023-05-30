@@ -1,21 +1,25 @@
 {
   "files": {
     "main.css": "/project-YourFavorite_front/static/css/main.6ec30a80.css",
-    "main.js": "/project-YourFavorite_front/static/js/main.bffb59d5.js",
+    "main.js": "/project-YourFavorite_front/static/js/main.19dcc1e1.js",
+    "static/media/mainPage_bg_tablet@2x.png": "/project-YourFavorite_front/static/media/mainPage_bg_tablet@2x.241eba4743a8c7126db8.png",
     "static/media/mainPage_bg_desktop@2x.png": "/project-YourFavorite_front/static/media/mainPage_bg_desktop@2x.c18827bca01f348c1b29.png",
+    "static/media/mainPage_bg_tablet@1x.png": "/project-YourFavorite_front/static/media/mainPage_bg_tablet@1x.bffe86d259f796a18046.png",
+    "static/media/mainPage_bg_mobile@2x.png": "/project-YourFavorite_front/static/media/mainPage_bg_mobile@2x.5c8c3ff2cb8802dba29a.png",
     "static/media/mainPage_bg_desktop@1x.png": "/project-YourFavorite_front/static/media/mainPage_bg_desktop@1x.7a6b21aff2e6b67644a5.png",
     "static/media/404page_desktop@2x.png": "/project-YourFavorite_front/static/media/404page_desktop@2x.38ae66cb0f5932e66c67.png",
     "static/media/404page_tablet@2x.png": "/project-YourFavorite_front/static/media/404page_tablet@2x.202092adc98c614453dc.png",
+    "static/media/mainPage_bg_mobile@1x.png": "/project-YourFavorite_front/static/media/mainPage_bg_mobile@1x.de1b5e68de27dcd0ed2f.png",
     "static/media/404page_desktop@1x.png": "/project-YourFavorite_front/static/media/404page_desktop@1x.d54f5d9f35263478e915.png",
     "static/media/404page_tablet@1x.png": "/project-YourFavorite_front/static/media/404page_tablet@1x.cc10a2c50963a37d7050.png",
     "static/media/404page_mobile@2x.png": "/project-YourFavorite_front/static/media/404page_mobile@2x.ef7956839a8fec652b97.png",
     "static/media/404page_mobile@1x.png": "/project-YourFavorite_front/static/media/404page_mobile@1x.e789b9ae802b47679086.png",
     "index.html": "/project-YourFavorite_front/index.html",
     "main.6ec30a80.css.map": "/project-YourFavorite_front/static/css/main.6ec30a80.css.map",
-    "main.bffb59d5.js.map": "/project-YourFavorite_front/static/js/main.bffb59d5.js.map"
+    "main.19dcc1e1.js.map": "/project-YourFavorite_front/static/js/main.19dcc1e1.js.map"
   },
   "entrypoints": [
     "static/css/main.6ec30a80.css",
-    "static/js/main.bffb59d5.js"
+    "static/js/main.19dcc1e1.js"
   ]
 }
