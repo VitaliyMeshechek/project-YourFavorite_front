@@ -5,7 +5,7 @@ import {
   fetchAll,
   fetchFavorites,
   fetchNotices,
-  addNotice,
+  addNotice, fetchUsersNotices
 } from './operations';
 
 const handlePending = state => {
@@ -74,8 +74,20 @@ const noticesPageSlice = createSlice({
       );
       state.favorite.splice(index, 1);
     },
+    },
+    [deleteFromFavorite.rejected]: handleRejected,
+
+    [fetchUsersNotices.pending]: handlePending,
+    [fetchUsersNotices.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.own = action.payload;
+    },
+    [fetchUsersNotices.rejected]: handleRejected,
+
+
   },
-  [deleteFromFavorite.rejected]: handleRejected,
-});
+
+);
 
 export const noticesPageReducer = noticesPageSlice.reducer;

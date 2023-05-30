@@ -18,53 +18,66 @@ export const fetchAll = createAsyncThunk(
 );
 
 export const fetchNotices = createAsyncThunk(
-  'noticesPage/fetchNotices',
-  async ({ categoryName, query }, thunkAPI) => {
-    try {
-      // if(categoryName === 'favorite' || categoryName === 'own') {
-      //   const { token } = thunkAPI.getState().auth;
-      //   setAuthHeader(token);
-      // }
-      const response = await axios.get(`/notices/${categoryName}`, {
-        params: { query: query ? query : null },
-      });
-      console.log(response.data);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+    'noticesPage/fetchNotices',
+async ( {categoryName, query} , thunkAPI) => {
+      try {
+        const response = await axios.get(`/notices/${categoryName}`, {params: {query: query? query : null}} );
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
-  }
 );
 
-export const fetchFavorites = createAsyncThunk(
-  'notices/fetchFavorites',
-  async (query, thunkAPI) => {
-    const { token } = thunkAPI.getState().auth;
-    try {
-      setAuthHeader(token);
-      const response = await axios.get(`/notices/favorite`, {
-        params: { query: query ? query : null },
-      });
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+  export const fetchFavorites = createAsyncThunk(
+    'notices/fetchFavorites',
+    async (query, thunkAPI) => {
+      const { token } = thunkAPI.getState().auth;
+      try {
+        setAuthHeader(token);
+        const response = await axios.get(`/notices/favorite`, {params: {query: query? query : null}} );
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
-  }
+  )
+
+  export const addToFavorite = createAsyncThunk(
+    'notices/addToFavorite',
+    async (id, thunkAPI) => {
+      const { token } = thunkAPI.getState().auth;
+      try {
+        setAuthHeader(token);
+        const response = await axios.post(`/notices/favorite/${id}` );
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
+    }
 );
 
-export const addToFavorite = createAsyncThunk(
-  'notices/addToFavorite',
-  async (id, thunkAPI) => {
-    const { token } = thunkAPI.getState().auth;
-    try {
-      setAuthHeader(token);
-      const response = await axios.post(`/notices/favorite/${id}`);
-      return response.data;
-    } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+
+
+  export const fetchUsersNotices = createAsyncThunk(
+    'notices/fetchUsersNotices',
+    async (query, thunkAPI) => {
+      const { token } = thunkAPI.getState().auth;
+      try {
+        setAuthHeader(token);
+        const response = await axios.get(`/notices/own`, {params: {query: query? query : null}} );
+        console.log(response.data);
+        return response.data;
+      } catch (error) {
+        return thunkAPI.rejectWithValue(error.message);
+      }
     }
-  }
-);
+  )
+
+
 
 export const deleteFromFavorite = createAsyncThunk(
   'notices/deleteFromFavorite',
