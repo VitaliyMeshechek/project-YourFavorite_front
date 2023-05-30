@@ -19,7 +19,7 @@ const NoticesCategoriesList = () => {
         if(query) {
             setSearchParams({query})
         }
-        
+        console.log(searchParams)
     }, [setSearchParams, query])
     
     useEffect(() => {
