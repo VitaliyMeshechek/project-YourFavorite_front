@@ -5,7 +5,7 @@ import {
   fetchAll,
   fetchFavorites,
   fetchNotices,
-  addNotice, fetchUsersNotices
+  addNotice, fetchUsersNotices, deleteUserNotice
 } from './operations';
 
 const handlePending = state => {
@@ -28,13 +28,19 @@ const noticesPageSlice = createSlice({
 
   extraReducers: {
     [fetchAll.pending]: handlePending,
-    [addNotice.pending]: handlePending,
     [fetchAll.fulfilled](state, action) {
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
     },
     [fetchAll.rejected]: handleRejected,
+
+    [addNotice.pending]: handlePending,
+    [addNotice.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.items.push(action.payload);
+    },
     [addNotice.rejected]: handleRejected,
 
     [fetchNotices.pending]: handlePending,
@@ -60,11 +66,7 @@ const noticesPageSlice = createSlice({
       state.favorite.push(action.payload);
     },
     [addToFavorite.rejected]: handleRejected,
-    [addNotice.fulfilled](state, action) {
-      state.isLoading = false;
-      state.error = null;
-      state.items.push(action.payload);
-    },
+    
     [deleteFromFavorite.pending]: handlePending,
     [deleteFromFavorite.fulfilled](state, action) {
       state.isLoading = false;
@@ -73,7 +75,6 @@ const noticesPageSlice = createSlice({
         contact => contact.id === action.payload.id
       );
       state.favorite.splice(index, 1);
-    },
     },
     [deleteFromFavorite.rejected]: handleRejected,
 
@@ -85,9 +86,20 @@ const noticesPageSlice = createSlice({
     },
     [fetchUsersNotices.rejected]: handleRejected,
 
-
+    [deleteUserNotice.pending]: handlePending,
+    [deleteUserNotice.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      const index = state.own.findIndex(
+        contact => contact.id === action.payload.id
+      );
+      state.own.splice(index, 1);
+    },
+    [deleteUserNotice.rejected]: handleRejected,
+    },
   },
 
 );
 
 export const noticesPageReducer = noticesPageSlice.reducer;
+

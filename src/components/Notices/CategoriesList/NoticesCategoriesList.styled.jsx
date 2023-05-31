@@ -7,6 +7,7 @@ export const CategoriesList = styled.div`
     justify-content: center;
     align-items: center;
     margin-top: 24px;
+    margin-bottom: 40px;
 
     @media screen and (min-width: 768px) {
         gap:  24px 32px;

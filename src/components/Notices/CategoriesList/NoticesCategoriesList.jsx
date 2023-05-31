@@ -1,45 +1,53 @@
-import { useEffect} from "react";
+import { useEffect, useState} from "react";
 import { useSearchParams, useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { selectNotices, selectQuery } from 'redux/noticesPage/selectors';
+import { selectFavorite, selectNotices, selectOwn, selectQuery } from 'redux/noticesPage/selectors';
 import { fetchFavorites, fetchNotices, fetchUsersNotices } from "redux/noticesPage/operations";
 import { NoticesCategoriesItems } from "../CategoriesItems/CategoriesItems";
 import { CategoriesList } from "./NoticesCategoriesList.styled";
+import { useAuth } from "hooks";
 
 const NoticesCategoriesList = () => {
+    const {isLoggedIn} = useAuth()
     const {categoryName} = useParams();
-    // const favorites = useSelector(selectFavorite)
-    // const own = useSelector(selectOwn)
-    const pets = useSelector(selectNotices)
+    const favorites = useSelector(selectFavorite)
+    const own = useSelector(selectOwn)
+    const notices = useSelector(selectNotices)
+    const [pets, setPets] = useState()
     const query = useSelector(selectQuery)
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
   
     useEffect(()=> {
-        if(query) {
-            setSearchParams({query})
+        if(!query) {
+            setSearchParams('') 
+            return
         }
-        
+        setSearchParams({query})
     }, [setSearchParams, query])
-        console.log(searchParams)
     
     useEffect(() => {
+        if(isLoggedIn) {
         dispatch(fetchFavorites(query))
         dispatch(fetchUsersNotices(query))
+        }
         dispatch(fetchNotices({categoryName, query}))
-        // switch (categoryName) {
-        //     case 'favorite':
-                
-        //         break;
-        //     case 'own':
-                 
-        //         break;
+    }, [categoryName, dispatch, isLoggedIn, query]);
+
+    useEffect(() => {
+        switch (categoryName) {
+            case 'favorite':
+                setPets(favorites)
+                break;
+            case 'own':
+                setPets(own)
+                break;
         
-        //     default:
-                
-        //         break;
-        // }
-    }, [dispatch, categoryName, query])
+            default:
+                setPets(notices)
+                break;
+        }
+    }, [categoryName, favorites, notices, own])
 
        
 
