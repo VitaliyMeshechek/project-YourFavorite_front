@@ -9,7 +9,7 @@ import { useAuth } from 'hooks'
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
 import { addToFavorite, deleteFromFavorite, deleteUserNotice } from 'redux/noticesPage/operations'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 
 export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location, birthday, sex, category}}) => {
     const {isLoggedIn} = useAuth()
