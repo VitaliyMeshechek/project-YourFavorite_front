@@ -21,8 +21,6 @@ export const UserPageInfo =()=> {
 const { user } = useAuth();
 const firstLogin = user.firstLogin
 
-console.log(firstLogin)
-console.log(user)
 
   const modalState = useSelector(selectModal)
   const dispatch = useDispatch();
@@ -51,10 +49,10 @@ else {
   }
   
   const toggleFirstLogin=()=>{
-    console.log('toggle first login')
+    
     dispatch(updateUser({"firstLogin":"false"}))
   }
-console.log(modalState)
+
 
     return (
       <div>
