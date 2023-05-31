@@ -22,10 +22,14 @@ const handleChange = e => {
 
 const handleSubmit = e => {
   e.preventDefault()
-  const query = e.target.search.value
-  const normalizedQuery = query.toLowerCase();  
-  dispatch(setQuery(normalizedQuery));
+  const query = e.target.search.value.toLowerCase()
+  dispatch(setQuery(query));
 };
+
+const handleDelete = () => {
+dispatch(setQuery(''))
+setSearch('')
+}
 
   
     return (
@@ -39,12 +43,13 @@ const handleSubmit = e => {
           autoFocus
           placeholder="Search"
           onChange={handleChange}
+          value={search}
       />
       <SearchBtn type="submit">
         <FiSearch />
       </SearchBtn>
 
-      {search.length > 0 && <SearchBtn type="reset">
+      {search.length > 0 && <SearchBtn type="button" onClick={(() => handleDelete())}>
         <IoClose />
       </SearchBtn>}
 

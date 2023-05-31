@@ -1,11 +1,11 @@
 import { Suspense} from 'react';
 import { Outlet } from 'react-router-dom';
-import {TbFilter} from 'react-icons/tb'
+// import {TbFilter} from 'react-icons/tb'
 import {BsPlus} from 'react-icons/bs'
 import { Container } from 'components/ReusableComponents/MainContainer/MainContainer.styled';
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from 'components/Notices/CategoriesNav/CategoriesNav';
-import { Title, Btn, NavLinkStyled, TabletWrapper, Wrapper } from './NoticesPage.styled';
+import { Title, NavLinkStyled, TabletWrapper, Wrapper } from './NoticesPage.styled';
 
 const NoticesPage = () => {
 
@@ -18,10 +18,10 @@ const NoticesPage = () => {
         <NoticesCategoriesNav/>
 
         <TabletWrapper>
-          <Btn type="button">
+          {/* <Btn type="button">
             <span>Filter</span>
             <TbFilter/> 
-          </Btn>
+          </Btn> */}
 
           <NavLinkStyled to="/add-pet" key="/add-pet">
           <span>Add pet</span>

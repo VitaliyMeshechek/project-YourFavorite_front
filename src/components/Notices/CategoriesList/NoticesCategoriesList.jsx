@@ -21,13 +21,13 @@ const NoticesCategoriesList = () => {
     useEffect(()=> {
         if(query) {
             setSearchParams({query})
+            return
         }
-        
     }, [setSearchParams, query])
     
     useEffect(() => {
         if(isLoggedIn) {
-            dispatch(fetchFavorites(query))
+        dispatch(fetchFavorites(query))
         dispatch(fetchUsersNotices(query))
         }
         dispatch(fetchNotices({categoryName, query}))

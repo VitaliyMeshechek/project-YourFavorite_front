@@ -9,14 +9,13 @@ import { getAge } from 'utils/getAge'
 import { toast } from 'react-toastify'
 import { useAuth } from 'hooks'
 import { useEffect, useState } from 'react'
-import { deletePet } from 'redux/user/operations'
+
 
 export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location, birthday, sex, category}}) => {
-    const dispatch = useDispatch()
     const {isLoggedIn} = useAuth()
     const [favStyle, setFavStyle] = useState(false)
     const [own, setOwn] = useState(false)
-    
+    const dispatch = useDispatch()
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
     const old = getAge(birthday)
 
