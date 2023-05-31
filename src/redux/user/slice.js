@@ -67,9 +67,10 @@ export const petsSlice = createSlice({
         .addCase(deletePet.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload);
-        console.log(state.items);
-          state.items = state.items.filter(pet => pet._id !== action.payload.id) 
+        console.log(action.payload.id);
+        console.log(state.pet);
+          state.pet = state.pet.filter(pet => pet._id !== action.payload.id) 
+          console.log(state.items);
         })
       .addMatcher(isAnyOf(fetchPets.pending,addPet.pending,deletePet.pending), (state) => {
         state.isLoading = true;

@@ -1,17 +1,50 @@
 import styled from '@emotion/styled';
+import mobileBG1x from '../../images/backgrounds/mainPage_bg_mobile@1x.png';
+import mobileBG2x from '../../images/backgrounds/mainPage_bg_mobile@2x.png';
+import tabletBG1x from '../../images/backgrounds/mainPage_bg_tablet@1x.png';
+import tabletBG2x from '../../images/backgrounds/mainPage_bg_tablet@2x.png';
+import desktopBG1x from '../../images/backgrounds/mainPage_bg_desktop@1x.png';
+import desktopBG2x from '../../images/backgrounds/mainPage_bg_desktop@2x.png';
 
-export const WrapperContainer = styled.div`
-  @media screen and (max-width: 767.98px) {
-    display: block;
+export const Img = styled.section`
+  padding-top: 100px;
+  height: 601px;
+  background-image: url(${mobileBG1x});
+  background-repeat: no-repeat;
+  background-position: bottom;
+  background-size: contain;
+
+  @media (min-device-pixel-ratio: 2),
+    (min-resolution: 192dpi),
+    (min-resolution: 2dppx) {
+    background-image: url(${mobileBG2x});
   }
-  @media screen and (max-width: 1279.98px) {
-    display: block;
+
+  @media screen and (min-width: 768px) {
+    padding-top: 200px;
+    background-image: url(${tabletBG1x});
+    background-size: cover;
+    height: 1193px;
+    background-size: 818px 980px;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${tabletBG2x});
+    }
   }
   @media screen and (min-width: 1280px) {
-    margin: 0;
-    /* padding-top: 199px; */
-    display: flex;
-    position: relative;
+    padding-top: 260px;
+    background-image: url(${desktopBG1x});
+    background-size: 950px 730px;
+    height: 800px;
+    background-position: bottom right;
+
+    @media (min-device-pixel-ratio: 2),
+      (min-resolution: 192dpi),
+      (min-resolution: 2dppx) {
+      background-image: url(${desktopBG2x});
+    }
   }
 `;
 
@@ -23,24 +56,15 @@ export const FirstTitle = styled.h1`
     font-size: 30px;
     line-height: 1.38;
     color: #000000;
-    max-width: 280px;
-    width: 100%;
-    margin-top: 60px;
-    margin-bottom: 20px;
+    margin: 0;
     text-align: center;
   }
   @media screen and (min-width: 768px) {
-    font-family: 'Manrope';
-    font-style: normal;
-    font-weight: 700;
     font-size: 64px;
     line-height: 1.47;
     color: #000000;
     max-width: 588px;
     margin-right: 148px;
-    margin-top: 80px;
-    margin-bottom: 27px;
-    /* text-align: center; */
   }
   @media screen and (min-width: 1280px) {
     font-family: 'Manrope';
@@ -51,63 +75,7 @@ export const FirstTitle = styled.h1`
     color: #111111;
     margin: 0;
     padding: 0;
-    width: 501px;
-    margin-top: 180px;
-  }
-`;
-
-// export const FirstImg = styled.img`
-//   width: 426px;
-//   height: auto;
-//   display: block;
-//   position: absolute;
-//   bottom: 0;
-//   left: 640px;
-// `;
-
-// export const SecondImg = styled.img`
-//   width: 532px;
-//   height: auto;
-//   display: block;
-//   position: absolute;
-//   top: 300px;
-//   right: -18px;
-// `;
-
-// export const ThirdImg = styled.img`
-//   width: 362px;
-//   height: auto;
-//   display: block;
-//   position: absolute;
-//   bottom: 0;
-//   right: -80px;
-// `;
-
-// export const WrapperContainerImg = styled.div`
-//   margin-left: 100px;
-//   position: relative;
-// `;
-
-export const MainImg = styled.img`
-  @media screen and (max-width: 767.98px) {
-    max-width: 474px;
-    width: 100%;
-    height: auto;
-    display: block;
-  }
-  @media screen and (max-width: 1279.98px) {
-    max-width: 985px;
-    width: 100%;
-    margin-bottom: 14px;
-    height: auto;
-    display: block;
-  }
-
-  @media screen and (min-width: 1280px) {
-    width: 900px;
-    height: auto;
-    display: block;
-    padding: 0;
-    margin: 0;
+    min-width: 500px;
+    margin-left: -600px;
   }
 `;

@@ -162,7 +162,7 @@ border: none;
         background: #54ADFF;
         svg {
         color: #C5DFF6;
-    }
+    }}
 `
 export const Title = styled.h2`
 display: inline-block;

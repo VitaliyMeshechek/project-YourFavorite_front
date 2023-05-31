@@ -10,29 +10,33 @@ import {
   ReadMoreButton,
   ItemWrapper,
 } from './NewsItem.styled';
-
 import { useLocation } from 'react-router-dom';
 
-const NewsItem = () => {
+const NewsItem = ({ item: { imgUrl, date, text, title, url } }) => {
   const location = useLocation();
+
+  const dateFormat = date => {
+    const arr = date.slice(0, 10).split('-');
+    const newDate = `${arr[2]}/${arr[1]}/${arr[0]}`;
+    return newDate;
+  };
 
   return (
     <ItemWrapper>
       <Rectangle></Rectangle>
 
       <Item>
-        <Img></Img>
+        <Img src={imgUrl} alt={title}></Img>
         <DescWrapper>
-          <Title>On Pets, Moral Logic and Love</Title>
-          <Desc>
-            In January, I fell in love with someone. It was the last thing I’d
-            expect and caught me completely off guard.He has sandy blond hair
-            with flecks of gray and gorgeous, sad eyes. He loves to go on walks
-            and cuddle. His name is Herbie.
-          </Desc>
+          <Title>{title}</Title>
+          <Desc>{text}</Desc>
           <BottomWrapper>
-            <Date>15/03/2023</Date>
-            <ReadMoreButton to="/" state={{ from: location }}>
+            <Date>{dateFormat(date)}</Date>
+            <ReadMoreButton
+              href={url}
+              target="_blank"
+              state={{ from: location }}
+            >
               Read more
             </ReadMoreButton>
           </BottomWrapper>

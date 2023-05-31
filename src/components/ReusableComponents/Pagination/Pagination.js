@@ -1,4 +1,5 @@
-import { useState } from 'react';
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react';
 import {
   BackButton,
   BackIcon,
@@ -7,11 +8,22 @@ import {
   PageButton,
   PaginationWrapper,
 } from './Pagination.styled';
+import { useSearchParams } from 'react-router-dom';
 
-const Pagination = ({ pages = 10 }) => {
+const Pagination = ({ length }) => {
   const pagesArr = [];
   const [currentPage, setCurrentPage] = useState(1);
   const mediaTablet = window.screen.width >= 768 && true;
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const page = searchParams.get('page');
+
+  useEffect(() => {
+    setSearchParams({ page: currentPage });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [currentPage]);
+
+  const pages = length < 20 ? 1 : length / 20;
 
   for (let i = 1; i <= pages; i++) {
     pagesArr.push(i);

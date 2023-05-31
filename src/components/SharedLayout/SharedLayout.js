@@ -4,6 +4,7 @@ import { AppBar } from 'components/Header/AppBar/AppBar';
 import { Loader } from '../Loader/Loader';
 
 const SharedLayout = () => {
+
   return (
     <>
       <AppBar />
