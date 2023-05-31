@@ -19,10 +19,11 @@ const NoticesCategoriesList = () => {
     const [searchParams, setSearchParams] = useSearchParams();
   
     useEffect(()=> {
-        if(query) {
-            setSearchParams({query})
+        if(!query) {
+            setSearchParams('') 
             return
         }
+        setSearchParams({query})
     }, [setSearchParams, query])
     
     useEffect(() => {

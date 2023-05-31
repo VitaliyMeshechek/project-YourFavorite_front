@@ -17,7 +17,11 @@ export const NoticesSearch = () => {
 const dispatch = useDispatch()
 
 const handleChange = e => {
-  setSearch(e.currentTarget.value)
+  const search = e.currentTarget.value
+  setSearch(search)
+  if(!search) {
+    dispatch(setQuery(''));
+  }
 }
 
 const handleSubmit = e => {

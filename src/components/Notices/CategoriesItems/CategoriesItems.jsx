@@ -1,15 +1,14 @@
+import { useEffect, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+// import toast from 'react-hot-toast';
 import {HiOutlineLocationMarker, HiOutlineClock} from 'react-icons/hi'
 import {FiHeart, FiTrash2} from 'react-icons/fi'
 import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
-import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
-import { useDispatch, useSelector } from 'react-redux'
+import { getAge } from 'utils/getAge'
+import { useAuth } from 'hooks'
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
 import { addToFavorite, deleteFromFavorite, deleteUserNotice } from 'redux/noticesPage/operations'
-import { getAge } from 'utils/getAge'
-import { toast } from 'react-toastify'
-import { useAuth } from 'hooks'
-import { useEffect, useState } from 'react'
-
+import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
 
 export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location, birthday, sex, category}}) => {
     const {isLoggedIn} = useAuth()
@@ -34,8 +33,8 @@ useEffect(() => {
 const handleFavorite = e => {
     e.preventDefault()
 if(!isLoggedIn) {
-    console.log('Sorry, this option is available only for authorized users');
-    toast('Sorry, this option is available only for authorized users');
+    setFavStyle(false)
+    // toast('Sorry, this option is available only for authorized users')
     return
 }
 if(favoriteItem) {
@@ -44,7 +43,6 @@ if(favoriteItem) {
     return 
 }
 dispatch(addToFavorite(_id))
-
 }
 
 const handleDeleteOwn = e => {

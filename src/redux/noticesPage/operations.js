@@ -9,7 +9,6 @@ export const fetchAll = createAsyncThunk(
   async (_, thunkAPI) => {
     try {
       const response = await axios.get(`/notices`);
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
@@ -22,7 +21,6 @@ export const fetchNotices = createAsyncThunk(
 async ( {categoryName='sell', query} , thunkAPI) => {
       try {
         const response = await axios.get(`/notices/${categoryName}`, {params: {query: query? query : null}} );
-        console.log(response.data);
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -37,7 +35,6 @@ async ( {categoryName='sell', query} , thunkAPI) => {
       try {
         setAuthHeader(token);
         const response = await axios.get(`/notices/favorite`, {params: {query: query? query : null}} );
-        console.log(response.data);
         return response.data;
       } catch (error) {
         return thunkAPI.rejectWithValue(error.message);
@@ -81,7 +78,6 @@ export const fetchUsersNotices = createAsyncThunk(
     try {
       setAuthHeader(token);
       const response = await axios.get(`/notices/own`, {params: {query: query? query : null}} );
-      console.log(response.data);
       return response.data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);
