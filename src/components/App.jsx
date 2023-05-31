@@ -76,6 +76,7 @@ export const App = () => {
           <Route path="add-pet" element={<AddPetPage />} />
           <Route path="*" element={<PageNotFound />} />
         </Route>
+        
       </Routes>
       <ToastContainer
         position="bottom-left"

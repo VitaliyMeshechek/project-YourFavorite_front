@@ -4,19 +4,19 @@ import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
 import { useDispatch, useSelector } from 'react-redux'
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
-import { addToFavorite, deleteFromFavorite } from 'redux/noticesPage/operations'
+import { addToFavorite, deleteFromFavorite, deleteUserNotice } from 'redux/noticesPage/operations'
 import { getAge } from 'utils/getAge'
 import { toast } from 'react-toastify'
 import { useAuth } from 'hooks'
 import { useEffect, useState } from 'react'
+import { deletePet } from 'redux/user/operations'
 
-export const NoticesCategoriesItems = ({pet: {_id, img, title, location, birthday, sex, category}}) => {
+export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location, birthday, sex, category}}) => {
+    const dispatch = useDispatch()
     const {isLoggedIn} = useAuth()
     const [favStyle, setFavStyle] = useState(false)
     const [own, setOwn] = useState(false)
-    // const favorites = useSelector(selectFavorite)
-    // const own = useSelector(selectOwn)
-    const dispatch = useDispatch()
+    
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
     const old = getAge(birthday)
 
@@ -35,7 +35,9 @@ useEffect(() => {
 const handleFavorite = e => {
     e.preventDefault()
 if(!isLoggedIn) {
-    toast.warn('Sorry, this option is available only for authorized users');
+    console.log('Sorry, this option is available only for authorized users');
+    toast('Sorry, this option is available only for authorized users');
+    return
 }
 if(favoriteItem) {
     dispatch(deleteFromFavorite(_id))
@@ -48,6 +50,8 @@ dispatch(addToFavorite(_id))
 
 const handleDeleteOwn = e => {
     e.preventDefault()
+    dispatch(deleteUserNotice(_id))
+    // dispatch(deletePet(_id))
     setOwn(false)
 }
 
@@ -55,7 +59,7 @@ const handleDeleteOwn = e => {
     return (
         <>
         <Thumb>
-            <Photo src={img}/>
+            <Photo src={avatarURL}/>
             <Category>{category}</Category>
 
             <FavoriteBtn type='button' className={favStyle? 'active' : null} onClick={handleFavorite}>

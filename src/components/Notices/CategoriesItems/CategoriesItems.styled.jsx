@@ -1,5 +1,6 @@
 import styled from '@emotion/styled'
 
+
 export const Thumb = styled.div`
     position: relative;
     display: flex;
@@ -126,7 +127,7 @@ border: none;
         color: inherit;
     }
 
-    &:hover, .active {
+    &:hover, &.active {
         svg {
         fill: #54ADFF;
     }
