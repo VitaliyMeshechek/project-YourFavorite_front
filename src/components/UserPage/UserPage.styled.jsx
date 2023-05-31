@@ -38,15 +38,16 @@ margin: 0;
  export const UserPageContainer = styled.div`
     margin: auto;
     width: 280px;
-border: 1px solid green;
-padding: 75px 0 137px;
+
+padding: 100px 0 137px;
 @media screen and (min-width: 768px){
     width: 704px;
-    padding-bottom: 121px;
+    padding: 140px 0 121px;
 }
 @media screen and (min-width: 1280px){
  width:1248px;
  display: flex;
+ padding: 135px 0 121px;
 }
  `
 
