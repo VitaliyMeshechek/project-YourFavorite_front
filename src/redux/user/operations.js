@@ -7,7 +7,7 @@ export const updateUser = createAsyncThunk(
   'users/updateUser',
   async (values, thunkAPI) => {
     try {
-      // console.log(values)
+
       const response = await axios.patch('/cardPets', values);
 
       return response.data;
@@ -19,7 +19,7 @@ export const updateUser = createAsyncThunk(
 export const updateUserPhoto = createAsyncThunk(
   'users/updateUserPhoto',
   async (values, thunkAPI) => {
-    // console.log(values)
+
     try {
       const formData = new FormData();
       formData.append('file', values);
@@ -36,9 +36,9 @@ export const fetchPets = createAsyncThunk(
   'pet/fetchAll',
   async (_, thunkAPI) => {
     try {
-      console.log('i m here');
+     
       const response = await axios.get('/cardPets');
-      console.log(response.data.user.pets);
+      
       return response.data.user.pets;
     } catch (e) {
       return thunkAPI.rejectWithValue(e.message);
@@ -58,7 +58,7 @@ export const addPet = createAsyncThunk('pets/addPet', async (pet, thunkAPI) => {
 export const deletePet = createAsyncThunk(
   'pet/deletePet',
   async (id, thunkAPI) => {
-    console.log(id);
+   
     try {
       const response = await axios.delete(`/cardPets/pet/${id}`);
       return response.data;
@@ -67,4 +67,4 @@ export const deletePet = createAsyncThunk(
     }
   }
 );
-// /pet or pets
+
