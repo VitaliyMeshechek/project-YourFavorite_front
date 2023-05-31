@@ -3,8 +3,8 @@ import { BsPlus } from 'react-icons/bs'
 import { useWindowSize } from 'hooks/useResize';
 import { Btn } from './AddPetBtn.styled';
 import { useLocation } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
+// import { useSelector } from 'react-redux';
+// import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useAuth } from 'hooks'
 
 const AddPetBtn = ({ text, path }) => {
