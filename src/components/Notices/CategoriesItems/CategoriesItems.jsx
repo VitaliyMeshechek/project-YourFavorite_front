@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-// import toast from 'react-hot-toast';
+import toast from 'react-hot-toast';
 import {HiOutlineLocationMarker, HiOutlineClock} from 'react-icons/hi'
 import {FiHeart, FiTrash2} from 'react-icons/fi'
 import {TbGenderFemale, TbGenderMale} from 'react-icons/tb'
@@ -9,9 +9,11 @@ import { useAuth } from 'hooks'
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
 import { addToFavorite, deleteFromFavorite, deleteUserNotice } from 'redux/noticesPage/operations'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
+import { useParams } from 'react-router-dom';
 
 export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location, birthday, sex, category}}) => {
     const {isLoggedIn} = useAuth()
+    const [newCategory, setNewCategory] = useState()
     const [favStyle, setFavStyle] = useState(false)
     const [own, setOwn] = useState(false)
     const dispatch = useDispatch()
@@ -21,6 +23,19 @@ export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location, b
     const favoriteItem = useSelector(selectFavorite).find(item => item._id === _id)
     const ownItem = useSelector(selectOwn).find(item => item._id === _id)
 
+    useEffect(() => {
+        switch (category) {
+            case 'lost-found':
+                setNewCategory('lost/found')
+                break;
+                case 'for-free':
+                    setNewCategory('in good hands')
+                    break;
+            default:
+                break;
+        }
+    }, [category])
+
 useEffect(() => {
     if(ownItem) {
         setOwn(true)
@@ -28,13 +43,14 @@ useEffect(() => {
     if(favoriteItem) {
         setFavStyle(true)
     }
+    
 }, [favoriteItem, ownItem])
 
 const handleFavorite = e => {
     e.preventDefault()
 if(!isLoggedIn) {
     setFavStyle(false)
-    // toast('Sorry, this option is available only for authorized users')
+    toast('Sorry, this option is available only for authorized users')
     return
 }
 if(favoriteItem) {
@@ -57,7 +73,7 @@ const handleDeleteOwn = e => {
         <>
         <Thumb>
             <Photo src={avatarURL}/>
-            <Category>{category}</Category>
+            <Category>{newCategory}</Category>
 
             <FavoriteBtn type='button' className={favStyle? 'active' : null} onClick={handleFavorite}>
                 <FiHeart/>

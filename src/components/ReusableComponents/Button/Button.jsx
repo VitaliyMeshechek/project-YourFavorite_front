@@ -1,3 +1,4 @@
+import toast from 'react-hot-toast';
 import { useAuth } from 'hooks'
 import {BsPlus} from 'react-icons/bs'
 import {TbFilter} from 'react-icons/tb'
@@ -8,7 +9,7 @@ export const AddPetBtn = () => {
 
     const handleClick = () => {
         if(!isLoggedIn) {
-            // toast('Sorry, this option is available only for authorized users')
+            toast('Sorry, this option is available only for authorized users')
             return
         } 
     }
@@ -17,7 +18,7 @@ export const AddPetBtn = () => {
         <NavLinkStyled to="/add-pet" key="/add-pet" onClick={handleClick}>
           <span>Add pet</span>
             <BsPlus/>
-          </NavLinkStyled>
+        </NavLinkStyled>
     )
 }
 
