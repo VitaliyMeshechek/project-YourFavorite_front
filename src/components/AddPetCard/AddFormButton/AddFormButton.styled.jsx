@@ -84,6 +84,6 @@ export const BackLink = styled(Link)`
   background-color: transparent;
   border-radius: 40px;
   cursor: pointer;
-  
+  }
 `;
 

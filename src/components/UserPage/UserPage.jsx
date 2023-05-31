@@ -1,19 +1,21 @@
 import { Logout } from "./Logout";
 import { PetsData } from "./PetsData";
 import {UserData} from "./UserData";
-import {  ContainerUser, UserPageContainer, NavLinkStyled, Header, MyPetsHeaderContainer,UserBlock, PetBlock} from './UserPage.styled';
+import {  ContainerUser, UserPageContainer, Header, MyPetsHeaderContainer,UserBlock, PetBlock} from './UserPage.styled';
 import { useEffect } from "react";
 import { useDispatch
   // , useSelector 
 } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
-import { BsPlus } from 'react-icons/bs'
+// import { BsPlus } from 'react-icons/bs'
 // import {selectModal} from '../../redux/modal/selectors'
 import CongratsModal from "components/ReusableComponents/Modal/CongratsModal";
 import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
 import{showModal} from  '../../redux/modal/slice'
 import {  updateUser} from '../../redux/user/operations';
-import { useAuth} from '../../hooks/useAuth';
+import { useAuth } from '../../hooks/useAuth';
+import AddPetBtn from '../AddPetBtn/AddPetBtn';
+
 
 
 export const UserPageInfo =()=> {
@@ -71,10 +73,7 @@ const firstLogin = user.firstLogin
         <PetBlock>
         <MyPetsHeaderContainer>
             <Header>My pets:</Header>
-      <NavLinkStyled to="/add-pet" key="/add-pet">
-          <span>Add pet</span>
-            <BsPlus/>
-          </NavLinkStyled>
+            <AddPetBtn text="Add pet" path="/add-pet" />
         </MyPetsHeaderContainer>
 
         
@@ -84,3 +83,7 @@ const firstLogin = user.firstLogin
     )
 }
 
+      // <NavLinkStyled to="/add-pet" key="/add-pet">
+      //     <span>Add pet</span>
+      //       <BsPlus/>
+      //     </NavLinkStyled>

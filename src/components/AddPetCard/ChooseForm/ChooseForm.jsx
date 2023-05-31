@@ -34,12 +34,12 @@ const ChooseForm = ({ formData, setFormData, nextStep, cancel, setValues }) => {
       <AddFormRadioButton
         type="radio"
         name="category"
-        value="my-pet"
-        id="my-pet"
+        value="your pet"
+        id="your pet"
         onChange={handleCategoryChange}
-        checked={formData.category === 'my-pet'}
+        checked={formData.category === 'your pet'}
       />
-      <RadioCategoryLabel htmlFor="my-pet">Your pet</RadioCategoryLabel>
+      <RadioCategoryLabel htmlFor="your pet">Your pet</RadioCategoryLabel>
       <AddFormRadioButton
         type="radio"
         name="category"
