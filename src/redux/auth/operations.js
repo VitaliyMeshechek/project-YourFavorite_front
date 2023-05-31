@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import { toast } from 'react-toastify';
+import toast from 'react-hot-toast';
 
 axios.defaults.baseURL = 'https://project-yourfavorite-back.onrender.com/api';
 
@@ -30,6 +30,8 @@ export const logIn = createAsyncThunk(
     try {
       const response = await axios.post('/users/login', credentials);
       setAuthHeader(response.data.token);
+
+      toast(`👏 Welkome back`);
       return response.data;
     } catch (error) {
       toast.error('Email or password is wrong');
