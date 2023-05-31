@@ -7,7 +7,7 @@ export const validatePetSchema = Yup.object().shape({
     .max(16, 'Name must not exceed 16 characters'),
   category: Yup.string()
     .required('Category is required')
-    .oneOf(['my pet', 'sell', 'lost-found', 'for-free'], 'Invalid category'),
+    .oneOf(['your pet', 'sell', 'lost-found', 'for-free'], 'Invalid category'),
   name: Yup.string()
     .required('Name is required')
     .min(2, 'Name must be at least 2 characters')
@@ -22,7 +22,7 @@ export const validatePetSchema = Yup.object().shape({
     .required('Breed is required')
     .min(2, 'Breed must be at least 2 characters')
     .max(16, 'Breed must not exceed 16 characters'),
-  petPhoto: Yup.mixed()
+  avatarUrl: Yup.mixed()
     .required('File is required')
     .test(
       'fileSize',
@@ -40,12 +40,12 @@ export const validatePetSchema = Yup.object().shape({
     .required('Price is required'),
   comments: Yup.string().test(
     'comments',
-    'Comments must be between 8 and 120 characters',
+    'Comments must be between 10 and 120 characters',
     value => {
       if (!value) {
         return true;
       }
-      return value.length >= 8 && value.length <= 120;
+      return value.length >= 10 && value.length <= 120;
     }
   ),
 });
