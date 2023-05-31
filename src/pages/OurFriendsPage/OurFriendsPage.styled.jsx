@@ -2,19 +2,16 @@ import styled from '@emotion/styled';
 
 export const FriendsContainer = styled.div`
   @media screen and (max-width: 767.98px) {
-    padding-top: 40px;
     padding-bottom: 75px;
   }
   @media screen and (min-width: 768px) {
-    padding-top: 40px;
     padding-bottom: 274px;
   }
   @media screen and (min-width: 1280px) {
-    padding-top: 40px;
     padding-bottom: 81px;
   }
 `;
-export const FriendsTitle = styled.h2`
+export const FriendsTitle = styled.h1`
   text-align: center;
   @media screen and (max-width: 767.98px) {
     font-family: 'Manrope';
@@ -27,7 +24,7 @@ export const FriendsTitle = styled.h2`
 
     margin-bottom: 24px;
     display: block;
-    margin-top: 66px;
+    margin-top: 90px;
   }
 
   @media screen and (min-width: 768px) {
@@ -39,6 +36,7 @@ export const FriendsTitle = styled.h2`
     color: #000000;
 
     margin-bottom: 40px;
+    margin-top: 90px;
   }
 
   @media screen and (min-width: 1280px) {
@@ -50,6 +48,6 @@ export const FriendsTitle = styled.h2`
 
     margin-bottom: 60px;
     text-align: center;
-    margin-top: 80px;
+    margin-top: 90px;
   }
 `;
