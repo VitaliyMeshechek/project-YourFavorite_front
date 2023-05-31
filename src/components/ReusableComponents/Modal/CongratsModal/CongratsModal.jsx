@@ -10,10 +10,10 @@ import ModalWrapper from '../ModalWrapper';
 import { useDispatch } from 'react-redux';
 import { showModal } from 'redux/modal/slice';
 
-const CongratsModal = () => {
+const CongratsModal = ({ func }) => {
   const dispatch = useDispatch();
 
-  const handleClose = ({ func }) => {
+  const handleClose = () => {
     dispatch(showModal(false));
     func();
   };
