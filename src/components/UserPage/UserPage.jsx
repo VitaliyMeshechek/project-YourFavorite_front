@@ -3,12 +3,11 @@ import { PetsData } from "./PetsData";
 import {UserData} from "./UserData";
 import {  ContainerUser, UserPageContainer, NavLinkStyled, Header, MyPetsHeaderContainer,UserBlock, PetBlock} from './UserPage.styled';
 import { useEffect } from "react";
-import { useDispatch
-  // , useSelector 
+import { useDispatch, useSelector 
 } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
 import { BsPlus } from 'react-icons/bs'
-// import {selectModal} from '../../redux/modal/selectors'
+import {selectModal} from '../../redux/modal/selectors'
 import CongratsModal from "components/ReusableComponents/Modal/CongratsModal";
 import LeavingModal from "components/ReusableComponents/Modal/LeavingModal";
 import{showModal} from  '../../redux/modal/slice'
@@ -21,17 +20,19 @@ export const UserPageInfo =()=> {
 
 const { user } = useAuth();
 const firstLogin = user.firstLogin
+console.log(firstLogin)
 
-
-  // const modalState = useSelector(selectModal)
+  const modalState = useSelector(selectModal)
   const dispatch = useDispatch();
 
   useEffect(() => {
     if (!firstLogin) {
     dispatch(showModal(false));
-  
-}},[firstLogin,dispatch]);
-
+}
+else {
+  dispatch(showModal(true));
+}
+},[firstLogin,dispatch]);
 
 
 
@@ -51,7 +52,7 @@ const firstLogin = user.firstLogin
     console.log('toggle first login')
     dispatch(updateUser({"firstLogin":false}))
   }
-
+console.log(modalState)
 
     return (
       <div>
