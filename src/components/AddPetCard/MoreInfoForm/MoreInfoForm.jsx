@@ -67,7 +67,9 @@ useEffect(() => {
       );
     }
     if (formData.category === 'your pet') {
-      setIsDisabled(!(isAvatarURLFieldValid && isCommentsFieldValid));
+      setIsDisabled(!(
+        isAvatarURLFieldValid &&
+        isCommentsFieldValid));
     } else {
       setIsDisabled(
         !(

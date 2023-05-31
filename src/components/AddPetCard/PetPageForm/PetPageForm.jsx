@@ -85,15 +85,28 @@ const AddPetPageForm = () => {
   };
 
   const handleSubmit = async () => {
-    
+    // const pet = {
+    //       name: "avsdasvasv",
+    // birthday: "05.05.2023",
+    // breed: "zxcvzxvxzvxzcv",
+    // comments: "dsfghdfghdfghdfgh",
+    // avatarUrl: "/asdvasdasdvasdv"
+    // }
+
+
+    //   dispatch(addPet(pet));
+    //   toggleModal();
+    //   return;
+ 
+
     if (!formData.category) return;
 
     const newFormData = new FormData();
-    newFormData.append('category', formData.category);
+ newFormData.append('category', formData.category);
     newFormData.append('name', formData.name);
     newFormData.append('birthday', formData.birthday);
     newFormData.append('breed', formData.breed);
-    newFormData.append('avatarURL', formData.avatarUrl);
+    newFormData.append('avatarUrl', formData.avatarUrl);
 
     if (formData.comments) {
       newFormData.append('comments', formData.comments);

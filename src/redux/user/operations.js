@@ -45,10 +45,7 @@ export const fetchPets = createAsyncThunk(
 
 export const addPet = createAsyncThunk('pets/addPet', async (pet, thunkAPI) => {
   console.log(pet);
-  // const pet = {
-  //   ...newFormData,
-  //   category,
-  // };
+
   try {
     console.log(pet);
     const response = await axios.post('/cardPets/pet', pet);
