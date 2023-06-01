@@ -104,7 +104,8 @@ const AddPetPageForm = () => {
       toggleModal();
       return;
     }
-
+    
+    newFormData.delete('category', formData.category);
     newFormData.append('title', formData.title);
     newFormData.append('sex', formData.sex);
     newFormData.append('location', formData.location);
