@@ -9,14 +9,14 @@ import { useAuth } from 'hooks'
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
 import { addToFavorite, deleteFromFavorite, deleteUserNotice } from 'redux/noticesPage/operations'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
-// import { useParams } from 'react-router-dom';
 
-export const NoticesCategoriesItems = ({pet: {_id, avatarUrl, title, location, birthday, sex, category}}) => {
+export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location='Ukraine', birthday, sex, category}}) => {
     const {isLoggedIn} = useAuth()
     const [newCategory, setNewCategory] = useState()
     const [favStyle, setFavStyle] = useState(false)
     const [own, setOwn] = useState(false)
     const dispatch = useDispatch()
+    const newTitle = title.length > 32 ? title.slice(0, 31) + '...': title;
     const newLocation = location.length > 5 ? location.slice(0, 4) + '...': location;
     const old = getAge(birthday)
 
@@ -30,6 +30,9 @@ export const NoticesCategoriesItems = ({pet: {_id, avatarUrl, title, location, b
                 break;
                 case 'for-free':
                     setNewCategory('in good hands')
+                    break;
+                case 'sell':
+                    setNewCategory('sell')
                     break;
             default:
                 break;
@@ -72,7 +75,7 @@ const handleDeleteOwn = e => {
     return (
         <>
         <Thumb>
-            <Photo src={avatarUrl}/>
+            <Photo src={avatarURL}/>
             <Category>{newCategory}</Category>
 
             <FavoriteBtn type='button' className={favStyle? 'active' : null} onClick={handleFavorite}>
@@ -97,7 +100,7 @@ const handleDeleteOwn = e => {
                 {sex}
             </Info>
             </TabsWrapper>
-            <Title>{title}</Title>
+            <Title>{newTitle}</Title>
             <LoadMoreBtn>Learn more</LoadMoreBtn>
         </Thumb>
         </>

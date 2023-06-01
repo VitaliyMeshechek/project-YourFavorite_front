@@ -6,6 +6,7 @@ import { fetchFavorites, fetchNotices, fetchUsersNotices } from "redux/noticesPa
 import { NoticesCategoriesItems } from "../CategoriesItems/CategoriesItems";
 import { CategoriesList } from "./NoticesCategoriesList.styled";
 import { useAuth } from "hooks";
+import { ParkedPage } from "../ParkedPage/ParkedPage";
 
 const NoticesCategoriesList = () => {
     const {isLoggedIn} = useAuth()
@@ -13,7 +14,7 @@ const NoticesCategoriesList = () => {
     const favorites = useSelector(selectFavorite)
     const own = useSelector(selectOwn)
     const notices = useSelector(selectNotices)
-    const [pets, setPets] = useState()
+    const [pets, setPets] = useState([])
     const query = useSelector(selectQuery)
     const dispatch = useDispatch();
     const [searchParams, setSearchParams] = useSearchParams();
@@ -25,7 +26,6 @@ const NoticesCategoriesList = () => {
         }
         setSearchParams({query})
     }, [setSearchParams, query])
-    console.log(searchParams)
 
     useEffect(() => {
         if(isLoggedIn) {
@@ -50,21 +50,17 @@ const NoticesCategoriesList = () => {
         }
     }, [categoryName, favorites, notices, own])
 
-       
 
-
-    
-    if(!pets) {
-        return null
-    };
 
 return (
     <>
-        <CategoriesList>
-        { pets.map(pet => (
+            {pets.length > 0 ? 
+            <CategoriesList>
+            {pets.map(pet => (
             <NoticesCategoriesItems pet={pet} key={pet._id}/>
-        ))}
-        </CategoriesList>
+            ))}
+            </CategoriesList> : 
+            <ParkedPage/>} 
     </>
 )
 
