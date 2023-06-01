@@ -19,6 +19,9 @@ export const register = createAsyncThunk(
       setAuthHeader(response.data.token);
       return response.data;
     } catch (error) {
+      if (error.message === 'Request failed with status code 409') {
+        toast(`User "${credentials.email}" is already registered, please login`);
+           }
       return thunkAPI.rejectWithValue(error.message);
     }
   }
