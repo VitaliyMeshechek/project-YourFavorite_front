@@ -17,7 +17,10 @@ import PhotoDef from '../../../src/images/UserPhotoDefault.png'
 export const UserData =()=>{ 
     const dispatch = useDispatch();
     const { user } = useAuth();
- 
+   
+
+  
+    
  const [isPhotoEdit, setisPhotoEdit] =useState(false);
  const [isNameEdit, setisNameEdit] =useState(false);
  const [isEmailEdit, setisEmailEdit] =useState(false);
@@ -29,7 +32,9 @@ export const UserData =()=>{
  const [isAllowedBIrth, setisAllowedBirth ] = useState(true);
  const [isAllowedPhone, setisAllowedPhone ] = useState(true);
  const [isAllowedCity, setisAllowedCity ] = useState(true);
- 
+
+
+
 
  const defaultName = user.email ? user.email.split('@')[0] : 'User'
 

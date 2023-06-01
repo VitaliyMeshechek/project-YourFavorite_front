@@ -118,6 +118,8 @@ height: 30px;
 appearance: none;
 opacity: 0;
 
+width: 110px;
+
 ::file-selector-button{
     display: none;
 }

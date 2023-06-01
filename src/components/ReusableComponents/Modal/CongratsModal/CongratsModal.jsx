@@ -15,6 +15,7 @@ const CongratsModal = ({ func }) => {
 
   const handleClose = () => {
     dispatch(showModal(false));
+  
     func();
   };
   return (
