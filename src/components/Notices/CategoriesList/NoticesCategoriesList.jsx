@@ -34,6 +34,7 @@ const NoticesCategoriesList = () => {
         }
         dispatch(fetchNotices({categoryName, query}))
     }, [categoryName, dispatch, isLoggedIn, query]);
+    console.log(searchParams)
 
     useEffect(() => {
         switch (categoryName) {
