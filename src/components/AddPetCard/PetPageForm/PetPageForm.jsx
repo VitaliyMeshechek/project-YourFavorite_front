@@ -93,7 +93,7 @@ const AddPetPageForm = () => {
     newFormData.append('name', formData.name);
     newFormData.append('birthday', formData.birthday);
     newFormData.append('breed', formData.breed);
-    newFormData.append('avatarURL', formData.avatarUrl);
+    newFormData.append('avatarUrl', formData.avatarUrl);
 
     if (formData.comments) {
       newFormData.append('comments', formData.comments);
@@ -105,7 +105,7 @@ const AddPetPageForm = () => {
       return;
     }
 
-    newFormData.append('titleOfAdd', formData.title);
+    newFormData.append('title', formData.title);
     newFormData.append('sex', formData.sex);
     newFormData.append('location', formData.location);
 
