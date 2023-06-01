@@ -17,6 +17,9 @@ import { addNotice } from 'redux/noticesPage/operations';
 import { addPet } from 'redux/user/operations';
 
 import { validatePetSchema } from '../validatePet';
+import Modal from '../Modal/Modal';
+import AddPetModal from '../AddPetModal/AddPetModal';
+// import AddModal from 'components/ReusableComponents/Modal/AddModal';
 
 import MoreInfo from '../MoreInfoForm/MoreInfoForm';
 import ChooseForm from '../ChooseForm/ChooseForm';
@@ -24,102 +27,110 @@ import PersonalForm from '../PersonalForm/PersonalForm';
 
 
 const AddPetPageForm = () => {
-    const [formData, setFormData] = useState({
-      category: '',
-      name: '',
-      title: '',
-      birthday: '',
-      breed: '',
-      location: '',
-      comments: '',
-      petPhoto: null,
-      sex: '',
-      price: 0,
-    });
-  
-    const [step, setStep] = useState(0);
-    const [title, setTitle] = useState('');
-    const location = useLocation();
-    const backLink = location.state?.from ?? '/';
-    const navigate = useNavigate();
-    const dispatch = useDispatch();
-  
+  const [formData, setFormData] = useState({
+    category: '',
+    name: '',
+    title: '',
+    birthday: '',
+    breed: '',
+    location: '',
+    comments: '',
+    avatarUrl: null,
+    sex: '',
+    price: 0,
+  });
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [step, setStep] = useState(0);
+  const [title, setTitle] = useState('');
+  const location = useLocation();
+  const backLink = location.state?.from ?? '/';
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
     const getPageTitle = useCallback(() => {
-      if (step < 1) return 'Add Pet';
-  
-      const titles = {
-        'my-pet': 'Add my pet',
-        sell: 'Add pet for sell',
-        'lost-found': 'Add to lost or found pet',
-        'for-free': 'Add to give a Pet for Adoption',
-        '': 'Add Pet',
-      };
-      return titles[formData.category] || 'Add Pet';
-    }, [formData.category, step]);
-  
-    useEffect(() => {
-      setTitle(getPageTitle());
-    }, [getPageTitle]);
-  
-    const steps = ['Choose Option', 'Personal Details', 'More Info'];
-  
-    const setClassName = index => {
-      if (index > step) return '';
-      if (index < step) return 'completed';
-      return 'current';
+    if (step < 1) return 'Add Pet';
+
+    const titles = {
+      'your pet': 'Add my pet',
+      sell: 'Add pet for sell',
+      'lost-found': 'Add to lost or found pet',
+      'for-free': 'Add to give a Pet for Adoption',
+      '': 'Add Pet',
     };
-  
-    const handleNextClick = e => {
-      setStep(prevState => prevState + 1);
-    };
-  
-    const handlePrevClick = () => {
-      setStep(prevState => prevState - 1);
-    };
-  
-    const handleSubmit = async () => {
-      if (!formData.category) return;
-  
-      const newFormData = new FormData();
-  
-      newFormData.append('name', formData.name);
-      newFormData.append('birthday', formData.birthday);
-      newFormData.append('breed', formData.breed);
-      newFormData.append('pets-photo', formData.petPhoto);
+    return titles[formData.category] || 'Add Pet';
+  }, [formData.category, step]);
+
+  useEffect(() => {
+    setTitle(getPageTitle());
+  }, [getPageTitle]);
+
+  const steps = ['Choose Option', 'Personal Details', 'More Info'];
+
+  const toggleModal = () => {
+    setIsModalOpen(prevState => !prevState);
+  };
+
+  const setClassName = index => {
+    if (index > step) return '';
+    if (index < step) return 'completed';
+    return 'current';
+  };
+
+  const handleNextClick = e => {
+    setStep(prevState => prevState + 1);
+  };
+
+  const handlePrevClick = () => {
+    setStep(prevState => prevState - 1);
+  };
+
+  const handleSubmit = async () => {
+    
+    if (!formData.category) return;
+
+    const newFormData = new FormData();
+    newFormData.append('category', formData.category);
+    newFormData.append('name', formData.name);
+    newFormData.append('birthday', formData.birthday);
+    newFormData.append('breed', formData.breed);
+    newFormData.append('avatarUrl', formData.avatarUrl);
+
+    if (formData.comments) {
       newFormData.append('comments', formData.comments);
-  
-      if (formData.category === 'my-pet') {
-        dispatch(addPet(newFormData));
-        navigate(backLink);
-        return;
-      }
-  
-      newFormData.append('titleOfAdd', formData.title);
-      newFormData.append('sex', formData.sex);
-      newFormData.append('location', formData.location);
-  
-      if (formData.category === 'lost-found') {
-        dispatch(addNotice({ category: 'lost-found', newFormData }));
-        navigate(backLink);
-        return;
-      }
-  
-      if (formData.category === 'for-free') {
-        dispatch(addNotice({ category: 'in-good-hands', newFormData }));
-        navigate(backLink);
-        return;
-      }
-  
-      newFormData.append('price', formData.price);
-  
-      if (formData.category === 'sell') {
-        dispatch(addNotice({ category: formData.category, newFormData }));
-        navigate(backLink);
-      }
-    };
+    }
+
+    if (formData.category === 'your pet') {
+      dispatch(addPet(newFormData));
+      toggleModal();
+      return;
+    }
+
+    newFormData.append('title', formData.title);
+    newFormData.append('sex', formData.sex);
+    newFormData.append('location', formData.location);
+
+    if (formData.category === 'lost-found') {
+      dispatch(addNotice({ category: 'lost-found', newFormData }));
+      toggleModal();
+      return;
+    }
+
+    if (formData.category === 'for-free') {
+      dispatch(addNotice({ category: 'in-good-hands', newFormData }));
+      toggleModal();
+      return;
+    }
+
+    newFormData.append('price', formData.price);
+
+    if (formData.category === 'sell') {
+      dispatch(addNotice({ category: formData.category, newFormData }));
+      toggleModal();
+    }
+  };
   
     return (
-      <>
+      <div step={step} category={formData.category}>
         <AddFormTitle>{title}</AddFormTitle>
         <AddFormList>
           {steps.map((stepName, index) => (
@@ -163,7 +174,13 @@ const AddPetPageForm = () => {
             </AddForm>
           )}
         </Formik>
-      </>
+        {isModalOpen &&
+        (
+          <Modal toggleModal={() => navigate(backLink)}>
+            <AddPetModal backLink={backLink} category={formData.category} />
+          </Modal>
+        )}
+      </div>
     );
   };
   

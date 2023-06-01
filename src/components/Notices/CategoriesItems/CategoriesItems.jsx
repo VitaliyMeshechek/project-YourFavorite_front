@@ -11,7 +11,7 @@ import { addToFavorite, deleteFromFavorite, deleteUserNotice } from 'redux/notic
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
 // import { useParams } from 'react-router-dom';
 
-export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location, birthday, sex, category}}) => {
+export const NoticesCategoriesItems = ({pet: {_id, avatarUrl, title, location, birthday, sex, category}}) => {
     const {isLoggedIn} = useAuth()
     const [newCategory, setNewCategory] = useState()
     const [favStyle, setFavStyle] = useState(false)
@@ -72,7 +72,7 @@ const handleDeleteOwn = e => {
     return (
         <>
         <Thumb>
-            <Photo src={avatarURL}/>
+            <Photo src={avatarUrl}/>
             <Category>{newCategory}</Category>
 
             <FavoriteBtn type='button' className={favStyle? 'active' : null} onClick={handleFavorite}>

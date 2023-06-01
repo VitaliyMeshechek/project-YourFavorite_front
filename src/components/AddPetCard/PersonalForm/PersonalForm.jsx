@@ -19,6 +19,8 @@ import { validateField } from '../validatePet';
 const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
   const [isDisabled, setIsDisabled] = useState(true);
   const [errors, setErrors] = useState({});
+    const [maxDate, setMaxDate] = useState();
+
 
   const isNameFieldValid = Boolean(!errors.name && !!formData.name);
   const isBirthdayFieldValid = Boolean(!errors.birthday && !!formData.birthday);
@@ -26,39 +28,23 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
   const isTitleFieldValid = Boolean(!errors.title && !!formData.title);
 
   useEffect(() => {
-    switch (formData.category) {
-      case 'sell':
-        setIsDisabled(
-          !(
-            isNameFieldValid &&
-            isBirthdayFieldValid &&
-            isBreedFieldValid &&
-            isTitleFieldValid
-          )
-        );
-        break;
-
-      case 'lost-found' || 'for-free':
-        setIsDisabled(
-          !(
-            isNameFieldValid &&
-            isBirthdayFieldValid &&
-            isBreedFieldValid &&
-            isTitleFieldValid
-          )
-        );
-        break;
-
-      case 'my-pet':
-        setIsDisabled(
-          !(isNameFieldValid && isBirthdayFieldValid && isBreedFieldValid)
-        );
-        break;
-
-      default:
-        setIsDisabled(true);
-        break;
+    if (formData.category === 'your pet') {
+      setIsDisabled(
+        !(isNameFieldValid && isBirthdayFieldValid && isBreedFieldValid)
+      );
     }
+
+    if (formData.category !== 'your pet') {
+      setIsDisabled(
+        !(
+          isNameFieldValid &&
+          isBirthdayFieldValid &&
+          isBreedFieldValid &&
+          isTitleFieldValid
+        )
+      );
+    }
+    setMaxDate(getCurrentDate());
   }, [
     errors,
     formData.category,
@@ -67,13 +53,20 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
     isNameFieldValid,
     isTitleFieldValid,
   ]);
+  
+  function getCurrentDate() {
+    const now = new Date();
+    const year = now.getFullYear();
+    const month = String(now.getMonth() + 1).padStart(2, '0');
+    const day = String(now.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  }
 
-  useEffect(() => {
-    setIsDisabled(true);
-  }, []);
-
-  const handleInputChange = e => {
+    const handleInputChange = e => {
     const { name, value } = e.target;
+
+    setErrors(prevState => ({ ...prevState, [name]: '' }));
+
     const inputValue =
       name === 'birthday'
         ? new Date(value).toLocaleDateString('uk-UA', {
@@ -91,7 +84,7 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
 
   return (
     <PersonalFormWrapper>
-      {formData.category !== 'my-pet' && (
+      {formData.category !== 'your pet' && (
         <AddFormLabelWrapper>
           <AddFormLabel htmlFor="title">
             Title of add:
@@ -102,6 +95,7 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
               value={formData.title}
               onChange={handleInputChange}
               onBlur={() => validateField('title', formData, setErrors)}
+              className={errors.title ? 'invalid' : ''}
             />
           </AddFormLabel>
           {!!errors.title && <ErrorMessage message={errors.title} />}
@@ -117,6 +111,7 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
             onChange={handleInputChange}
             value={formData.name}
             onBlur={() => validateField('name', formData, setErrors)}
+            className={errors.name ? 'invalid' : ''}
           />
         </AddFormLabel>
         {!!errors.name && <ErrorMessage message={errors.name} />}
@@ -129,9 +124,11 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
             type="date"
             name="birthday"
             data-pattern="**.**.****"
+            max={maxDate}
             onChange={handleInputChange}
             value={formData.birthday.split('.').reverse().join('-')}
             onBlur={() => validateField('birthday', formData, setErrors)}
+            className={errors.birthday ? 'invalid' : ''}
           />
         </AddFormLabel>
         {!!errors.birthday && <ErrorMessage message={errors.birthday} />}
@@ -146,6 +143,7 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
             onChange={handleInputChange}
             value={formData.breed}
             onBlur={() => validateField('breed', formData, setErrors)}
+            className={errors.breed ? 'invalid' : ''}
           />
         </AddFormLabel>
         {!!errors.breed && <ErrorMessage message={errors.breed} />}
@@ -154,7 +152,7 @@ const PersonalForm = ({ formData, setFormData, nextStep, backStep }) => {
         <AddFormButtonNext
           type="button"
           text="Next"
-          icon={<TbPaw />}
+          icon={<TbPaw style={{ stroke: '#FEF9F9', width: '24px', height: '24px' }}/>}
           clickHandler={nextStep}
           filled={false}
           isDisabled={isDisabled}
