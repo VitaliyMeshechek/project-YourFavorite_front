@@ -47,10 +47,10 @@ const[firstLog, setfirstLog ] = useState( user.firstLogin)
   };
 
   const toggleFirstLogin = () => {
-    console.log("inmodalclose")
+    
     setfirstLog(false);
     dispatch(updateUser({ firstLogin: 'false' }));
-    console.log(user)
+    
    
 
   };
