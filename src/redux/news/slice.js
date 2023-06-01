@@ -14,7 +14,12 @@ const handleRejected = (state, action) => {
 
 export const newsSlice = createSlice({
   name: 'news',
-  initialState: { items: [], isLoading: false, error: null },
+  initialState: { items: [], filter: '', isLoading: false, error: null },
+  reducers: {
+    setFilter(state, action) {
+      state.filter = action.payload;
+    },
+  },
   extraReducers: {
     // FETCH ALL
     [fetchNews.pending]: handlePending,
@@ -25,5 +30,6 @@ export const newsSlice = createSlice({
     },
   },
 });
+export const { setFilter } = newsSlice.actions;
 
 export const newsReducer = newsSlice.reducer;

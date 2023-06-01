@@ -5,7 +5,10 @@ import {
   fetchAll,
   fetchFavorites,
   fetchNotices,
-  addNotice, fetchUsersNotices, deleteUserNotice
+  addNotice,
+  fetchUsersNotices,
+  deleteUserNotice,
+  fetchUserById,
 } from './operations';
 
 const handlePending = state => {
@@ -24,6 +27,7 @@ const noticesPageSlice = createSlice({
     error: null,
     favorite: [],
     own: [],
+    user: {},
   },
 
   extraReducers: {
@@ -66,7 +70,7 @@ const noticesPageSlice = createSlice({
       state.favorite.push(action.payload);
     },
     [addToFavorite.rejected]: handleRejected,
-    
+
     [deleteFromFavorite.pending]: handlePending,
     [deleteFromFavorite.fulfilled](state, action) {
       state.isLoading = false;
@@ -96,10 +100,15 @@ const noticesPageSlice = createSlice({
       state.own.splice(index, 1);
     },
     [deleteUserNotice.rejected]: handleRejected,
-    },
-  },
 
-);
+    [fetchUserById.pending]: handlePending,
+    [fetchUserById.fulfilled](state, action) {
+      state.isLoading = false;
+      state.error = null;
+      state.user = action.payload;
+    },
+    [fetchUserById.rejected]: handleRejected,
+  },
+});
 
 export const noticesPageReducer = noticesPageSlice.reducer;
-

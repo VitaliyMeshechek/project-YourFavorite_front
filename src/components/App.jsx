@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+// import { Toaster } from 'react-hot-toast';
 import { PageColor } from './App.styled';
 
 // const SharedLayout = lazy(() => import('./SharedLayout/SharedLayout'));
@@ -83,20 +83,19 @@ export const App = () => {
               <PrivateRoute redirectTo="/login" component={<UserPage />} />
             }
           />
-          <Route path="add-pet" element={<PrivateRoute redirectTo="/notices" component={<AddPetPage />} />} />
+          <Route
+            path="add-pet"
+            element={
+              <PrivateRoute redirectTo="/notices" component={<AddPetPage />} />
+            }
+          />
           <Route path="*" element={<PageNotFound />} />
         </Route>
-        
       </Routes>
-      <Toaster position="top-right" />
+      {/* <Toaster position="top-right" /> */}
     </PageColor>
   );
 };
-
-
-
-
-
 
 // import { Navigate, Route, Routes } from 'react-router-dom';
 // import { ToastContainer} from 'react-toastify';

@@ -25,7 +25,7 @@ export const ModalView = styled.div`
   flex-direction: column;
 
   width: 280px;
-  padding: 60px 12px;
+  padding: ${({ padding }) => (padding !== '' ? padding : '60px 12px')};
 
   text-align: center;
   border-radius: 20px;
@@ -36,8 +36,10 @@ export const ModalView = styled.div`
   @media screen and (min-width: ${breakPoints.tablet}) {
     justify-content: center;
 
-    width: 608px;
-    height: 354px;
+    padding: ${({ padding }) => padding !== '' && '32px 32px 24px 32px'};
+    width: ${({ padding }) => (padding !== '' ? '680px' : '608px')};
+    height: ${({ padding }) => (padding !== '' ? 'auto' : '354px')};
+
     border-radius: 40px;
   }
 `;
