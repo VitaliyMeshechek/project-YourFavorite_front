@@ -40,8 +40,8 @@ export const PetsData =()=>{
     )
 }
 const PetsItem =({item})=>{
-
-      const {photo, name, dateOfBirth, breed, comments, _id} = item
+console.log(item)
+      const {avatarUrl, name, birthday, breed, comments, _id} = item
  
     const  dispatch=useDispatch()
 
@@ -54,10 +54,10 @@ const PetsItem =({item})=>{
       return (
       
       <ContainerPet >
-        <PetImg src={photo} alt={name} />
+        <PetImg src={avatarUrl} alt={name} />
 
         <InfoPet><InfoPetItem><LabelPet>Name:</LabelPet><InfoPetText>{name}</InfoPetText><ButtonDeletePet onClick={HandleDeletePet}><FiTrash2 style={{  width: '18px', height: '26px' }}/></ButtonDeletePet></InfoPetItem>
-        <InfoPetItem><LabelPet>Date of birth:</LabelPet><InfoPetText>{dateOfBirth}</InfoPetText></InfoPetItem>
+        <InfoPetItem><LabelPet>Date of birth:</LabelPet><InfoPetText>{birthday}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Breed:</LabelPet><InfoPetText>{breed}</InfoPetText></InfoPetItem>
         <InfoPetItem><LabelPet>Comments:</LabelPet><InfoPetText>{comments}</InfoPetText></InfoPetItem>
         </InfoPet>
