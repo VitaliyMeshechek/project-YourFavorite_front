@@ -14,12 +14,21 @@ export const MoreInfoFormWrapper = styled.div`
   }
 `;
 
+// export const FirstPartFormWrapper = styled.div`
+//   display: flex;
+//   flex-direction: column;
+//   gap: 20px;
+//     @media screen and (min-width: ${breakPoints.tablet}) {
+//     ${({ category }) => (category !== 'your pet' ? 'row-gap: 48px;' : '')};
+//   }
+// `;
 export const FirstPartFormWrapper = styled.div`
   display: flex;
-  flex-direction: column;
+  ${({ category }) => (category !== 'my-pet' ? 'flex-direction: column;' : '')};
   gap: 20px;
-    @media screen and (min-width: ${breakPoints.tablet}) {
-    ${({ category }) => (category !== 'your pet' ? 'row-gap: 48px;' : '')};
+
+  @media screen and (min-width: ${breakPoints.tablet}) {
+    ${({ category }) => (category !== 'my-pet' ? 'row-gap: 38px;' : '')};
   }
 `;
 
@@ -63,26 +72,31 @@ export const AddFormTextAreaLabel = styled.label`
 
 
 export const AddFormTextArea = styled(Field)`
-padding: 10px 16px;
+  padding: 10px 16px;
   font-size: 14px;
   line-height: 1.5;
-  border: 1px solid #54ADFF;
+  border: 1px solid ${colors.blue};
   border-radius: 40px;
-  outline-color: #54ADFF;
+  outline-color: ${colors.blue};
   transition: outline 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
-  @media screen and (min-width: ${breakPoints.tablet}) {
-    font-size: 16px;
-    min-width: 394px;
-    padding: 12px 16px;
-    height: 108px;
-  }
-  &[type='date']::-webkit-calendar-picker-indicator {
-    cursor: pointer;
+    &.invalid {
+    border-color: ${colors.red};
   }
   resize: none;
   height: 92;
   flex-grow: 1;
   border-radius: 20px;
+
+  @media screen and (min-width: ${breakPoints.tablet}) {
+    font-size: 16px;
+    min-width: 394px;
+    padding: 12px 16px;
+     height: 108px;
+  }
+  &[type='date']::-webkit-calendar-picker-indicator {
+    cursor: pointer;
+  }
+
 `;
 
 export const AddFormSexWrapper = styled.div`
@@ -93,8 +107,7 @@ export const AddFormSexWrapper = styled.div`
 
   @media screen and (min-width: ${breakPoints.tablet}) {
     row-gap: 20px;
-    font-size: 20px;
-    line-height: 1.3;
+  
   }
   & p {
     font-weight: 500;
@@ -102,6 +115,10 @@ export const AddFormSexWrapper = styled.div`
     line-height: 1.36;
     color: ${colors.black};
   }
+      @media screen and (min-width: ${breakPoints.mobile}) {
+      font-size: 20px;
+      line-height: 1.3;
+    }
 `;
 
 export const AddFormRadioWrapper = styled.div`
@@ -120,6 +137,15 @@ export const AddFormSexLabel = styled.label`
   &:hover {
     color: ${colors.blue};
   }
+    &:checked {
+   
+    color: ${colors.blue};
+  }
+   ${props => 
+    props.checked && 
+    `
+    color: ${colors.blue}; 
+  `}
 `;
 
 //   ${AddFormRadioButton}:checked + & {   color: #111111;  }
@@ -144,6 +170,7 @@ export const AddFormImageLabel = styled.label`
   flex-direction: row;
   align-items: center;
   column-gap: 28px;
+  
 `;
 export const AddFormImageWrapper = styled.div`
   display: flex;
@@ -158,8 +185,15 @@ export const AddFormImageWrapper = styled.div`
   overflow: hidden;
   object-position: center;
   object-fit: cover;
+
   & svg {
     stroke: currentColor;
+  }
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 
   @media screen and (min-width: ${breakPoints.tablet}) {

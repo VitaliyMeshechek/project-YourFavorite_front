@@ -39,7 +39,7 @@ const ChooseForm = ({ formData, setFormData, nextStep, cancel, setValues }) => {
         onChange={handleCategoryChange}
         checked={formData.category === 'your pet'}
       />
-      <RadioCategoryLabel htmlFor="your pet">Your pet</RadioCategoryLabel>
+      <RadioCategoryLabel htmlFor="your pet" checked={formData.category === 'your pet'}>Your pet</RadioCategoryLabel>
       <AddFormRadioButton
         type="radio"
         name="category"
@@ -48,7 +48,7 @@ const ChooseForm = ({ formData, setFormData, nextStep, cancel, setValues }) => {
         checked={formData.category === 'sell'}
         onChange={handleCategoryChange}
       />
-      <RadioCategoryLabel htmlFor="sell">Sell</RadioCategoryLabel>
+      <RadioCategoryLabel htmlFor="sell" checked={formData.category === 'sell'}>Sell</RadioCategoryLabel>
       <AddFormRadioButton
         type="radio"
         name="category"
@@ -57,7 +57,7 @@ const ChooseForm = ({ formData, setFormData, nextStep, cancel, setValues }) => {
         checked={formData.category === 'lost-found'}
         onChange={handleCategoryChange}
       />
-      <RadioCategoryLabel htmlFor="lost-found">Lost/found</RadioCategoryLabel>
+      <RadioCategoryLabel htmlFor="lost-found" checked={formData.category === 'lost-found'}>Lost/found</RadioCategoryLabel>
       <AddFormRadioButton
         type="radio"
         name="category"
@@ -66,7 +66,7 @@ const ChooseForm = ({ formData, setFormData, nextStep, cancel, setValues }) => {
         checked={formData.category === 'for-free'}
         onChange={handleCategoryChange}
       />
-      <RadioCategoryLabel htmlFor="for-free">In good hands</RadioCategoryLabel>
+      <RadioCategoryLabel htmlFor="for-free"  checked={formData.category === 'for-free'}>In good hands</RadioCategoryLabel>
       <AddFormButtonWrapper>
         <AddFormButtonNext
           isDisabled={isDisabled}

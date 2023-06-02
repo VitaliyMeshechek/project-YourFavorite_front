@@ -5,25 +5,27 @@ import { breakPoints, colors } from 'base-styles/variables';
 
 
 const Btn = styled(Link)`
+ ${({ isFixed }) => (isFixed ? 'position: fixed;top: 460px;right: 20px;' : '')}
   display: flex;
   flex-direction: row-reverse;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
-  width: 129px;
-  height: 40px';
+width: ${({ isFixed }) => (isFixed ? '80px' : '129px')};
+  height: ${({ isFixed }) => (isFixed ? '80px' : '40px')};
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 16px;
   padding-right: 16px;
 
   font-width: 600;
-  font-size: 16px;
+  font-size: ${({ theme, isFixed }) =>
+    isFixed ? "12px" : "16px"};
   color: #fff;
 
   background-color: ${colors.blue};
-  border-radius: 40px;
+  border-radius: ${({ isFixed }) => (isFixed ? '50%' : '40px')};
   box-shadow: 3px 8px 14px rgba(136, 198, 253, 0.19);
 
   z-index: 1;
