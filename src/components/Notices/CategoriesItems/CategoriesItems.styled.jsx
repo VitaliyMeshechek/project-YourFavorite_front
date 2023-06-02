@@ -41,7 +41,7 @@ export const Category = styled.p`
     top: 16px;
     left: 0;
     padding: 11px 17px;
-    width: 126px;
+    min-width: 126px;
     height: 32px;
     background: #CCE4FB;
     border-radius: 0px 16px 16px 0px;
@@ -177,6 +177,8 @@ color: #111111;
 `
 
 export const LoadMoreBtn = styled.button`
+position: absolute;
+bottom: 20px;
 margin-top: 20px;
     display: flex;
 justify-content: center;
