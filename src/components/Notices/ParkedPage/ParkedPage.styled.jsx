@@ -17,7 +17,6 @@ align-items: center;
 
 export const Title = styled.h2`
 display: block;
-/* width: 500px; */
 min-width: 280px;
   font-family: 'Manrope';
   font-style: normal;
@@ -38,9 +37,13 @@ background: rgba(254,249,249, 0.8);;
 `;
 
 export const Image = styled.img`
-width: 320px;
+min-width: 320px;
 position: fixed;
 right: 0;
 bottom: 0;
 z-index: -1;
+
+@media screen and (min-width: 768px) {
+    width: 700px;
+  }
 `;

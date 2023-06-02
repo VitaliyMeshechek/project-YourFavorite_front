@@ -53,14 +53,13 @@ const NoticesCategoriesList = () => {
 
 return (
     <>
-            {/* {pets.length > 0 ? 
+            {pets.length > 0 ? 
             <CategoriesList>
             {pets.map(pet => (
             <NoticesCategoriesItems pet={pet} key={pet._id}/>
             ))}
             </CategoriesList> : 
-            <ParkedPage/>}  */}
-            <ParkedPage/>
+            <ParkedPage/>} 
     </>
 )
 
