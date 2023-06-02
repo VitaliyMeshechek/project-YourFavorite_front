@@ -6,7 +6,7 @@ justify-content: start;
 align-items: center;
 
   padding-top: 40px;
-  /* padding-bottom: 40px; */
+  padding-bottom: 40px;
   /* @media screen and (min-width: 768px) {
     padding-bottom: 275px;
   }*/
@@ -23,7 +23,7 @@ min-width: 280px;
   font-style: normal;
   text-align: center;
   font-weight: 700;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.37;
 
 background: rgba(254,249,249, 0.8);;
@@ -38,6 +38,7 @@ background: rgba(254,249,249, 0.8);;
 `;
 
 export const Image = styled.img`
+width: 320px;
 position: fixed;
 right: 0;
 bottom: 0;
