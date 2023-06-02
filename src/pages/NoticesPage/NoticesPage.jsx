@@ -4,8 +4,7 @@ import { Container } from 'components/ReusableComponents/MainContainer/MainConta
 import { NoticesSearch } from 'components/Notices/NoticesSearch/NoticesSearch';
 import { NoticesCategoriesNav } from 'components/Notices/CategoriesNav/CategoriesNav';
 import { Title, TabletWrapper, Wrapper } from './NoticesPage.styled';
-// import { AddPetBtn } from 'components/ReusableComponents/Button/Button';
-import AddPetBtn from '../../components/AddPetBtn/AddPetBtn';
+import { AddPetBtn } from 'components/ReusableComponents/Button/Button';
 
 const NoticesPage = () => {
 
@@ -19,7 +18,7 @@ const NoticesPage = () => {
 
         <TabletWrapper>
         {/* <FilterBtn/> */}
-                 <AddPetBtn text="Add pet" path="/add-pet" isFixed={true}/>
+        <AddPetBtn/>
         </TabletWrapper>
 
       </Wrapper>
