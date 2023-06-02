@@ -171,11 +171,11 @@
     "imageUrl": "https://brit.in.ua/image/catalog/brit.jpg",
     "address": "м. Харків",
     "workDays": [
-      { "isOpen": false },
-      { "isOpen": false },
-      { "isOpen": false },
-      { "isOpen": false },
-      { "isOpen": false },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
       { "isOpen": true, "from": "11:00", "to": "16:00" },
       { "isOpen": true, "from": "11:00", "to": "16:00" }
     ],
