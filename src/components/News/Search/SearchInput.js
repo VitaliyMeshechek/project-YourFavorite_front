@@ -15,7 +15,7 @@ import { useSearchParams } from 'react-router-dom';
 import * as yup from 'yup';
 
 import { useDispatch } from 'react-redux';
-import { setFilter } from 'redux/notices/slice';
+import { setFilter } from 'redux/news/slice';
 
 const SearchInput = () => {
   // eslint-disable-next-line no-unused-vars

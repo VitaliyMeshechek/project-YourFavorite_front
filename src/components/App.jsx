@@ -1,7 +1,7 @@
 import { useDispatch } from 'react-redux';
 import { useEffect, lazy } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-import { Toaster } from 'react-hot-toast';
+// import { Toaster } from 'react-hot-toast';
 import { PageColor } from './App.styled';
 import { PrivateRoute } from './PrivateRoute';
 import { RestrictedRoute } from './RestrictedRoute';
@@ -92,7 +92,7 @@ export const App = () => {
           <Route path="*" element={<PageNotFound />} />
         </Route>
       </Routes>
-      <Toaster position="top-right" />
+      {/* <Toaster position="top-right" /> */}
     </PageColor>
   );
 };

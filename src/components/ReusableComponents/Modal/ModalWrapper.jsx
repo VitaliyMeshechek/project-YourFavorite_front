@@ -9,7 +9,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { selectModal } from 'redux/modal/selectors';
 import { showModal } from 'redux/modal/slice';
 
-const ModalWrapper = ({ children }) => {
+const ModalWrapper = ({ children, padding = '' }) => {
   let modal = useSelector(selectModal);
 
   const dispatch = useDispatch();
@@ -38,7 +38,7 @@ const ModalWrapper = ({ children }) => {
     <>
       {modal && (
         <Overlay onClick={handleBackdropClick}>
-          <ModalView>
+          <ModalView padding={padding}>
             <CloseButton onClick={() => dispatch(showModal(false))}>
               <CloseIcon />
             </CloseButton>
