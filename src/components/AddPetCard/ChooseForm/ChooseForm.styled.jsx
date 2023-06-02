@@ -21,6 +21,18 @@ export const AddFormRadioButton = styled(Field)`
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+  &:hover,
+  &:focus,
+  &:checked {
+    overflow: visible;
+    background-color: ${colors.blue};
+    color: ${colors.white};
+  }
+   ${props => 
+    props.checked && 
+    `color: ${colors.red}; 
+  `}
+
 `;
 
 export const RadioCategoryLabel = styled.label`
@@ -38,10 +50,15 @@ export const RadioCategoryLabel = styled.label`
   background-color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
   &:hover,
   &:focus,
-  &:checked + & {
+  &:checked {
     background-color: ${colors.blue};
     color: ${colors.white};
   }
+   ${props => 
+    props.checked && 
+    `background-color: ${colors.blue};
+    color: ${colors.white}; 
+  `}
 `;
 
   // &:hover,

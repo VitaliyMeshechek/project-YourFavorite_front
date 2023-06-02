@@ -119,7 +119,7 @@ useEffect(() => {
                   checked={formData.sex === 'female'}
                   onBlur={() => validateField('sex', formData, setErrors)}
                 />
-                <AddFormSexLabel htmlFor="female">
+                <AddFormSexLabel htmlFor="female" checked={formData.sex === 'female'}>
                   <GiFemale stroke="#F43F5E" />
                   Female
                 </AddFormSexLabel>
@@ -132,7 +132,7 @@ useEffect(() => {
                   checked={formData.sex === 'male'}
                   onBlur={() => validateField('sex', formData, setErrors)}
                 />
-                <AddFormSexLabel htmlFor="male">
+                <AddFormSexLabel htmlFor="male" checked={formData.sex === 'male'}>
                     <GiMale stroke="#54ADFF" />
                   Male
                 </AddFormSexLabel>

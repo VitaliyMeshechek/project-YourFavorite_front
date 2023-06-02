@@ -38,6 +38,9 @@ export const AddFormInput = styled(Field)`
   border-radius: 40px;
   outline-color: ${colors.blue};
   transition: outline 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
+    &.invalid {
+    border-color: ${colors.red};
+  }
 
   @media screen and (min-width: ${breakPoints.tablet}) {
     font-size: 16px;
