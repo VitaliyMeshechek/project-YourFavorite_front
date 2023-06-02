@@ -51,6 +51,7 @@ const NoticesCategoriesList = () => {
     }, [categoryName, favorites, notices, own])
 
 
+
 return (
     <>
             {pets.length > 0 ? 
