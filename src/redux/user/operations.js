@@ -20,7 +20,7 @@ export const updateUserPhoto = createAsyncThunk(
   'users/updateUserPhoto',
   async (values, thunkAPI) => {
     try {
-      console.log(values)
+    
   
 
       const response = await axios.patch('/cardPets', values);
