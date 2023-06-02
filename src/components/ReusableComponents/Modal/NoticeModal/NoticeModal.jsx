@@ -32,7 +32,7 @@ const NoticeModal = ({ pet, handleFavorite }) => {
   const [
     {
       owner,
-      avatarURL,
+      avatarUrl,
       location,
       birthday,
       breed,
@@ -59,7 +59,7 @@ const NoticeModal = ({ pet, handleFavorite }) => {
     <ModalWrapper padding="44px 12px 16px 12px">
       <FlexWrapper>
         <ImgWrapper>
-          <Img src={avatarURL} alt={name}></Img>
+          <Img src={avatarUrl} alt={name}></Img>
           <Category>{category}</Category>
         </ImgWrapper>
 

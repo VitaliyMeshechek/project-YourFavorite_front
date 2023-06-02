@@ -21,7 +21,7 @@ import { useAuth } from 'hooks';
 import NoticeModal from 'components/ReusableComponents/Modal/NoticeModal/NoticeModal';
 import { toast } from 'react-toastify';
 import RemoveModal from 'components/ReusableComponents/Modal/RemoveModal/RemoveModal';
-import { current } from '@reduxjs/toolkit';
+import { ParkedPage } from '../ParkedPage/ParkedPage';
 
 const NoticesCategoriesList = () => {
   const { isLoggedIn } = useAuth();
@@ -35,10 +35,10 @@ const NoticesCategoriesList = () => {
   const favorites = useSelector(selectFavorite);
   const own = useSelector(selectOwn);
   const notices = useSelector(selectNotices);
-  const [pets, setPets] = useState();
+  const [pets, setPets] = useState([]);
   const query = useSelector(selectQuery);
   const dispatch = useDispatch();
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [, setSearchParams] = useSearchParams();
   const favorits = useSelector(selectFavorite);
 
   useEffect(() => {
@@ -123,7 +123,7 @@ const NoticesCategoriesList = () => {
 
   return (
     <>
-      <CategoriesList>
+     {pets.length>0 ?  <CategoriesList>
         {pets.map(pet => (
           <NoticesCategoriesItems
             pet={pet}
@@ -144,7 +144,7 @@ const NoticesCategoriesList = () => {
             title={activeNotice[0].title}
           ></RemoveModal>
         )}
-      </CategoriesList>
+      </CategoriesList>:<ParkedPage/>}
 
     </>
   );

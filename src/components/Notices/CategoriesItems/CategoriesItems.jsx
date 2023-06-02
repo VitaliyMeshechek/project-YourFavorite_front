@@ -6,7 +6,6 @@ import { TbGenderFemale, TbGenderMale } from 'react-icons/tb';
 import { getAge } from 'utils/getAge';
 import { useAuth } from 'hooks';
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors';
-import { useSearchParams } from 'react-router-dom';
 
 import {
   addToFavorite,
@@ -29,7 +28,7 @@ export const NoticesCategoriesItems = pets => {
   const {
     isDeleted,
     openModal,
-    pet: { _id, avatarURL, title, location, birthday, sex, category },
+    pet: { _id, avatarUrl, title, location, birthday, sex, category },
   } = pets;
 
   const { isLoggedIn } = useAuth();
@@ -47,6 +46,9 @@ export const NoticesCategoriesItems = pets => {
 
   useEffect(() => {
     switch (category) {
+      case 'sell':
+        setNewCategory('sell');
+        break;
       case 'lost-found':
         setNewCategory('lost/found');
         break;
@@ -90,7 +92,6 @@ export const NoticesCategoriesItems = pets => {
       console.log(isDeleted);
       setOwn(false);
     }
-
   };
 
   const handleLearnMore = e => {
@@ -102,7 +103,7 @@ export const NoticesCategoriesItems = pets => {
   return (
     <>
       <Thumb>
-        <Photo src={avatarURL} />
+        <Photo src={avatarUrl} />
         <Category>{newCategory}</Category>
 
         <FavoriteBtn
@@ -139,4 +140,3 @@ export const NoticesCategoriesItems = pets => {
     </>
   );
 };
-
