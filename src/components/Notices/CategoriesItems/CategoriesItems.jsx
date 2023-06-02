@@ -10,7 +10,7 @@ import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors'
 import { addToFavorite, deleteFromFavorite, deleteUserNotice } from 'redux/noticesPage/operations'
 import { Category, FavoriteBtn, Info, LoadMoreBtn, Photo, TabsWrapper, Thumb, Title, TrashBtn } from "./CategoriesItems.styled"
 
-export const NoticesCategoriesItems = ({pet: {_id, avatarUrl, title, location='Ukraine', birthday, sex, category}}) => {
+export const NoticesCategoriesItems = ({pet: {_id, avatarURL, title, location='Ukraine', birthday, sex, category}}) => {
     const {isLoggedIn} = useAuth()
     const [newCategory, setNewCategory] = useState()
     const [favStyle, setFavStyle] = useState(false)
@@ -75,7 +75,7 @@ const handleDeleteOwn = e => {
     return (
         <>
         <Thumb>
-            <Photo src={avatarUrl}/>
+            <Photo src={avatarURL}/>
             <Category>{newCategory}</Category>
 
             <FavoriteBtn type='button' className={favStyle? 'active' : null} onClick={handleFavorite}>
