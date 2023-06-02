@@ -18,11 +18,13 @@ export const userDateSlice = createSlice({
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
+      
       })
       .addCase(updateUserPhoto.fulfilled, (state, action) =>{
       state.isLoading = false;
       state.error = null;
       state.items = action.payload;
+      
       })
       
     .addMatcher(isAnyOf(updateUser.pending,updateUserPhoto.pending), (state) => {
@@ -67,10 +69,9 @@ export const petsSlice = createSlice({
         .addCase(deletePet.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        console.log(action.payload.id);
-        console.log(state.pet);
+        
           state.pet = state.pet.filter(pet => pet._id !== action.payload.id) 
-          console.log(state.items);
+         
         })
       .addMatcher(isAnyOf(fetchPets.pending,addPet.pending,deletePet.pending), (state) => {
         state.isLoading = true;

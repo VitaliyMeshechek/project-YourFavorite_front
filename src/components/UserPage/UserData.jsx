@@ -88,11 +88,7 @@ export const UserData =()=>{
     const formData = new FormData();
     formData.append("avatar", PhotoEdit);
   
-    dispatch(updateUserPhoto(PhotoEdit)).then((response) => {
-      // Assuming the API response returns the URL of the uploaded image
-      setPreviewUrl(response.data.avatar);
-      console.log(response.data)
-    });
+    dispatch(updateUserPhoto(formData))
   };
   
 

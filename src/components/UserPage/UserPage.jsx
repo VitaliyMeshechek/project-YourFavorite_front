@@ -72,7 +72,7 @@ const[firstLog, setfirstLog ] = useState( user.firstLogin)
           <MyPetsHeaderContainer>
             <Header>My pets:</Header>
 
-            <AddPetBtn text="Add pet" path="/add-pet"/>
+            {/* <AddPetBtn text="Add pet" path="/add-pet"/> */}
           </MyPetsHeaderContainer>
 
           <PetsData />
