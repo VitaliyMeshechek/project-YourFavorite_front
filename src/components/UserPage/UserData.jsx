@@ -90,7 +90,7 @@ export const UserData =()=>{
   
     dispatch(updateUserPhoto(PhotoEdit)).then((response) => {
       // Assuming the API response returns the URL of the uploaded image
-      setPreviewUrl(response.data.avatarUrl);
+      setPreviewUrl(response.data.avatar);
     });
   };
   
