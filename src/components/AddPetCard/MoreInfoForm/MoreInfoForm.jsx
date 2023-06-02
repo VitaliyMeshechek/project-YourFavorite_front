@@ -37,7 +37,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
   const [imageValue, setImageValue] = useState('');
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
-  const isAvatarURLFieldValid = Boolean(!errors.avatarUrl && !!formData.avatarUrl);
+  const isAvatarURLFieldValid = Boolean(!errors.avatar && !!formData.avatar);
   const isCommentsFieldValid = Boolean(!errors.comments);
   const isLocationFieldValid = Boolean(!errors.location && !!formData.location);
   const isSexFieldValid = Boolean(!errors.sex && !!formData.sex);
@@ -144,23 +144,23 @@ useEffect(() => {
               ? 'Add photo'
               : 'Load the pet’s image:'}
             <AddFormImageWrapper>
-              {!formData.avatarUrl && <BsPlus width="30" height="30" />}
-              {!!formData.avatarUrl && (
+              {!formData.avatar && <BsPlus width="30" height="30" />}
+              {!!formData.avatar && (
                 <img
                   id="image"
-                  src={URL.createObjectURL(formData.avatarUrl)}
-                  alt={formData.avatarUrl.name}
+                  src={URL.createObjectURL(formData.avatar)}
+                  alt={formData.avatar.name}
                 />
               )}
             </AddFormImageWrapper>
             <FileInput
               type="file"
               id="pet-image"
-              name="avatarUrl"
+              name="avatar"
               accept=".png, .jpg, .jpeg, .webp"
               onChange={handleInputChange}
               value={imageValue}
-              onBlur={() => validateField('avatarUrl', formData, setErrors)}
+              onBlur={() => validateField('avatar', formData, setErrors)}
             />
           </AddFormImageLabel>
         </FirstPartFormWrapper>

@@ -35,7 +35,7 @@ const AddPetPageForm = () => {
     breed: '',
     location: '',
     comments: '',
-    avatarUrl: null,
+    avatar: null,
     sex: '',
     price: 0,
   });
@@ -93,7 +93,7 @@ const AddPetPageForm = () => {
     newFormData.append('name', formData.name);
     newFormData.append('birthday', formData.birthday);
     newFormData.append('breed', formData.breed);
-    newFormData.append('avatarUrl', formData.avatarUrl);
+    newFormData.append('avatar', formData.avatar);
 
     if (formData.comments) {
       newFormData.append('comments', formData.comments);
