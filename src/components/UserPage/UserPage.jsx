@@ -4,7 +4,6 @@ import { UserData } from './UserData';
 import {
   ContainerUser,
   UserPageContainer,
-  NavLinkStyled,
   Header,
   MyPetsHeaderContainer,
   UserBlock,
@@ -13,7 +12,7 @@ import {
 
 import { useDispatch } from 'react-redux';
 import { logOut } from '../../redux/auth/operations';
-import { BsPlus } from 'react-icons/bs';
+import AddPetBtn from '../AddPetBtn/AddPetBtn';
 import { useState, useEffect } from "react";
 import CongratsModal from 'components/ReusableComponents/Modal/CongratsModal';
 import LeavingModal from 'components/ReusableComponents/Modal/LeavingModal';
@@ -72,10 +71,8 @@ const[firstLog, setfirstLog ] = useState( user.firstLogin)
         <PetBlock>
           <MyPetsHeaderContainer>
             <Header>My pets:</Header>
-            <NavLinkStyled to="/add-pet" key="/add-pet">
-              <span>Add pet</span>
-              <BsPlus />
-            </NavLinkStyled>
+
+            <AddPetBtn text="Add pet" path="/add-pet"/>
           </MyPetsHeaderContainer>
 
           <PetsData />
