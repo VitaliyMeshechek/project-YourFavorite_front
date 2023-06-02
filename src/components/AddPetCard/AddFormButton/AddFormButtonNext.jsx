@@ -5,8 +5,8 @@ const AddFormButtonNext = ({
   text,
   icon,
   clickHandler,
-  // filled,
-  // short,
+  filled,
+  short,
   type,
   isDisabled,
 }) => {
@@ -14,8 +14,8 @@ const AddFormButtonNext = ({
     <NextButton
       type={type}
       onClick={clickHandler && (() => clickHandler(false))}
-      // filled={filled}
-      // short={short}
+      filled={filled}
+      short={short}
       disabled={isDisabled}
     >
       {text}

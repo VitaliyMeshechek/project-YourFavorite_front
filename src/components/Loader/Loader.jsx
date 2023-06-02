@@ -1316,7 +1316,12 @@ export const Loader = ({ size = 200, color = '#f59256' }) => {
   const randomizer = Math.floor(Math.random() * 1200) + 1;
 
   return (
-    <>
+    <div
+      style={{
+        width: '100vw',
+        height: '100vh',
+      }}
+    >
       {randomizer > 0 && randomizer <= 200 && (
         <CatLoader size={size} color={color} />
       )}
@@ -1335,6 +1340,6 @@ export const Loader = ({ size = 200, color = '#f59256' }) => {
       {randomizer > 1000 && randomizer <= 1200 && (
         <GhostLoader size={size} color={color} />
       )}
-    </>
+    </div>
   );
 };

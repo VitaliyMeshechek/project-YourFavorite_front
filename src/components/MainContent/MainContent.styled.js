@@ -5,6 +5,8 @@ import tabletBG1x from '../../images/backgrounds/mainPage_bg_tablet@1x.png';
 import tabletBG2x from '../../images/backgrounds/mainPage_bg_tablet@2x.png';
 import desktopBG1x from '../../images/backgrounds/mainPage_bg_desktop@1x.png';
 import desktopBG2x from '../../images/backgrounds/mainPage_bg_desktop@2x.png';
+import Paw from '../../images/paw.png';
+import { keyframes } from '@emotion/react';
 
 export const Img = styled.section`
   padding-top: 100px;
@@ -78,4 +80,81 @@ export const FirstTitle = styled.h1`
     min-width: 500px;
     margin-left: -600px;
   }
+`;
+
+const pawAnimation = keyframes`
+  0% {
+    transform: translateX(0);
+  }
+  10%{
+    transform: translateX(-50px);
+  }
+  25% {
+    transform: translateX(-100px);
+  }
+  50% {
+    transform: translateX(-400px);
+  }
+  75% {
+    transform: translateX(-800px);
+  }
+  100% {
+    transform: translateX(-1200px);
+  }
+`;
+
+export const ImgFirstPaw = styled.div`
+  position: absolute;
+  border: 0;
+  bottom: 150px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  z-index: 999;
+  background-image: url(${Paw});
+  background-repeat: no-repeat;
+  animation: ${pawAnimation} 3s;
+  animation-iteration-count: infinite;
+`;
+export const ImgSecondPaw = styled.div`
+  position: absolute;
+  bottom: -40px;
+  border: 0;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  z-index: 999;
+  background-image: url(${Paw});
+  background-repeat: no-repeat;
+  animation: ${pawAnimation} 4s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
+`;
+
+export const ImgThirdPaw = styled.div`
+  position: absolute;
+  border: 0;
+  bottom: -200px;
+  right: 20px;
+  width: 200px;
+  height: 200px;
+  z-index: 999;
+  background-image: url(${Paw});
+  background-repeat: no-repeat;
+  animation: ${pawAnimation} 3s;
+  animation-iteration-count: infinite;
+`;
+export const ImgForthPaw = styled.div`
+  position: absolute;
+  bottom: -350px;
+  border: 0;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  z-index: 999;
+  background-image: url(${Paw});
+  background-repeat: no-repeat;
+  animation: ${pawAnimation} 4s;
+  animation-delay: 1s;
+  animation-iteration-count: infinite;
 `;

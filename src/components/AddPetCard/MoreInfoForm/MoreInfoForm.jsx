@@ -37,7 +37,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
   const [imageValue, setImageValue] = useState('');
   const [viewportWidth, setViewportWidth] = useState(window.innerWidth);
 
-  const isPetPhotoFieldValid = Boolean(!errors.petPhoto && !!formData.petPhoto);
+  const isAvatarURLFieldValid = Boolean(!errors.avatarUrl && !!formData.avatarUrl);
   const isCommentsFieldValid = Boolean(!errors.comments);
   const isLocationFieldValid = Boolean(!errors.location && !!formData.location);
   const isSexFieldValid = Boolean(!errors.sex && !!formData.sex);
@@ -54,45 +54,36 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
     };
   }, []);
 
-  useEffect(() => {
-    switch (formData.category) {
-      case 'sell':
-        setIsDisabled(
-          !(
-            isPetPhotoFieldValid &&
-            isLocationFieldValid &&
-            isSexFieldValid &&
-            isPriceFieldValid &&
-            isCommentsFieldValid
-          )
-        );
-        break;
-
-      case 'lost-found' || 'for-free':
-        setIsDisabled(
-          !(
-            isPetPhotoFieldValid &&
-            isLocationFieldValid &&
-            isSexFieldValid &&
-            isCommentsFieldValid
-          )
-        );
-        break;
-
-      case 'my-pet':
-        setIsDisabled(!isPetPhotoFieldValid && isCommentsFieldValid);
-        break;
-
-      default:
-        setIsDisabled(true);
-        break;
+useEffect(() => {
+    if (formData.category === 'sell') {
+      setIsDisabled(
+        !(
+          isAvatarURLFieldValid &&
+          isLocationFieldValid &&
+          isSexFieldValid &&
+          isPriceFieldValid &&
+          isCommentsFieldValid
+        )
+      );
+    }
+    if (formData.category === 'your pet') {
+      setIsDisabled(!(isAvatarURLFieldValid && isCommentsFieldValid));
+    } else {
+      setIsDisabled(
+        !(
+          isAvatarURLFieldValid &&
+          isLocationFieldValid &&
+          isSexFieldValid &&
+          isCommentsFieldValid
+        )
+      );
     }
   }, [
     errors,
     formData.category,
     isCommentsFieldValid,
     isLocationFieldValid,
-    isPetPhotoFieldValid,
+    isAvatarURLFieldValid,
     isPriceFieldValid,
     isSexFieldValid,
   ]);
@@ -111,11 +102,11 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
     }));
   };
 
-  return (
+ return (
     <>
       <MoreInfoFormWrapper category={formData.category}>
         <FirstPartFormWrapper category={formData.category}>
-          {formData.category !== 'your-pet' && (
+          {formData.category !== 'your pet' && (
             <AddFormSexWrapper>
               <p>The Sex</p>
               <AddFormRadioWrapper>
@@ -142,39 +133,39 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
                   onBlur={() => validateField('sex', formData, setErrors)}
                 />
                 <AddFormSexLabel htmlFor="male">
-                  <GiMale stroke="#54ADFF" />
+                    <GiMale stroke="#54ADFF" />
                   Male
                 </AddFormSexLabel>
               </AddFormRadioWrapper>
             </AddFormSexWrapper>
           )}
           <AddFormImageLabel htmlFor="pet-image" category={formData.category}>
-            {formData.category === 'your-pet' || viewportWidth < 768
+            {formData.category === 'your pet' || viewportWidth < 768
               ? 'Add photo'
               : 'Load the pet’s image:'}
             <AddFormImageWrapper>
-              {!formData.petPhoto && <BsPlus width="30" height="30" />}
-              {!!formData.petPhoto && (
+              {!formData.avatarUrl && <BsPlus width="30" height="30" />}
+              {!!formData.avatarUrl && (
                 <img
                   id="image"
-                  src={URL.createObjectURL(formData.petPhoto)}
-                  alt={formData.petPhoto.name}
+                  src={URL.createObjectURL(formData.avatarUrl)}
+                  alt={formData.avatarUrl.name}
                 />
               )}
             </AddFormImageWrapper>
             <FileInput
               type="file"
               id="pet-image"
-              name="petPhoto"
+              name="avatarUrl"
               accept=".png, .jpg, .jpeg, .webp"
               onChange={handleInputChange}
               value={imageValue}
-              onBlur={() => validateField('petPhoto', formData, setErrors)}
+              onBlur={() => validateField('avatarUrl', formData, setErrors)}
             />
           </AddFormImageLabel>
         </FirstPartFormWrapper>
         <SecondPartFormWrapper>
-          {formData.category !== 'your-pet' && (
+          {formData.category !== 'your pet' && (
             <AddFormLabelWrapper>
               <AddFormLabel htmlFor="location">
                 Location
@@ -185,6 +176,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
                   onChange={handleInputChange}
                   value={formData.location}
                   onBlur={() => validateField('location', formData, setErrors)}
+                  className={errors.location ? 'invalid' : ''}
                 />
               </AddFormLabel>
               {!!errors.location && <ErrorMessage message={errors.location} />}
@@ -201,6 +193,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
                   onChange={handleInputChange}
                   value={formData.price}
                   onBlur={() => validateField('price', formData, setErrors)}
+                  className={errors.price ? 'invalid' : ''}
                 />
               </AddFormLabel>
               {!!errors.price && <ErrorMessage message={errors.price} />}
@@ -216,6 +209,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
                 onChange={handleInputChange}
                 value={formData.comments}
                 onBlur={() => validateField('comments', formData, setErrors)}
+                className={errors.comments ? 'invalid' : ''}
               />
             </AddFormTextAreaLabel>
             {!!errors.comments && <ErrorMessage message={errors.comments} />}
@@ -226,7 +220,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
         <AddFormButtonNext
           type="submit"
           text="Done"
-          icon={<TbPaw />}
+          icon={< TbPaw />}
           filled={true}
           clickHandler={submit}
           isDisabled={isDisabled}
@@ -241,6 +235,7 @@ const MoreInfo = ({ formData, setFormData, submit, backStep }) => {
     </>
   );
 };
+
 
 // MoreInfo.propTypes = {
 //   formData: PropTypes.object.isRequired,

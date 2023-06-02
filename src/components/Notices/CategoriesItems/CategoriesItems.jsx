@@ -91,9 +91,6 @@ export const NoticesCategoriesItems = pets => {
       setOwn(false);
     }
 
-    // dispatch(deleteUserNotice(_id));
-
-    // // dispatch(deletePet(_id))
   };
 
   const handleLearnMore = e => {
@@ -142,3 +139,4 @@ export const NoticesCategoriesItems = pets => {
     </>
   );
 };
+

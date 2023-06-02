@@ -35,7 +35,7 @@ export const Wrapper = styled.div`
   position: relative;
 `;
 
-export const TextContent = styled.button`
+export const TextContent = styled.p`
   padding: 0;
   border: none;
   display: block;

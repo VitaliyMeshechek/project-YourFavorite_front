@@ -17,7 +17,10 @@ import PhotoDef from '../../../src/images/UserPhotoDefault.png'
 export const UserData =()=>{ 
     const dispatch = useDispatch();
     const { user } = useAuth();
- 
+   
+
+  
+    
  const [isPhotoEdit, setisPhotoEdit] =useState(false);
  const [isNameEdit, setisNameEdit] =useState(false);
  const [isEmailEdit, setisEmailEdit] =useState(false);
@@ -29,7 +32,9 @@ export const UserData =()=>{
  const [isAllowedBIrth, setisAllowedBirth ] = useState(true);
  const [isAllowedPhone, setisAllowedPhone ] = useState(true);
  const [isAllowedCity, setisAllowedCity ] = useState(true);
- 
+
+
+
 
  const defaultName = user.email ? user.email.split('@')[0] : 'User'
 
@@ -50,6 +55,9 @@ export const UserData =()=>{
  const [PhoneEdit, setPhoneEdit] =useState(initialValues.phone);
  const [CityEdit, setCityEdit] =useState(initialValues.city);
  const [PhotoEdit, setPhotoEdit] =useState(null);
+
+ const [previewUrl, setPreviewUrl] = useState(initialValues.avatarUrl);
+
  
      const editing =()=>{
          setisPhoneEdit(false);
@@ -68,21 +76,26 @@ export const UserData =()=>{
      }
    },[PhotoEdit]);
  
-    const handleUpload = async () => {
-       if (!PhotoEdit) {
-          alert("Please first select a file");
-          return;
-       }
+  
  
-       const formData = new FormData();
-       formData.append("file", PhotoEdit);
- 
-       
-         dispatch(updateUserPhoto(PhotoEdit))
-       
-       }
- 
- 
+
+   const handleUpload = async () => {
+    if (!PhotoEdit) {
+      alert("Please first select a file");
+      return;
+    }
+  
+    const formData = new FormData();
+    formData.append("file", PhotoEdit);
+  
+    dispatch(updateUserPhoto(PhotoEdit)).then((response) => {
+      // Assuming the API response returns the URL of the uploaded image
+      setPreviewUrl(response.data.avatarUrl);
+    });
+  };
+  
+
+
    const handleUpdateUser = (values) => {
    
      dispatch(updateUser(values))
@@ -178,11 +191,14 @@ export const UserData =()=>{
           <Form >
           <PhotoContainer>
            
-           <InputPhoto type="file" onChange={(e) => setPhotoEdit(e.target.files[0])} onClick={()=> {editing(); setisPhotoEdit(true);}} name="avatarUrl"
+           <InputPhoto type="file" onChange={(e) => {
+  setPhotoEdit(e.target.files[0]);
+  setPreviewUrl(URL.createObjectURL(e.target.files[0]));
+}} onClick={()=> {editing(); setisPhotoEdit(true);}} name="avatarUrl"
             value ={''}  
            />
  
-           <UserImg src={initialValues.avatarUrl} alt="" />
+           <UserImg src={previewUrl} alt="" />
  
           
           {!isPhotoEdit &&  <ButtonPhotoEdit><FiCamera  style={{  width: '20px', height: '16px', marginRight:'6px' }}/>Edit photo</ButtonPhotoEdit> }

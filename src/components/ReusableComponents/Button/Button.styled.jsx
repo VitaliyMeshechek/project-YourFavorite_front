@@ -40,7 +40,7 @@ transition: all 300ms ease;
     padding: 8px 16px;
     border-radius: 40px;
     font-weight: 700;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.38;
 
 span {

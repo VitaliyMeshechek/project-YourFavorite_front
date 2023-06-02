@@ -10,7 +10,7 @@ export const MoreInfoFormWrapper = styled.div`
   gap: 20px;
     @media screen and (min-width: ${breakPoints.tablet}) {
     ${({ category }) =>
-      category !== 'your-pet' ? 'flex-direction: row; column-gap:44px' : ''};
+      category !== 'your pet' ? 'flex-direction: row; column-gap:44px' : ''};
   }
 `;
 
@@ -19,7 +19,7 @@ export const FirstPartFormWrapper = styled.div`
   flex-direction: column;
   gap: 20px;
     @media screen and (min-width: ${breakPoints.tablet}) {
-    ${({ category }) => (category !== 'your-pet' ? 'row-gap: 48px;' : '')};
+    ${({ category }) => (category !== 'your pet' ? 'row-gap: 48px;' : '')};
   }
 `;
 
@@ -138,7 +138,7 @@ export const AddFormImageLabel = styled.label`
     font-size: 20px;
     line-height: 1.3;
        ${({ category }) =>
-      category !== 'your-pet' ? 'flex-direction: column' : ''};
+      category !== 'your pet' ? 'flex-direction: column' : ''};
   }
   display: flex;
   flex-direction: row;

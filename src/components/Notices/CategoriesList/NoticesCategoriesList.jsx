@@ -64,6 +64,7 @@ const NoticesCategoriesList = () => {
     dispatch(fetchNotices({ categoryName, query }));
   }, [categoryName, dispatch, isLoggedIn, query]);
 
+
   useEffect(() => {
     switch (categoryName) {
       case 'favorite':
@@ -144,6 +145,7 @@ const NoticesCategoriesList = () => {
           ></RemoveModal>
         )}
       </CategoriesList>
+
     </>
   );
 };

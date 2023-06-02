@@ -51,7 +51,15 @@
     "addressUrl": "https://goo.gl/maps/4xMfxtahHPfXeAYU8",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_289.png",
     "address": "79024, м.Львів, вул. Промислова 56",
-    "workDays": " day and night",
+    "workDays": [
+      { "isOpen": false },
+      { "isOpen": true, "from": "09:00", "to": "20:00" },
+      { "isOpen": true, "from": "09:00", "to": "20:00" },
+      { "isOpen": true, "from": "09:00", "to": "20:00" },
+      { "isOpen": true, "from": "09:00", "to": "20:00" },
+      { "isOpen": true, "from": "09:00", "to": "20:00" },
+      { "isOpen": true, "from": "09:00", "to": "20:00" }
+    ],
     "phone": "+380685354545",
     "email": " lkplev@gmail.com"
   },
@@ -61,7 +69,15 @@
     "addressUrl": "https://pethelp.com.ua",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_286.png",
     "address": "website only",
-    "workDays": " day and night",
+    "workDays": [
+      { "isOpen": false },
+      { "isOpen": true, "from": "08:00", "to": "20:00" },
+      { "isOpen": true, "from": "08:00", "to": "20:00" },
+      { "isOpen": true, "from": "08:00", "to": "20:00" },
+      { "isOpen": true, "from": "08:00", "to": "20:00" },
+      { "isOpen": true, "from": "08:00", "to": "20:00" },
+      { "isOpen": true, "from": "08:00", "to": "20:00" }
+    ],
     "phone": "email only",
     "email": "pethelp.ukr@gmail.com"
   },
@@ -99,7 +115,7 @@
     "addressUrl": "https://www.purina.ua",
     "imageUrl": "https://storage.googleapis.com/kidslikev2_bucket/pets-support/images/sponsors/frame_290.png",
     "address": "website only",
-    "workDays": "day and night",
+    "workDays": null,
     "phone": "+380800500950",
     "email": "info@ua.nestle.com"
   },
@@ -155,11 +171,11 @@
     "imageUrl": "https://brit.in.ua/image/catalog/brit.jpg",
     "address": "м. Харків",
     "workDays": [
-      { "isOpen": false },
-      { "isOpen": false },
-      { "isOpen": false },
-      { "isOpen": false },
-      { "isOpen": false },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
+      { "isOpen": true, "from": "08:00", "to": "16:00" },
       { "isOpen": true, "from": "11:00", "to": "16:00" },
       { "isOpen": true, "from": "11:00", "to": "16:00" }
     ],
