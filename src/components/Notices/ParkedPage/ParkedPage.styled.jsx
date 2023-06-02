@@ -44,6 +44,7 @@ bottom: 0;
 z-index: -1;
 
 @media screen and (min-width: 768px) {
-    width: 700px;
+    min-width: 700px;
   }
+
 `;
