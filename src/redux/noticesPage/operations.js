@@ -123,8 +123,6 @@ export const fetchUserById = createAsyncThunk(
     try {
       const res = await axios.get(`/users/${id}`);
 
-      console.log(res);
-
       return res.data.users;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.message);

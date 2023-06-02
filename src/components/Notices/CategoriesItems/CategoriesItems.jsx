@@ -6,10 +6,11 @@ import { TbGenderFemale, TbGenderMale } from 'react-icons/tb';
 import { getAge } from 'utils/getAge';
 import { useAuth } from 'hooks';
 import { selectFavorite, selectOwn } from 'redux/noticesPage/selectors';
+import { useSearchParams } from 'react-router-dom';
+
 import {
   addToFavorite,
   deleteFromFavorite,
-  deleteUserNotice,
 } from 'redux/noticesPage/operations';
 import {
   Category,
@@ -23,17 +24,14 @@ import {
   TrashBtn,
 } from './CategoriesItems.styled';
 import { showModal } from 'redux/modal/slice';
-import { selectModal } from 'redux/modal/selectors';
-import RemoveModal from 'components/ReusableComponents/Modal/RemoveModal/RemoveModal';
-// import { useParams } from 'react-router-dom';
 
 export const NoticesCategoriesItems = pets => {
   const {
+    isDeleted,
     openModal,
-
     pet: { _id, avatarURL, title, location, birthday, sex, category },
   } = pets;
-  const modal = useSelector(selectModal);
+
   const { isLoggedIn } = useAuth();
   const [newCategory, setNewCategory] = useState();
   const [favStyle, setFavStyle] = useState(false);
@@ -86,17 +84,22 @@ export const NoticesCategoriesItems = pets => {
 
   const handleDeleteOwn = e => {
     e.preventDefault();
-
+    openModal(_id, 'remove');
     dispatch(showModal(true));
+    if (isDeleted) {
+      console.log(isDeleted);
+      setOwn(false);
+    }
 
-    dispatch(deleteUserNotice(_id));
-    // dispatch(deletePet(_id))
-    setOwn(false);
+    // dispatch(deleteUserNotice(_id));
+
+    // // dispatch(deletePet(_id))
   };
 
   const handleLearnMore = e => {
     dispatch(showModal(true));
-    openModal(_id);
+
+    openModal(_id, 'learnMore');
   };
 
   return (
@@ -136,7 +139,6 @@ export const NoticesCategoriesItems = pets => {
         <Title>{title}</Title>
         <LoadMoreBtn onClick={handleLearnMore}>Learn more</LoadMoreBtn>
       </Thumb>
-      {/* {modal && <RemoveModal></RemoveModal>} */}
     </>
   );
 };

@@ -10,6 +10,7 @@ import {
 import {
   addToFavorite,
   deleteFromFavorite,
+  deleteUserNotice,
   fetchFavorites,
   fetchNotices,
   fetchUsersNotices,
@@ -18,12 +19,18 @@ import { NoticesCategoriesItems } from '../CategoriesItems/CategoriesItems';
 import { CategoriesList } from './NoticesCategoriesList.styled';
 import { useAuth } from 'hooks';
 import NoticeModal from 'components/ReusableComponents/Modal/NoticeModal/NoticeModal';
-// import { toast } from 'react-toastify';
+import { toast } from 'react-toastify';
+import RemoveModal from 'components/ReusableComponents/Modal/RemoveModal/RemoveModal';
+import { current } from '@reduxjs/toolkit';
 
 const NoticesCategoriesList = () => {
   const { isLoggedIn } = useAuth();
   const { categoryName } = useParams();
-  const [currentReadMore, setCurrentReadMore] = useState(null);
+
+  const [activeNotice, setActiveNotice] = useState(null);
+  const [modal, setModal] = useState('');
+  const [isDeleted, setIsDeleted] = useState(false);
+
   const [favoriteItem, setFavoriteItem] = useState(null);
   const favorites = useSelector(selectFavorite);
   const own = useSelector(selectOwn);
@@ -43,11 +50,11 @@ const NoticesCategoriesList = () => {
   }, [setSearchParams, query]);
 
   useEffect(() => {
-    if (!currentReadMore) {
+    if (!activeNotice) {
       return;
     }
-    setFavoriteItem(favorits.find(item => item._id === currentReadMore[0]._id));
-  }, [currentReadMore]);
+    setFavoriteItem(favorits.find(item => item._id === activeNotice[0]._id));
+  }, [activeNotice, favorits]);
 
   useEffect(() => {
     if (isLoggedIn) {
@@ -75,22 +82,42 @@ const NoticesCategoriesList = () => {
   if (!pets) {
     return null;
   }
-  const openModal = id => {
-    const filtered = pets.filter(({ _id }) => id === _id);
-    setCurrentReadMore(filtered);
+
+  const onDeleteOwn = () => {
+    dispatch(deleteUserNotice(activeNotice[0]._id));
+    setIsDeleted(true);
   };
+
+  const openModal = (id, modalName) => {
+    if (!id) {
+      return;
+    }
+    switch (modalName) {
+      case 'remove':
+        setModal('remove');
+        break;
+      case 'learnMore':
+        setModal('learnMore');
+        break;
+      default:
+        break;
+    }
+
+    const filtered = pets.filter(({ _id }) => id === _id);
+    setActiveNotice(filtered);
+  };
+
   const handleFavorite = e => {
     e.preventDefault();
     if (!isLoggedIn) {
-      // toast('Sorry, this option is available only for authorized users');
+      toast('Sorry, this option is available only for authorized users');
       return;
     }
     if (favoriteItem) {
-      dispatch(deleteFromFavorite(currentReadMore[0]._id));
+      dispatch(deleteFromFavorite(activeNotice[0]._id));
       return;
     }
-    console.log(favoriteItem);
-    dispatch(addToFavorite(currentReadMore[0]._id));
+    dispatch(addToFavorite(activeNotice[0]._id));
   };
 
   return (
@@ -101,13 +128,20 @@ const NoticesCategoriesList = () => {
             pet={pet}
             key={pet._id}
             openModal={openModal}
+            isDeleted={isDeleted}
           />
         ))}
-        {currentReadMore && (
+        {modal === 'learnMore' && (
           <NoticeModal
             handleFavorite={handleFavorite}
-            pet={currentReadMore[0]}
+            pet={activeNotice[0]}
           ></NoticeModal>
+        )}
+        {modal === 'remove' && (
+          <RemoveModal
+            approveHandle={onDeleteOwn}
+            title={activeNotice[0].title}
+          ></RemoveModal>
         )}
       </CategoriesList>
     </>

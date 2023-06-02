@@ -26,17 +26,12 @@ import { showModal } from 'redux/modal/slice';
 import { useEffect, useState } from 'react';
 import { fetchUserById } from 'redux/noticesPage/operations';
 import { selectUserById } from 'redux/noticesPage/selectors';
-import { selectIsLoggedIn } from 'redux/auth/selectors';
 
-const NoticeModal = ({
-  pet,
-  handleFavorite,
-  // approveHandle,
-  // addToFavorite,
-}) => {
+const NoticeModal = ({ pet, handleFavorite }) => {
   const dispatch = useDispatch();
   const [
     {
+      owner,
       avatarURL,
       location,
       birthday,
@@ -52,20 +47,13 @@ const NoticeModal = ({
 
   const user = useSelector(selectUserById);
 
-  const isLoggedIn = useSelector(selectIsLoggedIn);
-
-  const handleApprove = () => {
-    // addToFavorite();
-    dispatch(showModal(false));
-  };
-
   useEffect(() => {
     if (!pet) {
       return;
     }
     setPetInfo(pet);
-    dispatch(fetchUserById(pet._id));
-  }, [dispatch, pet]);
+    dispatch(fetchUserById(owner));
+  }, [dispatch, owner, pet]);
 
   return (
     <ModalWrapper padding="44px 12px 16px 12px">
@@ -101,7 +89,7 @@ const NoticeModal = ({
               </InfoValue>
               <InfoValue>
                 <InfoLink href={user.phone ? user.phone : ''}>
-                  {user.phone ? user.phone : '+380'}
+                  {user.phone ? user.phone : ''}
                 </InfoLink>
               </InfoValue>
             </InfoValueList>
