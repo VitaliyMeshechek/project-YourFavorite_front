@@ -120,7 +120,7 @@ useEffect(() => {
                   onBlur={() => validateField('sex', formData, setErrors)}
                 />
                 <AddFormSexLabel htmlFor="female" checked={formData.sex === 'female'}>
-                  <GiFemale stroke="#F43F5E" />
+                  <GiFemale style={{ fill: "#F43F5E" }} />
                   Female
                 </AddFormSexLabel>
                 <AddFormRadioButton
@@ -144,7 +144,7 @@ useEffect(() => {
               ? 'Add photo'
               : 'Load the pet’s image:'}
             <AddFormImageWrapper>
-              {!formData.avatar && <BsPlus width="30" height="30" />}
+              {!formData.avatar && <BsPlus />}
               {!!formData.avatar && (
                 <img
                   id="image"
