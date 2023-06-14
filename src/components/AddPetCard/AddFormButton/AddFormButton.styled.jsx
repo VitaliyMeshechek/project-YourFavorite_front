@@ -9,7 +9,7 @@ export const NextButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 8 0;
+  padding: 8px 0;
   gap: 12px;
   min-width: 248px;
   color: ${colors.white};
@@ -67,9 +67,12 @@ export const BackButton = styled.button`
   background-color: transparent;
   border: none;
   transition: color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
-  & svg {
-    stroke: currentColor;
+  &:hover,
+  &:focus {
+    color: ${colors.yellow};
   }
+  
+
 `;
 
 export const BackLink = styled(Link)`
@@ -84,6 +87,9 @@ export const BackLink = styled(Link)`
   background-color: transparent;
   border-radius: 40px;
   cursor: pointer;
+  &:hover,
+  &:focus {
+    color: ${colors.yellow};
   }
 `;
 

@@ -6,7 +6,7 @@ const AddFormButtonBack = ({ text, clickHandler, type, isLink, path }) => {
   if (isLink) {
     return (
       <BackLink onClick={clickHandler} type={type} to={path}>
-        <BsArrowLeft style={{ fill: '#54ADFF', width: '16px', height: '12px' }}/>
+        <BsArrowLeft />
         {text}
       </BackLink>
     );
@@ -14,7 +14,7 @@ const AddFormButtonBack = ({ text, clickHandler, type, isLink, path }) => {
 
   return (
     <BackButton onClick={clickHandler} type={type}>
-      <BsArrowLeft style={{ fill: '#54ADFF', width: '16px', height: '12px' }}/>
+      <BsArrowLeft />
       {text}
     </BackButton>
   );

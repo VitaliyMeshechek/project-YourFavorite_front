@@ -8,27 +8,24 @@ export const MoreInfoFormWrapper = styled.div`
   flex-grow: 1;
   padding: 16px 0 24px;
   gap: 20px;
+  
     @media screen and (min-width: ${breakPoints.tablet}) {
     ${({ category }) =>
-      category !== 'your pet' ? 'flex-direction: row; column-gap:44px' : ''};
-  }
+      category !== 'your pet' ? 'flex-direction: row; column-gap: 44px' : ''};
+
+    }
+
 `;
 
-// export const FirstPartFormWrapper = styled.div`
-//   display: flex;
-//   flex-direction: column;
-//   gap: 20px;
-//     @media screen and (min-width: ${breakPoints.tablet}) {
-//     ${({ category }) => (category !== 'your pet' ? 'row-gap: 48px;' : '')};
-//   }
-// `;
+
 export const FirstPartFormWrapper = styled.div`
   display: flex;
-  ${({ category }) => (category !== 'my-pet' ? 'flex-direction: column;' : '')};
+  ${({ category }) => (category !== 'your pet' ? 'flex-direction: column;' : '')};
   gap: 20px;
 
   @media screen and (min-width: ${breakPoints.tablet}) {
-    ${({ category }) => (category !== 'my-pet' ? 'row-gap: 38px;' : '')};
+    ${({ category }) => (category !== 'your pet' ? 'row-gap: 38px;' : '')};
+  
   }
 `;
 
@@ -36,8 +33,10 @@ export const SecondPartFormWrapper = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+  
   @media screen and (min-width: ${breakPoints.tablet}) {
     gap: 24px;
+    
   }
 `;
 
@@ -52,6 +51,7 @@ export const FileInput = styled(Field)`
   clip-path: inset(100%);
   clip: rect(0 0 0 0);
   overflow: hidden;
+  
 `;
 
 export const AddFormTextAreaLabel = styled.label`
@@ -82,20 +82,20 @@ export const AddFormTextArea = styled(Field)`
     &.invalid {
     border-color: ${colors.red};
   }
-  resize: none;
-  height: 92;
-  flex-grow: 1;
-  border-radius: 20px;
 
   @media screen and (min-width: ${breakPoints.tablet}) {
     font-size: 16px;
     min-width: 394px;
     padding: 12px 16px;
-     height: 108px;
+    height: 108px;
   }
   &[type='date']::-webkit-calendar-picker-indicator {
     cursor: pointer;
   }
+  resize: none;
+  height: 92;
+  flex-grow: 1;
+  border-radius: 20px;
 
 `;
 
@@ -109,16 +109,24 @@ export const AddFormSexWrapper = styled.div`
     row-gap: 20px;
   
   }
+  & svg {
+    fill: ${colors.blue};
+    width: 25px;
+    height: 25px;
+  }
+
   & p {
     font-weight: 500;
     font-size: 14px;
     line-height: 1.36;
-    color: ${colors.black};
-  }
-      @media screen and (min-width: ${breakPoints.mobile}) {
+
+    color:  ${colors.black};
+
+    @media screen and (min-width: 768px) {
       font-size: 20px;
       line-height: 1.3;
     }
+  }
 `;
 
 export const AddFormRadioWrapper = styled.div`
@@ -129,6 +137,8 @@ export const AddFormSexLabel = styled.label`
   display: flex;
   column-count: 12px;
   align-items: center;
+  margin-right: 10px;
+ 
   font-size: 16px;
   line-height: 1.5;
   color: ${colors.gray};
@@ -136,15 +146,14 @@ export const AddFormSexLabel = styled.label`
   transition: color 300ms 3px 8px 14px rgba(136, 198, 253, 0.19);
   &:hover {
     color: ${colors.blue};
-  }
-    &:checked {
-   
-    color: ${colors.blue};
+    font-weight: 600;
+      margin-right: 8px;
   }
    ${props => 
     props.checked && 
-    `
-    color: ${colors.blue}; 
+  `color: ${colors.blue}; 
+    font-weight: 600;
+    margin-right: 8px;
   `}
 `;
 
@@ -152,8 +161,10 @@ export const AddFormSexLabel = styled.label`
 
 export const AddFormImageLabel = styled.label`
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  align-items: center;
   gap: 4px;
+  column-gap: 28px;
   font-weight: 500;
   font-size: 14px;
   line-height: 1.36;
@@ -166,10 +177,7 @@ export const AddFormImageLabel = styled.label`
        ${({ category }) =>
       category !== 'your pet' ? 'flex-direction: column' : ''};
   }
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  column-gap: 28px;
+
   
 `;
 export const AddFormImageWrapper = styled.div`
@@ -188,6 +196,8 @@ export const AddFormImageWrapper = styled.div`
 
   & svg {
     stroke: currentColor;
+    width: 60px;
+    height: 60px
   }
 
   & img {

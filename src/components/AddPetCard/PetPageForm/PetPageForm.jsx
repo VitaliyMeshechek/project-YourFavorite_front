@@ -10,17 +10,15 @@ import {
     AddFormList,
     AddFormItem,
     AddFormStepName,
+    FormBackground,
+    AddFormWrapper
   } from './PetPageForm.styled';
 
 import { addNotice } from 'redux/noticesPage/operations';
-// import { addMyPet } from 'redux/auth/operations';
 import { addPet } from 'redux/user/operations';
-
 import { validatePetSchema } from '../validatePet';
 import Modal from '../Modal/Modal';
 import AddPetModal from '../AddPetModal/AddPetModal';
-// import AddModal from 'components/ReusableComponents/Modal/AddModal';
-
 import MoreInfo from '../MoreInfoForm/MoreInfoForm';
 import ChooseForm from '../ChooseForm/ChooseForm';
 import PersonalForm from '../PersonalForm/PersonalForm';
@@ -130,58 +128,60 @@ const AddPetPageForm = () => {
     }
   };
   
-    return (
-      <div step={step} category={formData.category}>
-        <AddFormTitle>{title}</AddFormTitle>
-        <AddFormList>
-          {steps.map((stepName, index) => (
-            <AddFormItem key={index} className={setClassName(index)}>
-              <AddFormStepName>{stepName}</AddFormStepName>
-            </AddFormItem>
-          ))}
-        </AddFormList>
-        <Formik
-          initialValues={formData}
-          validationSchema={validatePetSchema}
-          onSubmit={handleSubmit}
-          validateOnChange={false}
-        >
-          {() => (
-            <AddForm autoComplete="on">
-              {step === 0 && (
-                <ChooseForm
-                  formData={formData}
-                  setFormData={setFormData}
-                  nextStep={handleNextClick}
-                  cancel={backLink}
-                />
-              )}
-              {step === 1 && (
-                <PersonalForm
-                  formData={formData}
-                  setFormData={setFormData}
-                  nextStep={handleNextClick}
-                  backStep={handlePrevClick}
-                />
-              )}
-              {step === 2 && (
-                <MoreInfo
-                  formData={formData}
-                  setFormData={setFormData}
-                  backStep={handlePrevClick}
-                  submit={handleSubmit}
-                />
-              )}
-            </AddForm>
+  return (
+      <FormBackground>
+        <AddFormWrapper step={step} category={formData.category}>
+          <AddFormTitle>{title}</AddFormTitle>
+          <AddFormList>
+            {steps.map((stepName, index) => (
+              <AddFormItem key={index} className={setClassName(index)}>
+                <AddFormStepName>{stepName}</AddFormStepName>
+              </AddFormItem>
+            ))}
+          </AddFormList>
+          <Formik
+            initialValues={formData}
+            validationSchema={validatePetSchema}
+            onSubmit={handleSubmit}
+            validateOnChange={false}
+          >
+            {() => (
+              <AddForm autoComplete="on">
+                {step === 0 && (
+                  <ChooseForm
+                    formData={formData}
+                    setFormData={setFormData}
+                    nextStep={handleNextClick}
+                    cancel={backLink}
+                  />
+                )}
+                {step === 1 && (
+                  <PersonalForm
+                    formData={formData}
+                    setFormData={setFormData}
+                    nextStep={handleNextClick}
+                    backStep={handlePrevClick}
+                  />
+                )}
+                {step === 2 && (
+                  <MoreInfo
+                    formData={formData}
+                    setFormData={setFormData}
+                    backStep={handlePrevClick}
+                    submit={handleSubmit}
+                  />
+                )}
+              </AddForm>
+            )}
+          </Formik>
+          {isModalOpen &&
+          (
+            <Modal toggleModal={() => navigate(backLink)}>
+              <AddPetModal backLink={backLink} category={formData.category} />
+            </Modal>
           )}
-        </Formik>
-        {isModalOpen &&
-        (
-          <Modal toggleModal={() => navigate(backLink)}>
-            <AddPetModal backLink={backLink} category={formData.category} />
-          </Modal>
-        )}
-      </div>
+        </AddFormWrapper>
+      </FormBackground>
     );
   };
   

@@ -1,8 +1,8 @@
-// import PropTypes from 'prop-types';
 import { BsPlus } from 'react-icons/bs'
 import { useWindowSize } from 'hooks/useResize';
 import { Btn } from './AddPetBtn.styled';
 import { useLocation } from 'react-router-dom';
+// import { toast } from 'react-toastify';
 // import { useSelector } from 'react-redux';
 // import { selectIsLoggedIn } from 'redux/auth/selectors';
 import { useAuth } from 'hooks'
@@ -16,6 +16,8 @@ const AddPetBtn = ({ text, path }) => {
   const onAddBtnClick = e => {
     if (!isLoggedIn) {
       e.preventDefault();
+      // toast('Sorry, this option is available only for authorized users');
+      alert('Sorry, this option is available only for authorized users');
       return false;
     }
   };
@@ -25,7 +27,6 @@ const AddPetBtn = ({ text, path }) => {
       to={path}
       state={{ from: location }}
       onClick={onAddBtnClick}
-
     >
       {screenWidth < 768 && <BsPlus/>}
       {text}
@@ -33,11 +34,5 @@ const AddPetBtn = ({ text, path }) => {
     </Btn>
   );
 };
-
-// AddPetBtn.propTypes = {
-//   text: PropTypes.string.isRequired,
-//   path: PropTypes.string.isRequired,
-//   toggleUnauthorizeModal: PropTypes.func,
-// };
 
 export default AddPetBtn;
